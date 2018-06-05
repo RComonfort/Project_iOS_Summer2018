@@ -14,6 +14,7 @@
 		DE5695C020C6D38000F86265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695BE20C6D38000F86265 /* LaunchScreen.storyboard */; };
 		DE5695CB20C6D38100F86265 /* ExpensesTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695CA20C6D38100F86265 /* ExpensesTrackerTests.swift */; };
 		DE5695D620C6D38100F86265 /* ExpensesTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695D520C6D38100F86265 /* ExpensesTrackerUITests.swift */; };
+		DE5695E420C6DC2D00F86265 /* Secondary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695E320C6DC2D00F86265 /* Secondary.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		DE5695D120C6D38100F86265 /* ExpensesTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpensesTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5695D520C6D38100F86265 /* ExpensesTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerUITests.swift; sourceTree = "<group>"; };
 		DE5695D720C6D38100F86265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE5695E320C6DC2D00F86265 /* Secondary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Secondary.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				DE5695BC20C6D38000F86265 /* Assets.xcassets */,
 				DE5695BE20C6D38000F86265 /* LaunchScreen.storyboard */,
 				DE5695C120C6D38000F86265 /* Info.plist */,
+				DE5695E320C6DC2D00F86265 /* Secondary.storyboard */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				DE5695C020C6D38000F86265 /* LaunchScreen.storyboard in Resources */,
 				DE5695BD20C6D38000F86265 /* Assets.xcassets in Resources */,
 				DE5695BB20C6D37F00F86265 /* Main.storyboard in Resources */,
+				DE5695E420C6DC2D00F86265 /* Secondary.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
