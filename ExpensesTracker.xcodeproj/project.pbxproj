@@ -15,6 +15,9 @@
 		DE5695CB20C6D38100F86265 /* ExpensesTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695CA20C6D38100F86265 /* ExpensesTrackerTests.swift */; };
 		DE5695D620C6D38100F86265 /* ExpensesTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695D520C6D38100F86265 /* ExpensesTrackerUITests.swift */; };
 		DE5695E420C6DC2D00F86265 /* Secondary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695E320C6DC2D00F86265 /* Secondary.storyboard */; };
+		DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB68D20CAD17B009D476B /* HistoryTableViewController.swift */; };
+		DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB68F20CAD1DB009D476B /* ConfigurationTableViewController.swift */; };
+		DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		DE5695D520C6D38100F86265 /* ExpensesTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesTrackerUITests.swift; sourceTree = "<group>"; };
 		DE5695D720C6D38100F86265 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE5695E320C6DC2D00F86265 /* Secondary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Secondary.storyboard; sourceTree = "<group>"; };
+		DE6FB68D20CAD17B009D476B /* HistoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		DE6FB68F20CAD1DB009D476B /* ConfigurationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTableViewController.swift; sourceTree = "<group>"; };
+		DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +112,9 @@
 				DE5695BE20C6D38000F86265 /* LaunchScreen.storyboard */,
 				DE5695C120C6D38000F86265 /* Info.plist */,
 				DE5695E320C6DC2D00F86265 /* Secondary.storyboard */,
+				DE6FB68D20CAD17B009D476B /* HistoryTableViewController.swift */,
+				DE6FB68F20CAD1DB009D476B /* ConfigurationTableViewController.swift */,
+				DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -260,8 +269,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */,
+				DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */,
 				DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */,
 				DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */,
+				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
