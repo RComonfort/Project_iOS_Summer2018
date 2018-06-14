@@ -61,7 +61,7 @@ class StatusViewController: UIViewController {
     func loadBalanceLabelContent() {
         //If no balance has been registered, do so
         guard let balanceObjects = CoreDataManager.getNSObjects(forEntity: "Balance") else {
-            CoreDataManager.createAndSaveNSObject(forEntity: "Balance", params: [0.0], keyPaths: ["balance"]);
+            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Balance", params: [0.0], keyPaths: ["balance"]);
             
             balanceLabel.text = String(0.0);
             return;

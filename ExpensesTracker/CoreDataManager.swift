@@ -47,7 +47,13 @@ class CoreDataManager {
         
         do {
             let data = try managedContext.fetch(fetchRequest);
-            return data[0];
+            if (data.count > 0)
+            {
+                print ("Returning the latest \(entity) object.")
+                return data[0];
+            } else {
+                return nil;
+            }
         } catch {
             print ("Could find latest entity of type: \(entity)");
         }
@@ -66,6 +72,12 @@ class CoreDataManager {
         
         do {
             let data = try managedContext.fetch(fetchRequest);
+            
+            if (data.count == 0)
+            {
+                return nil
+            }
+            print ("Returning \(entity) objects.");
             return data;
         } catch {
             print ("Could not retrieve data from entity: \(entity)");
