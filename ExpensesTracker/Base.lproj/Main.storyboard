@@ -28,37 +28,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left in budget" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="seK-e2-AM7">
-                                <rect key="frame" x="56.5" y="288.5" width="262.5" height="60.5"/>
+                                <rect key="frame" x="56.5" y="287.5" width="262.5" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="120"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Try-Ua-sYw">
-                                <rect key="frame" x="90" y="202.5" width="22.5" height="53"/>
+                                <rect key="frame" x="90.5" y="201.5" width="22" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Qs-nq-Kyp">
-                                <rect key="frame" x="89.5" y="366" width="23" height="52.5"/>
+                                <rect key="frame" x="90" y="364.5" width="22.5" height="53.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40,000.00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W98-Ol-mcB">
-                                <rect key="frame" x="112.5" y="202" width="150" height="53"/>
+                                <rect key="frame" x="112.5" y="201" width="150" height="53"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000.00" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V2i-iq-67Z">
-                                <rect key="frame" x="112.5" y="366" width="150" height="53"/>
+                                <rect key="frame" x="112.5" y="364.5" width="150" height="53.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fit-0U-zPH">
-                                <rect key="frame" x="19" y="461" width="337.5" height="66.5"/>
+                                <rect key="frame" x="19" y="460.5" width="337.5" height="66.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmt-4T-ZCu">
                                         <rect key="frame" x="0.0" y="0.0" width="164" height="66.5"/>
@@ -79,7 +79,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZV4-Oy-mcc">
-                                <rect key="frame" x="27" y="512" width="321" height="10"/>
+                                <rect key="frame" x="27" y="511.5" width="321" height="10"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-jv-5ae">
                                         <rect key="frame" x="0.0" y="0.0" width="150.5" height="10"/>
@@ -138,6 +138,8 @@
                     <tabBarItem key="tabBarItem" title="Item" id="yGw-NO-nbq"/>
                     <navigationItem key="navigationItem" title="Status" id="iKC-ag-mRU"/>
                     <connections>
+                        <outlet property="balanceLabel" destination="W98-Ol-mcB" id="AtY-Zh-tmQ"/>
+                        <outlet property="budgetLeftLabel" destination="V2i-iq-67Z" id="Was-g8-wqB"/>
                         <segue destination="JVX-7g-myg" kind="show" identifier="IncomeExpenseSegue" id="IWS-Ku-mfd"/>
                     </connections>
                 </viewController>
@@ -154,7 +156,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Amount" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="NAX-0y-nnh">
-                                <rect key="frame" x="113" y="109" width="150" height="30"/>
+                                <rect key="frame" x="112.5" y="109" width="150" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -166,7 +168,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-3o-VOl">
-                                <rect key="frame" x="98" y="111.5" width="15" height="25.5"/>
+                                <rect key="frame" x="97.5" y="111.5" width="15" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -279,7 +281,11 @@
                         <viewLayoutGuide key="safeArea" id="tOp-Uz-fse"/>
                     </view>
                     <navigationItem key="navigationItem" title="Income/Expense" id="dtu-Y9-rEw">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tGF-7U-vG2"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="tGF-7U-vG2">
+                            <connections>
+                                <action selector="cancel:" destination="JVX-7g-myg" id="usl-A3-343"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="twD-yg-9UT"/>
                     </navigationItem>
                 </viewController>
@@ -307,7 +313,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Limit" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="kvb-k3-GmZ">
-                                        <rect key="frame" x="89.5" y="0.0" width="196" height="60"/>
+                                        <rect key="frame" x="89" y="0.0" width="197" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -319,7 +325,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Budget Warning Amount" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wv8-qH-Q3r">
-                                        <rect key="frame" x="51.5" y="113" width="272" height="60"/>
+                                        <rect key="frame" x="51" y="113" width="273" height="60"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -429,25 +435,25 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40,000.00" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="2H5-jN-V5B">
-                                            <rect key="frame" x="70" y="10" width="120" height="24.5"/>
+                                            <rect key="frame" x="70" y="9.5" width="120" height="25.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="100"/>
                                             <color key="textColor" red="0.0" green="0.40784313725490196" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/06/18" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nm3-ZD-X0I">
-                                            <rect key="frame" x="300" y="28" width="71.5" height="19"/>
+                                            <rect key="frame" x="299" y="28" width="73.5" height="19"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="95"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Won a small lottery from a ticket given to me by my granpa on sunday night " lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="jEt-4t-VFq">
-                                            <rect key="frame" x="55.5" y="42.5" width="206.5" height="18.5"/>
+                                            <rect key="frame" x="55.5" y="43" width="206" height="18.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="90"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KAZ-ZM-uYs">
-                                            <rect key="frame" x="275" y="28" width="19" height="19"/>
+                                            <rect key="frame" x="274.5" y="28" width="18.5" height="19"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="KAZ-ZM-uYs" secondAttribute="height" multiplier="1:1" id="52A-fF-jGP"/>
                                             </constraints>

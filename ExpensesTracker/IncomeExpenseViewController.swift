@@ -8,11 +8,27 @@
 
 import UIKit
 
+enum ETransactionScreenMode {
+    case Detail
+    case Addition
+}
+
 class IncomeExpenseViewController: UIViewController {
 
+    var transactionTypeToManage: ETransactionType?;
+    var transactionMode: ETransactionScreenMode?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if (transactionMode == ETransactionScreenMode.Detail)
+        {
+            navigationItem.title = transactionTypeToManage == ETransactionType.Income ? "Income Details" : "Expense Details";
+        }
+        else if (transactionMode == ETransactionScreenMode.Detail) {
+            navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
+        }
+        
         // Do any additional setup after loading the view.
     }
 
@@ -22,14 +38,27 @@ class IncomeExpenseViewController: UIViewController {
     }
     
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    //override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    //}
+
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        goToPreviousScreen();
     }
-    */
+    
+    func goToPreviousScreen() {
+        if (navigationController != nil) {
+            navigationController?.popViewController(animated: true);
+            
+        }
+        else {
+            fatalError("Income/Expense VC has no navigation controller!");
+        }
+
+    }
+    
 
 }
