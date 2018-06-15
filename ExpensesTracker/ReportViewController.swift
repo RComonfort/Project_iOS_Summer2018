@@ -53,7 +53,12 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        <#code#>
+        if component == 0{
+            
+        }
+        else{
+            
+        }
     }
     
     func getBudgetInfo(timeIntervalIndex: Int){
@@ -63,5 +68,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     func getTotalInfo(timeIntervalIndex: Int){
         
     }
+    
     
 }
