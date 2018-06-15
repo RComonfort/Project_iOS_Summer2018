@@ -11,7 +11,7 @@ import CoreData
 
 class CoreDataManager {
     
-    static func createAndSaveNSObject (forEntity entity: String, params: [Any], keyPaths: [String]) -> Bool {
+    static func createAndSaveNSObject (forEntity entity: String, values: [Any], keys: [String]) -> Bool {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return false;
         }
@@ -20,14 +20,35 @@ class CoreDataManager {
         let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext)!;
         let item = NSManagedObject (entity: entity, insertInto: managedContext);
         
-        for i in 0..<params.count {
-            item.setValue(params[i], forKeyPath: keyPaths[i]);
+        for i in 0..<values.count {
+            item.setValue(values[i], forKeyPath: keys[i]);
         }
         
         do {
             try managedContext.save();
         } catch let error as NSError {
             print ("Could not save data for entity \(entity).\n\(error), \(error.userInfo)");
+            return false;
+        }
+        
+        return true;
+    }
+    
+    static func updateNSObject (object: NSManagedObject, values: [Any], keys: [String]) -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return false;
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext;
+        
+        for i in 0..<values.count {
+            object.setValue(values[i], forKey: keys[i])
+        }
+        
+        do {
+            try managedContext.save();
+        } catch let error as NSError {
+            print ("Could not update data for object \(object).\n\(error), \(error.userInfo)");
             return false;
         }
         
@@ -50,7 +71,7 @@ class CoreDataManager {
             let data = try managedContext.fetch(fetchRequest);
             if (data.count > 0)
             {
-                print ("Returning the latest \(entity) object.")
+                print ("Returning the latest \(entity) object by its key \(sortKey).")
                 return data[0];
             } else {
                 return nil;

@@ -39,14 +39,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let incomeImages = DefaultData.getIncomeImagesNames();
         
         for i in 0..<incomeCategories.count {
-            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", params: ["Income", incomeCategories[i], true, incomeImages[i]], keyPaths: ["type", "name", "isDefault", "icon"]);
+            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Income", incomeCategories[i], true, incomeImages[i]], keys: ["type", "name", "isDefault", "icon"]);
         }
         
         let expenseCategories = DefaultData.getExpenseCategories();
         let expenseImages = DefaultData.getExpenseImagesNames();
         
         for i in 0..<expenseCategories.count {
-            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", params: ["Expense", expenseCategories[i], true, expenseImages[i]], keyPaths: ["type", "name", "isDefault", "icon"]);
+            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
         }
 
     }

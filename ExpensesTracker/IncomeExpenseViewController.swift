@@ -17,6 +17,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     var transactionTypeToManage: ETransactionType?;
     var transactionMode: ETransactionScreenMode?;
+    var dateOfAddition = Date();
     
     var categories: [String] = [];
     var intervalDates: [String] = [];
@@ -40,9 +41,14 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         if (transactionMode == ETransactionScreenMode.Detail)
         {
             navigationItem.title = transactionTypeToManage == ETransactionType.Income ? "Income Details" : "Expense Details";
+            
+            //TODO: Necessary set up for displaying current info
+            
         }
-        else if (transactionMode == ETransactionScreenMode.Detail) {
+        else if (transactionMode == ETransactionScreenMode.Addition) {
             navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
+            
+            dateOfAddition = Date();
         }
         
         loadCategories();
@@ -81,7 +87,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         let id = UUID();
         let description = descriptionTextField.text ?? "";
         let amount = Double(amountTextField.text!)!;
-        let date = Date();
+        let date = dateOfAddition;
         
         let isRecurrent = switchView.isOn;
         var recurrentInterval = intervalDates[intervalDates.count - 1];
@@ -94,6 +100,8 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let categoryName = categories[categoryPicker.selectedRow(inComponent: 0)];
         
+        //TODO: might require refactor to accomodate easy update operations on whole object
+        
         let success = CoreDataManager.createAndSaveTransaction(id: id, amount: amount, date: date, description: description, type: type, isRecurrent: isRecurrent, recurrencyBeginDate: recurrrentBeginDate, recurrencyInterval: recurrentInterval, categoryType: type, categoryName: categoryName);
         
         if (success)
@@ -101,12 +109,47 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
             print ("Transaction added succesfully.");
         }
         
-        //TODO: Update budgets and balance
+        updateBudgetSpenditure(amount);
+        updateBalance(amount);
 
         goToPreviousScreen();
     }
     
     //MARK: - Functions
+    
+    func updateBudgetSpenditure(_ amount: Double) {
+        
+    }
+    
+    func updateBalance(_ amount: Double) {
+        guard let balanceObjects = CoreDataManager.getNSObjects(forEntity: "Balance"), balanceObjects.count > 0 else {
+            fatalError("Balance object not yet created!!!");
+        }
+        
+        let balanceObj = balanceObjects[0];
+        var balance = balanceObj.value(forKeyPath: "balance") as! Double;
+
+        
+        //If the screen was loaded to add a new transaction, simply modify the balance directly
+        if (transactionMode == ETransactionScreenMode.Addition) {
+            if (transactionTypeToManage == ETransactionType.Expense) {
+                
+                balance -= amount;
+                
+            } else {
+                balance += amount;
+            }
+        } else { //Else if we are editing a transaction, adjust the delta of the amount
+            if (transactionTypeToManage == ETransactionType.Expense) {
+                
+            } else {
+                
+            }
+        }
+        
+        CoreDataManager.updateNSObject(object: balanceObj, values: [balance], keys: ["balance"]);
+        
+    }
     
     func loadCategories() {
         if (transactionTypeToManage == ETransactionType.Expense)
