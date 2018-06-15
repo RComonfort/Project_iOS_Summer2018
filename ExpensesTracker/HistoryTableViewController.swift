@@ -10,8 +10,25 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
 
+    var transactions: [Transaction] = [];
+    var coreDataManager: CoreDataManager?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
+        
+        let objects = coreDataManager!.getNSObjects(forEntity: "Transaction")
+        if (objects != nil && (objects?.count)! > 0){
+            transactions = objects as! [Transaction];
+        }
+        
+        
+        tableView.reloadData();
+        
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -20,32 +37,45 @@ class HistoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return transactions.count;
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as? TransactionTableViewCell else {
+            fatalError("The dequeued cell is not an instance of TransactionTableViewCell.")
+        };
 
-        // Configure the cell...
-
+        let category = transactions[indexPath.row].category;
+        
+        print("Cat name: \(category?.name), img: \(category?.icon)");
+        
+        cell.amountLabel.text = String(transactions[indexPath.row].amount);
+        cell.descriptionLabel.text = transactions[indexPath.row].descriptionText;
+        cell.dateLabel.text = "\(transactions[indexPath.row].date!)";
+        cell.categoryNameLabel.text = category?.name;
+        cell.categoryImage.image = UIImage(contentsOfFile: (category?.icon)!);
+        
+        if (transactions[indexPath.row].isRecurrent) {
+            cell.recurrentIconImage.image = #imageLiteral(resourceName: "recurrent");
+        }
+        else {
+            cell.recurrentIconImage.isHidden = true;
+        }
+        
+        print("Adding to history TVC: \(cell.categoryNameLabel)");
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.

@@ -16,7 +16,7 @@ class TransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     @IBOutlet weak var categoryNameLabel: UILabel!
-    @IBOutlet weak var categoryImage: UILabel!
+    @IBOutlet weak var categoryImage: UIImageView!
     
     @IBOutlet weak var recurrentIconImage: UIImageView!
     
