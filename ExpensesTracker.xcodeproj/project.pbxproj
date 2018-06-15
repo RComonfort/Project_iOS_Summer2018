@@ -24,6 +24,7 @@
 		DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB6B420CAD6F2009D476B /* ExpensesTracker.xcdatamodeld */; };
 		DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB6B720CADBEF009D476B /* BudgetConfigurationViewController.swift */; };
 		DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */; };
+		DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */; };
 		DEE8C7D420D227180096FC89 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE8C7D320D227180096FC89 /* NumberFormatter.swift */; };
 		F217567AB4770581977A836C /* Pods_ExpensesTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */; };
 		FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23C5CD20D422FF006249EB /* ReportViewController.swift */; };
@@ -75,6 +76,7 @@
 		DE6FB6B520CAD6F2009D476B /* ExpensesTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpensesTracker.xcdatamodel; sourceTree = "<group>"; };
 		DE6FB6B720CADBEF009D476B /* BudgetConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetConfigurationViewController.swift; sourceTree = "<group>"; };
 		DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
+		DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		DEE8C7D320D227180096FC89 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		E06BF326949B652EE92CE9CF /* Pods-ExpensesTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerTests/Pods-ExpensesTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB23C5CD20D422FF006249EB /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				DE1B0EA220D1782D000E670B /* CoreDataManager.swift */,
 				DEE8C7D320D227180096FC89 /* NumberFormatter.swift */,
 				FB23C5CD20D422FF006249EB /* ReportViewController.swift */,
+				DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */,
 				DEE8C7D420D227180096FC89 /* NumberFormatter.swift in Sources */,
 				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
+				DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */,
 				DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

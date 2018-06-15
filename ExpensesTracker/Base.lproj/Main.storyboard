@@ -67,7 +67,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZV4-Oy-mcc">
-                                <rect key="frame" x="27" y="511.5" width="321" height="10"/>
+                                <rect key="frame" x="27" y="527" width="321" height="10"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Ch-jv-5ae">
                                         <rect key="frame" x="0.0" y="0.0" width="150.5" height="10"/>
@@ -100,7 +100,7 @@
                             <constraint firstItem="fit-0U-zPH" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.1" id="RUS-4o-aFg"/>
                             <constraint firstItem="V2i-iq-67Z" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="Svn-Np-dVm"/>
                             <constraint firstItem="ZV4-Oy-mcc" firstAttribute="width" secondItem="fit-0U-zPH" secondAttribute="width" multiplier="0.95" id="Xdb-Vn-Jjd"/>
-                            <constraint firstItem="ZV4-Oy-mcc" firstAttribute="top" secondItem="fit-0U-zPH" secondAttribute="bottom" multiplier="0.97" id="bmT-l5-Lb4"/>
+                            <constraint firstItem="ZV4-Oy-mcc" firstAttribute="top" secondItem="fit-0U-zPH" secondAttribute="bottom" id="bmT-l5-Lb4"/>
                             <constraint firstItem="V2i-iq-67Z" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="de9-Bn-yOg"/>
                             <constraint firstItem="vnV-YA-dmv" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="e69-2K-o1r"/>
                             <constraint firstItem="W98-Ol-mcB" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="f5B-dC-QVz"/>
@@ -220,13 +220,13 @@
                                         <rect key="frame" x="0.0" y="317.5" width="375" height="105.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-g9-9S7">
-                                                <rect key="frame" x="0.0" y="38" width="112.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="37.5" width="112.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYd-lO-3ya">
-                                                <rect key="frame" x="112.5" y="0.5" width="262.5" height="105.5"/>
+                                                <rect key="frame" x="112.5" y="0.0" width="262.5" height="105.5"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -413,7 +413,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="75" id="0Jh-dy-VdB">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="75" id="0Jh-dy-VdB" customClass="TransactionTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0Jh-dy-VdB" id="MTF-AS-Y2u">
@@ -492,6 +492,14 @@
                                         <constraint firstItem="4yh-JC-tWw" firstAttribute="width" secondItem="SsD-D3-iMJ" secondAttribute="width" multiplier="0.33" id="y8m-Vl-1is"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="2H5-jN-V5B" id="NUs-q5-EMo"/>
+                                    <outlet property="categoryImage" destination="4yh-JC-tWw" id="ipR-kM-x98"/>
+                                    <outlet property="categoryNameLabel" destination="Wdf-hR-Y5D" id="oxT-4K-yaj"/>
+                                    <outlet property="dateLabel" destination="Nm3-ZD-X0I" id="ggl-fc-ywA"/>
+                                    <outlet property="descriptionLabel" destination="jEt-4t-VFq" id="PzD-05-nq6"/>
+                                    <outlet property="recurrentIconImage" destination="KAZ-ZM-uYs" id="nas-iI-egP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
