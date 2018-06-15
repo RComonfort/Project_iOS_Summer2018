@@ -16,7 +16,7 @@ class DefaultData {
     
     static private let INCOME_IMAGES_NAMES = ["loanImg", "salaryImg", "allowanceImg", "salesImg", "fortuneImg", "taxImg", "paidImg", "rewardsImg", "giftsImg"];
     
-    static private let EXPENSE_IMAGES_NAMES = ["friendsImg", "foodImg", "leisureImg", "lendingImg", "workImg", "transportImg", "servicesImg", "homeImg", "charityImg", "debtImages"];
+    static private let EXPENSE_IMAGES_NAMES = ["friendsImg", "foodImg", "leisureImg", "lendingImg", "workImg", "transportImg", "servicesImg", "homeImg", "healthImg", "charityImg", "debtImages"];
     
     static private let TIME_INTERVALS = ["daily", "weekly", "biweekly", "monthly", "bimonthly", "quarterly", "biannual", "yearly", "indefinitely"];
     
@@ -37,6 +37,6 @@ class DefaultData {
     }
     
     static func getTimeIntervals() -> [String] {
-        returnTIME_INTERVALS;
+        return TIME_INTERVALS;
     }
 }

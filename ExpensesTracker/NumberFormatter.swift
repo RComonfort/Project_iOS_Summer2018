@@ -10,7 +10,8 @@ import Foundation
 
 class NumberFormatter: CustomStringConvertible {
     
-    var description: String { var descrip =  ""
+    var description: String {
+        var descrip =  ""
         return descrip;
     }
     

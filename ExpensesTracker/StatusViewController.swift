@@ -17,6 +17,7 @@ enum ETransactionType {
 class StatusViewController: UIViewController {
     
     var transactionTypeToAdd: ETransactionType?;
+    var coreDataManager: CoreDataManager?;
     
     @IBOutlet weak var balanceLabel: UILabel!
     @IBOutlet weak var budgetLeftLabel: UILabel!
@@ -27,6 +28,9 @@ class StatusViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
+        
+        performDefaultCategoryValidation();
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -40,14 +44,14 @@ class StatusViewController: UIViewController {
         let destinationVC = segue.destination as! IncomeExpenseViewController;
         
         destinationVC.transactionTypeToManage = transactionTypeToAdd;
-        destinationVC.transactionMode = ETransactionScreenMode.Addition;
+        destinationVC.transaction = nil;
     }
 
     //MARK: - Functions
     
     func loadBudgetLeftLabelContent() {
         //If no budget has been registered, place an empty string
-        guard let budgetObj = CoreDataManager.getLatestNSObject(forEntity: "Budget", latestByKey: "budgetBeginDate") else {
+        guard let budgetObj = coreDataManager!.getLatestNSObject(forEntity: "Budget", latestByKey: "budgetBeginDate") else {
             
             budgetLeftLabel.text = "----";
             return;
@@ -60,8 +64,8 @@ class StatusViewController: UIViewController {
     
     func loadBalanceLabelContent() {
         //If no balance has been registered, do so
-        guard let balanceObjects = CoreDataManager.getNSObjects(forEntity: "Balance") else {
-            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Balance", values: [0.0], keys: ["balance"]);
+        guard let balanceObjects = coreDataManager!.getNSObjects(forEntity: "Balance") else {
+            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Balance", values: [0.0], keys: ["balance"]);
             
             balanceLabel.text = String(0.0);
             return;
@@ -88,6 +92,35 @@ class StatusViewController: UIViewController {
         }
         
         performSegue(withIdentifier: "IncomeExpenseSegue", sender: self);
+        
+    }
+    
+    func performDefaultCategoryValidation(){
+        
+        if(!UserDefaults.standard.bool(forKey: "hasDefaultCategoriesSet")){
+            
+            UserDefaults.standard.set(true, forKey: "hasDefaultCategoriesSet")
+            UserDefaults.standard.synchronize();
+            
+            print("Registering default categories");
+            registerDefaultCategories();
+        }
+    }
+    
+    func registerDefaultCategories(){
+        let incomeCategories = DefaultData.getIncomeCategories();
+        let incomeImages = DefaultData.getIncomeImagesNames();
+        
+        for i in 0..<incomeCategories.count {
+            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Category", values: ["Income", incomeCategories[i], true, incomeImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
+        
+        let expenseCategories = DefaultData.getExpenseCategories();
+        let expenseImages = DefaultData.getExpenseImagesNames();
+        
+        for i in 0..<expenseCategories.count {
+            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
         
     }
     
