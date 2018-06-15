@@ -16,13 +16,31 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     let amount = ["Total", "Budget"]
     let timeInterval = DefaultData.getTimeIntervals()
     
+    var coreDataManager: CoreDataManager?
+    var budgetLimit: Float!
+    var budgetLimitWarning: Float!
+    var budgetPercentage: Float!
+    var budgetUsed: Float!
+    var timeIntervalInt: Int!
+    var totalIncome: Float!
+    var totalExpense: Float!
+    var balance: Float!
+    
+    
+    var budgetLimitCore: Float!
+    var budgetLimitWarningCore: Float!
+    var budgetUsedCore: Float!
+    var timeIntervalIntCore: Int!
+    var balanceCore: Float!
+    var transactions: [Transaction]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         pickerView.delegate = self
         pickerView.dataSource = self
-        
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,13 +79,40 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
     }
     
-    func getBudgetInfo(timeIntervalIndex: Int){
+    func getBudgetCore(){
+        let budget = coreDataManager?.getLatestNSObject(forEntity: "Budget", latestByKey: "limit")
+        budgetLimitCore = budget?.value(forKey: "limit") as! Float
+        budgetLimitWarningCore = budget?.value(forKey: "limitWarningAmount") as! Float
+        budgetUsedCore = budget?.value(forKey: "spentAmount") as! Float
+        
+        let timeInt = budget?.value(forKey: "budgetTimeFrame") as! String
+        
+        for i in 0..<timeInterval.count {
+            if timeInt == timeInterval[i] {
+                timeIntervalIntCore = i
+            }
+        }
+        
+        
         
     }
     
-    func getTotalInfo(timeIntervalIndex: Int){
-        
+    func getTotalCore(){
+        let balance = coreDataManager?.getLatestNSObject(forEntity: "Balance", latestByKey: "balance")
+        balanceCore = balance?.value(forKey: "balance") as! Float
     }
     
+    func getAllTransactions(){
+        transactions = coreDataManager?.getNSObjects(forEntity: "Transaction") as! [Transaction]
+    }
+    
+    func getNsDate(intervalIndex: Int) -> Date{
+        if intervalIndex == 0{
+            return Date()
+        }
+        else {
+            return Date()
+        }
+    }
     
 }
