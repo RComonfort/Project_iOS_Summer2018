@@ -11,12 +11,19 @@ import CoreData
 
 class CoreDataManager {
     
-    static func createAndSaveNSObject (forEntity entity: String, values: [Any], keys: [String]) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return false;
+    private let delegate: AppDelegate;
+    
+    init(inContext delegate: UIApplicationDelegate) {
+        guard let appDelegate = delegate as? AppDelegate else {
+            fatalError("Invalid AppDelegate");
         }
         
-        let managedContext = appDelegate.persistentContainer.viewContext;
+        self.delegate = appDelegate;
+    }
+    
+    func createAndSaveNSObject (forEntity entity: String, values: [Any], keys: [String]) -> Bool {
+        
+        let managedContext = delegate.persistentContainer.viewContext;
         let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext)!;
         let item = NSManagedObject (entity: entity, insertInto: managedContext);
         
@@ -34,12 +41,9 @@ class CoreDataManager {
         return true;
     }
     
-    static func updateNSObject (object: NSManagedObject, values: [Any], keys: [String]) -> Bool {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return false;
-        }
+    func updateNSObject (object: NSManagedObject, values: [Any], keys: [String]) -> Bool {
         
-        let managedContext = appDelegate.persistentContainer.viewContext;
+        let managedContext = delegate.persistentContainer.viewContext;
         
         for i in 0..<values.count {
             object.setValue(values[i], forKey: keys[i])
@@ -55,12 +59,9 @@ class CoreDataManager {
         return true;
     }
     
-    static func getLatestNSObject (forEntity entity: String, latestByKey sortKey: String) -> NSManagedObject? {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext;
+    func getLatestNSObject (forEntity entity: String, latestByKey sortKey: String) -> NSManagedObject? {
+
+        let managedContext = delegate.persistentContainer.viewContext;
         let fetchRequest = NSFetchRequest<NSManagedObject> (entityName: entity);
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortKey , ascending: false)];
@@ -83,7 +84,7 @@ class CoreDataManager {
         
     }
     
-    static func findCategory(ofType type: String, withName name: String) -> Category? {
+    func findCategory(ofType type: String, withName name: String) -> Category? {
         let objects = getNSObjects(forEntity: "Category");
         
         if (objects == nil || objects?.count == 0)
@@ -91,6 +92,8 @@ class CoreDataManager {
             print ("Could not find category of type \(type) and name \(name).");
             return nil;
         }
+        
+        print("eghewugbhw: \(objects?.count)");
         
         for i in 0..<objects!.count {
             if (objects![i].value(forKey: "type") as! String == type && objects![i].value(forKey: "type") as! String == name){
@@ -103,13 +106,10 @@ class CoreDataManager {
         
     }
     
-    static func getNSObjects(forEntity entity: String) -> [NSManagedObject]? {
+    func getNSObjects(forEntity entity: String) -> [NSManagedObject]? {
+
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil;
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext;
+        let managedContext = delegate.persistentContainer.viewContext;
         let fetchRequest = NSFetchRequest<NSManagedObject> (entityName: entity);
         
         do {
@@ -127,38 +127,10 @@ class CoreDataManager {
         return nil;
     }
     
-    static func createAndSaveTransaction (id: UUID, amount: Double, date: Date, description: String, type: String, isRecurrent: Bool, recurrencyBeginDate: Date, recurrencyInterval: String, categoryType: String, categoryName: String) -> Bool {
+    func createEmptyNSObject (ofEntityType entity: String) -> NSManagedObject? {
 
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return false;
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext;
-        
-        let category = findCategory(ofType: categoryType, withName: categoryName);
-        
-        if (category == nil){
-            return false;
-        }
-        
-        let newTransaction = Transaction(context: managedContext);
-        newTransaction.id = id;
-        newTransaction.amount = amount;
-        newTransaction.date = date;
-        newTransaction.descriptionText = description;
-        newTransaction.type = type;
-        newTransaction.isRecurrent = isRecurrent;
-        newTransaction.recurrentBeginDate = recurrencyBeginDate;
-        newTransaction.recurrentInterval = recurrencyInterval;
-        newTransaction.category = category;
-        
-        do {
-            try managedContext.save();
-        } catch let error as NSError {
-            print ("Could not save transaction. \(error): \(error.localizedDescription)");
-            return false;
-        }
-        
-        return true;
+        let managedContext = delegate.persistentContainer.viewContext;
+        let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext)!;
+        return NSManagedObject (entity: entity, insertInto: managedContext);
     }
 }

@@ -8,16 +8,12 @@
 
 import UIKit
 
-enum ETransactionScreenMode {
-    case Detail
-    case Addition
-}
-
 class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var transactionTypeToManage: ETransactionType?;
-    var transactionMode: ETransactionScreenMode?;
-    var dateOfAddition = Date();
+    var transaction: Transaction?;
+    
+    var coreDataManager: CoreDataManager?;
     
     var categories: [String] = [];
     var intervalDates: [String] = [];
@@ -30,25 +26,25 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var beginDateLabel: UILabel!
     @IBOutlet weak var intervalDatePicker: UIPickerView!
     @IBOutlet weak var intervalLabel: UILabel!
+
     @IBOutlet weak var switchView: UISwitch!
-    
     
     //MARK: - VC Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if (transactionMode == ETransactionScreenMode.Detail)
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
+        
+        if (transaction != nil)
         {
             navigationItem.title = transactionTypeToManage == ETransactionType.Income ? "Income Details" : "Expense Details";
             
             //TODO: Necessary set up for displaying current info
             
         }
-        else if (transactionMode == ETransactionScreenMode.Addition) {
+        else {
             navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
-            
-            dateOfAddition = Date();
         }
         
         loadCategories();
@@ -83,34 +79,37 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        let type = transactionTypeToManage == ETransactionType.Expense ? "Expense" : "Income";
-        let id = UUID();
-        let description = descriptionTextField.text ?? "";
-        let amount = Double(amountTextField.text!)!;
-        let date = dateOfAddition;
         
-        let isRecurrent = switchView.isOn;
-        var recurrentInterval = intervalDates[intervalDates.count - 1];
-        var recurrrentBeginDate = Date();
+        transaction = (coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction);
+        transaction!.type = transactionTypeToManage == ETransactionType.Expense ? "Expense" : "Income";
+        transaction!.id = UUID();
+        transaction!.descriptionText = descriptionTextField.text ?? "";
+        transaction!.amount = Double(amountTextField.text!)!;
+        transaction!.date = Date();
         
-        if (isRecurrent) {
-            recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
-            recurrrentBeginDate = beginDateWheel.date;
+        transaction!.isRecurrent = switchView.isOn;
+        
+        if (switchView.isOn) {
+            transaction!.recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
+            transaction!.recurrentBeginDate = beginDateWheel.date;
+        } else {
+            transaction!.recurrentInterval = intervalDates[intervalDates.count - 1];
+            transaction!.recurrentBeginDate = Date();
         }
         
         let categoryName = categories[categoryPicker.selectedRow(inComponent: 0)];
+        let categoryType = transaction!.type!;
         
-        //TODO: might require refactor to accomodate easy update operations on whole object
+        let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
         
-        let success = CoreDataManager.createAndSaveTransaction(id: id, amount: amount, date: date, description: description, type: type, isRecurrent: isRecurrent, recurrencyBeginDate: recurrrentBeginDate, recurrencyInterval: recurrentInterval, categoryType: type, categoryName: categoryName);
+        transaction!.category = category;
         
-        if (success)
-        {
-            print ("Transaction added succesfully.");
-        }
+        coreDataManager!.updateNSObject(object: transaction!, values: [], keys: [])
         
-        updateBudgetSpenditure(amount);
-        updateBalance(amount);
+        print ("Transaction added succesfully.");
+        
+        updateBudgetSpenditure(transaction!.amount);
+        updateBalance(transaction!.amount);
 
         goToPreviousScreen();
     }
@@ -119,35 +118,32 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func updateBudgetSpenditure(_ amount: Double) {
         
+        //Only update if on a budget and if the we are managing an expense
+        guard let budgetObj = coreDataManager!.getLatestNSObject(forEntity: "Budget", latestByKey: "budgetBeginDate"), transactionTypeToManage == ETransactionType.Expense  else {
+            return;
+        }
+        
+        let spentAmount = (budgetObj.value(forKey: "spentAmount") as! Double) + amount;
+        
+        _ = coreDataManager!.updateNSObject(object: budgetObj, values: [spentAmount], keys: ["spentAmount"]);
     }
     
     func updateBalance(_ amount: Double) {
-        guard let balanceObjects = CoreDataManager.getNSObjects(forEntity: "Balance"), balanceObjects.count > 0 else {
+        guard let balanceObjects = coreDataManager!.getNSObjects(forEntity: "Balance"), balanceObjects.count > 0 else {
             fatalError("Balance object not yet created!!!");
         }
         
         let balanceObj = balanceObjects[0];
         var balance = balanceObj.value(forKeyPath: "balance") as! Double;
 
-        
-        //If the screen was loaded to add a new transaction, simply modify the balance directly
-        if (transactionMode == ETransactionScreenMode.Addition) {
-            if (transactionTypeToManage == ETransactionType.Expense) {
-                
-                balance -= amount;
-                
-            } else {
-                balance += amount;
-            }
-        } else { //Else if we are editing a transaction, adjust the delta of the amount
-            if (transactionTypeToManage == ETransactionType.Expense) {
-                
-            } else {
-                
-            }
+    
+        if (transactionTypeToManage == ETransactionType.Expense) {
+            balance -= amount;
+            
+        } else {
+            balance += amount;
         }
-        
-        CoreDataManager.updateNSObject(object: balanceObj, values: [balance], keys: ["balance"]);
+        _ = coreDataManager!.updateNSObject(object: balanceObj, values: [balance], keys: ["balance"]);
         
     }
     
