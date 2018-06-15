@@ -93,10 +93,11 @@ class CoreDataManager {
             return nil;
         }
         
-        print("eghewugbhw: \(objects?.count)");
+        print("Categories found: \(objects!.count)");
         
         for i in 0..<objects!.count {
-            if (objects![i].value(forKey: "type") as! String == type && objects![i].value(forKey: "type") as! String == name){
+            
+            if (objects![i].value(forKey: "type") as! String == type && objects![i].value(forKey: "name") as! String == name){
                 return objects![i] as? Category;
             }
         }
