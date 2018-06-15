@@ -220,13 +220,13 @@
                                         <rect key="frame" x="0.0" y="317.5" width="375" height="105.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-g9-9S7">
-                                                <rect key="frame" x="0.0" y="37.5" width="112.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="38" width="112.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYd-lO-3ya">
-                                                <rect key="frame" x="112.5" y="0.0" width="262.5" height="105.5"/>
+                                                <rect key="frame" x="112.5" y="0.5" width="262.5" height="105.5"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -284,6 +284,7 @@
                         <outlet property="intervalDatePicker" destination="VYd-lO-3ya" id="wjl-D4-Xb5"/>
                         <outlet property="intervalLabel" destination="4Af-g9-9S7" id="pKp-JS-9w9"/>
                         <outlet property="saveButton" destination="twD-yg-9UT" id="Dce-rz-4y0"/>
+                        <outlet property="switch" destination="Dkv-lG-iuT" id="rZ6-j3-twK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pNN-hg-h3m" userLabel="First Responder" sceneMemberID="firstResponder"/>

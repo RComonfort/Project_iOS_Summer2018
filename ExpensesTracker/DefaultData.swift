@@ -14,9 +14,11 @@ class DefaultData {
     
     static private let EXPENSE_CATEGORIES = ["Friends & Family", "Food", "Leisure & Hobbies", "Lending", "Work Related", "Transportation", "Services", "Home", "Health", "Charity", "Debt Payments"];
     
-    static private let INCOME_IMAGES_NAMEs = ["loanImg", "salaryImg", "allowanceImg", "salesImg", "fortuneImg", "taxImg", "paidImg", "rewardsImg", "giftsImg"];
+    static private let INCOME_IMAGES_NAMES = ["loanImg", "salaryImg", "allowanceImg", "salesImg", "fortuneImg", "taxImg", "paidImg", "rewardsImg", "giftsImg"];
     
-    static private let EXPENSE_IMAGES_NAMEs = ["friendsImg", "foodImg", "leisureImg", "lendingImg", "workImg", "transportImg", "servicesImg", "homeImg", "charityImg", "debtImages"];
+    static private let EXPENSE_IMAGES_NAMES = ["friendsImg", "foodImg", "leisureImg", "lendingImg", "workImg", "transportImg", "servicesImg", "homeImg", "charityImg", "debtImages"];
+    
+    static private let TIME_INTERVALS = ["daily", "weekly", "biweekly", "monthly", "bimonthly", "quarterly", "biannual", "yearly", "indefinitely"];
     
     static func getIncomeCategories () -> [String] {
         return INCOME_CATEGORIES;
@@ -27,10 +29,14 @@ class DefaultData {
     }
     
     static func getIncomeImagesNames() -> [String] {
-        return INCOME_IMAGES_NAMEs;
+        return INCOME_IMAGES_NAMES;
     }
     
     static func getExpenseImagesNames() -> [String] {
-        return EXPENSE_IMAGES_NAMEs;
+        return EXPENSE_IMAGES_NAMES;
+    }
+    
+    static func getTimeIntervals() -> [String] {
+        returnTIME_INTERVALS;
     }
 }

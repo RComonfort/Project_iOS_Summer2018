@@ -44,6 +44,7 @@ class CoreDataManager {
         
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: sortKey , ascending: false)];
         fetchRequest.fetchLimit = 1;
+        //fetchRequest.predicate = NSPredicate(format: "age = %@", "12")
         
         do {
             let data = try managedContext.fetch(fetchRequest);
@@ -61,14 +62,34 @@ class CoreDataManager {
         
     }
     
+    static func findCategory(ofType type: String, withName name: String) -> Category? {
+        let objects = getNSObjects(forEntity: "Category");
+        
+        if (objects == nil || objects?.count == 0)
+        {
+            print ("Could not find category of type \(type) and name \(name).");
+            return nil;
+        }
+        
+        for i in 0..<objects!.count {
+            if (objects![i].value(forKey: "type") as! String == type && objects![i].value(forKey: "type") as! String == name){
+                return objects![i] as? Category;
+            }
+        }
+        
+        print ("Could not find category of type \(type) and name \(name).");
+        return nil;
+        
+    }
+    
     static func getNSObjects(forEntity entity: String) -> [NSManagedObject]? {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return nil
+            return nil;
         }
         
         let managedContext = appDelegate.persistentContainer.viewContext;
-        let fetchRequest = NSFetchRequest<NSManagedObject> (entityName: entity)
+        let fetchRequest = NSFetchRequest<NSManagedObject> (entityName: entity);
         
         do {
             let data = try managedContext.fetch(fetchRequest);
@@ -85,4 +106,38 @@ class CoreDataManager {
         return nil;
     }
     
+    static func createAndSaveTransaction (id: UUID, amount: Double, date: Date, description: String, type: String, isRecurrent: Bool, recurrencyBeginDate: Date, recurrencyInterval: String, categoryType: String, categoryName: String) -> Bool {
+
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return false;
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext;
+        
+        let category = findCategory(ofType: categoryType, withName: categoryName);
+        
+        if (category == nil){
+            return false;
+        }
+        
+        let newTransaction = Transaction(context: managedContext);
+        newTransaction.id = id;
+        newTransaction.amount = amount;
+        newTransaction.date = date;
+        newTransaction.descriptionText = description;
+        newTransaction.type = type;
+        newTransaction.isRecurrent = isRecurrent;
+        newTransaction.recurrentBeginDate = recurrencyBeginDate;
+        newTransaction.recurrentInterval = recurrencyInterval;
+        newTransaction.category = category;
+        
+        do {
+            try managedContext.save();
+        } catch let error as NSError {
+            print ("Could not save transaction. \(error): \(error.localizedDescription)");
+            return false;
+        }
+        
+        return true;
+    }
 }

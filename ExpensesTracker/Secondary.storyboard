@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdb-VG-F8w">
-                                <rect key="frame" x="41.666666666666657" y="50" width="330.66666666666674" height="331.33333333333331"/>
+                                <rect key="frame" x="41.333333333333343" y="50" width="331.33333333333326" height="331.33333333333331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hdb-VG-F8w" secondAttribute="height" multiplier="1:1" id="9Yb-5z-Tyy"/>
                                 </constraints>
@@ -144,13 +144,13 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ls1-rU-DCs">
-                                            <rect key="frame" x="19.999999999999996" y="0.0" width="43.666666666666657" height="43.666666666666664"/>
+                                            <rect key="frame" x="20" y="0.0" width="43.5" height="43.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="Ls1-rU-DCs" secondAttribute="height" multiplier="1:1" id="AEC-ZG-yQu"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="hef-WP-K7p">
-                                            <rect key="frame" x="78.666666666666657" y="13" width="315.33333333333337" height="18"/>
+                                            <rect key="frame" x="78.5" y="13" width="501.5" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -209,13 +209,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Vs-Xi-KNS">
-                                <rect key="frame" x="62" y="227" width="290" height="147"/>
+                                <rect key="frame" x="62" y="227" width="290" height="147.33333333333337"/>
                             </pickerView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zP6-vR-VrR">
                                 <rect key="frame" x="182.66666666666666" y="393" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Expense" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="zlY-xL-Cxr">
-                                <rect key="frame" x="241.66666666666663" y="393.33333333333331" width="162.33333333333337" height="30"/>
+                                <rect key="frame" x="241.66666666666663" y="393.66666666666669" width="162.33333333333337" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

@@ -29,6 +29,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var beginDateLabel: UILabel!
     @IBOutlet weak var intervalDatePicker: UIPickerView!
     @IBOutlet weak var intervalLabel: UILabel!
+    @IBOutlet weak var switchView: UISwitch!
     
     
     //MARK: - VC Overrides
@@ -76,17 +77,50 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        let type = transactionTypeToManage == ETransactionType.Expense ? "Expense" : "Income";
+        let id = UUID();
+        let description = descriptionTextField.text ?? "";
+        let amount = Double(amountTextField.text!)!;
+        let date = Date();
         
+        let isRecurrent = switchView.isOn;
+        var recurrentInterval = intervalDates[intervalDates.count - 1];
+        var recurrrentBeginDate = Date();
+        
+        if (isRecurrent) {
+            recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
+            recurrrentBeginDate = beginDateWheel.date;
+        }
+        
+        let categoryName = categories[categoryPicker.selectedRow(inComponent: 0)];
+        
+        let success = CoreDataManager.createAndSaveTransaction(id: id, amount: amount, date: date, description: description, type: type, isRecurrent: isRecurrent, recurrencyBeginDate: recurrrentBeginDate, recurrencyInterval: recurrentInterval, categoryType: type, categoryName: categoryName);
+        
+        if (success)
+        {
+            print ("Transaction added succesfully.");
+        }
+        
+        //TODO: Update budgets and balance
+
+        goToPreviousScreen();
     }
     
     //MARK: - Functions
     
     func loadCategories() {
+        if (transactionTypeToManage == ETransactionType.Expense)
+        {
+            categories = DefaultData.getExpenseCategories();
+        }
+        else {
+            categories = DefaultData.getIncomeCategories();
+        }
         
     }
     
     func loadIntervals() {
-        
+        intervalDates = DefaultData.getTimeIntervals();
     }
     
     //MARK: - PickerDelegate Functions
@@ -134,7 +168,6 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     func goToPreviousScreen() {
         if (navigationController != nil) {
             navigationController?.popViewController(animated: true);
-            
         }
         else {
             fatalError("Income/Expense VC has no navigation controller!");
