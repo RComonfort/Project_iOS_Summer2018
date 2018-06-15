@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,10 +17,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        let center = UNUserNotificationCenter.current()
+        
+        //Request notification permissions, only asked once
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            
+            //Cease opportunity to register default categories
+            self.registerDefaultCategories();
+            
+            if (granted) {
+                
+            }
+        }
+        
         return true
     }
+    
+    func registerDefaultCategories(){
+        let incomeCategories = DefaultData.getIncomeCategories();
+        let incomeImages = DefaultData.getIncomeImagesNames();
+        
+        for i in 0..<incomeCategories.count {
+            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Income", incomeCategories[i], true, incomeImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
+        
+        let expenseCategories = DefaultData.getExpenseCategories();
+        let expenseImages = DefaultData.getExpenseImagesNames();
+        
+        for i in 0..<expenseCategories.count {
+            _ = CoreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
 
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

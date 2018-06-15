@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B0EA220D1782D000E670B /* CoreDataManager.swift */; };
 		DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B520C6D37F00F86265 /* AppDelegate.swift */; };
 		DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B720C6D37F00F86265 /* StatusViewController.swift */; };
 		DE5695BB20C6D37F00F86265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695B920C6D37F00F86265 /* Main.storyboard */; };
@@ -20,6 +21,8 @@
 		DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */; };
 		DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB6B420CAD6F2009D476B /* ExpensesTracker.xcdatamodeld */; };
 		DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FB6B720CADBEF009D476B /* BudgetConfigurationViewController.swift */; };
+		DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */; };
+		DEE8C7D420D227180096FC89 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE8C7D320D227180096FC89 /* NumberFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE1B0EA220D1782D000E670B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		DE5695B220C6D37F00F86265 /* ExpensesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpensesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5695B520C6D37F00F86265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5695B720C6D37F00F86265 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -59,6 +63,8 @@
 		DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeExpenseViewController.swift; sourceTree = "<group>"; };
 		DE6FB6B520CAD6F2009D476B /* ExpensesTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ExpensesTracker.xcdatamodel; sourceTree = "<group>"; };
 		DE6FB6B720CADBEF009D476B /* BudgetConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetConfigurationViewController.swift; sourceTree = "<group>"; };
+		DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultData.swift; sourceTree = "<group>"; };
+		DEE8C7D320D227180096FC89 /* NumberFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +115,7 @@
 		DE5695B420C6D37F00F86265 /* ExpensesTracker */ = {
 			isa = PBXGroup;
 			children = (
+				DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */,
 				DE5695B520C6D37F00F86265 /* AppDelegate.swift */,
 				DE5695B720C6D37F00F86265 /* StatusViewController.swift */,
 				DE5695B920C6D37F00F86265 /* Main.storyboard */,
@@ -121,6 +128,8 @@
 				DE6FB69120CAD261009D476B /* IncomeExpenseViewController.swift */,
 				DE6FB6B420CAD6F2009D476B /* ExpensesTracker.xcdatamodeld */,
 				DE6FB6B720CADBEF009D476B /* BudgetConfigurationViewController.swift */,
+				DE1B0EA220D1782D000E670B /* CoreDataManager.swift */,
+				DEE8C7D320D227180096FC89 /* NumberFormatter.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -281,7 +290,10 @@
 				DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */,
 				DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */,
 				DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */,
+				DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */,
+				DEE8C7D420D227180096FC89 /* NumberFormatter.swift in Sources */,
 				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
+				DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
