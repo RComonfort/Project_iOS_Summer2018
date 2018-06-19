@@ -13,6 +13,7 @@ class SwitchTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var switchView: UISwitch!
     
+    var optionToManage: String?;
     
     @IBAction func onSwitchValueChanged(_ sender: Any) {
     }

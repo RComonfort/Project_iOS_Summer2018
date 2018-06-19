@@ -299,6 +299,14 @@
             </objects>
             <point key="canvasLocation" x="658" y="1253"/>
         </scene>
+        <!--CategoryScene-->
+        <scene sceneID="Ol1-f4-fba">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Secondary" referencedIdentifier="CategoryScene" id="i3R-f5-54C" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3S-mF-Rgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="821" y="1483"/>
+        </scene>
         <!--Budget-->
         <scene sceneID="5Iv-Pk-IW9">
             <objects>
@@ -392,7 +400,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCk-BC-0VR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="777" y="1642"/>
+            <point key="canvasLocation" x="857" y="2115"/>
         </scene>
         <!--ReportScene-->
         <scene sceneID="rO5-gU-dL4">
@@ -525,18 +533,18 @@
                                     <rect key="frame" x="0.0" y="0.0" width="341" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration Detail Name" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="jIw-HT-luC">
-                                            <rect key="frame" x="7" y="23" width="245.5" height="29.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration Detail Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIw-HT-luC">
+                                            <rect key="frame" x="10" y="23" width="286.5" height="29.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="jIw-HT-luC" firstAttribute="height" secondItem="vzN-eQ-siP" secondAttribute="height" multiplier="0.4" id="AEj-gi-qjq"/>
-                                        <constraint firstItem="jIw-HT-luC" firstAttribute="centerX" secondItem="vzN-eQ-siP" secondAttribute="centerX" multiplier="0.76" id="PFg-Mb-xQD"/>
+                                        <constraint firstItem="jIw-HT-luC" firstAttribute="centerX" secondItem="vzN-eQ-siP" secondAttribute="centerX" multiplier="0.9" id="PFg-Mb-xQD"/>
                                         <constraint firstItem="jIw-HT-luC" firstAttribute="centerY" secondItem="vzN-eQ-siP" secondAttribute="centerY" id="kOp-fI-EZY"/>
-                                        <constraint firstItem="jIw-HT-luC" firstAttribute="width" secondItem="vzN-eQ-siP" secondAttribute="width" multiplier="0.72" id="xab-Lr-WH5"/>
+                                        <constraint firstItem="jIw-HT-luC" firstAttribute="width" secondItem="vzN-eQ-siP" secondAttribute="width" multiplier="0.84" id="xab-Lr-WH5"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -550,25 +558,25 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="74.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration Detail Name" lineBreakMode="tailTruncation" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="fcg-Zj-78o">
-                                            <rect key="frame" x="7.5" y="23" width="247.5" height="29.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration Detail Name" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fcg-Zj-78o">
+                                            <rect key="frame" x="9.5" y="23" width="300" height="29.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="913-QF-aEt">
-                                            <rect key="frame" x="293.5" y="22" width="51" height="31"/>
+                                            <rect key="frame" x="309.5" y="22" width="51" height="31"/>
                                             <connections>
                                                 <action selector="onSwitchValueChanged:" destination="uVU-IF-wpJ" eventType="valueChanged" id="dNh-sa-Los"/>
                                             </connections>
                                         </switch>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="913-QF-aEt" firstAttribute="leading" secondItem="fcg-Zj-78o" secondAttribute="trailing" multiplier="1.15" id="D0i-TT-ngH"/>
-                                        <constraint firstItem="fcg-Zj-78o" firstAttribute="width" secondItem="SQf-ET-yoX" secondAttribute="width" multiplier="0.66" id="D9j-AN-NMu"/>
+                                        <constraint firstItem="913-QF-aEt" firstAttribute="leading" secondItem="fcg-Zj-78o" secondAttribute="trailing" id="D0i-TT-ngH"/>
+                                        <constraint firstItem="fcg-Zj-78o" firstAttribute="width" secondItem="SQf-ET-yoX" secondAttribute="width" multiplier="0.8" id="D9j-AN-NMu"/>
                                         <constraint firstItem="fcg-Zj-78o" firstAttribute="height" secondItem="SQf-ET-yoX" secondAttribute="height" multiplier="0.4" id="Mcz-o1-ImP"/>
                                         <constraint firstItem="fcg-Zj-78o" firstAttribute="centerY" secondItem="SQf-ET-yoX" secondAttribute="centerY" id="Ws7-5Q-1dk"/>
-                                        <constraint firstItem="fcg-Zj-78o" firstAttribute="centerX" secondItem="SQf-ET-yoX" secondAttribute="centerX" multiplier="0.7" id="YFy-E5-3iW"/>
+                                        <constraint firstItem="fcg-Zj-78o" firstAttribute="centerX" secondItem="SQf-ET-yoX" secondAttribute="centerX" multiplier="0.85" id="YFy-E5-3iW"/>
                                         <constraint firstItem="913-QF-aEt" firstAttribute="centerY" secondItem="SQf-ET-yoX" secondAttribute="centerY" id="iHh-8s-UdK"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -586,8 +594,9 @@
                     <tabBarItem key="tabBarItem" title="Item" id="s1d-9L-4EC"/>
                     <navigationItem key="navigationItem" title="Configuration" id="Vgq-Ob-XRi"/>
                     <connections>
-                        <segue destination="CQq-eu-dUB" kind="show" id="RE6-73-vlJ"/>
-                        <segue destination="EtN-rS-6cW" kind="show" id="r2M-5L-wNE"/>
+                        <segue destination="CQq-eu-dUB" kind="show" identifier="BudgetConfigurationSegue" id="RE6-73-vlJ"/>
+                        <segue destination="EtN-rS-6cW" kind="show" identifier="CategoryConfigurationSegue" id="r2M-5L-wNE"/>
+                        <segue destination="i3R-f5-54C" kind="show" identifier="RecurrentTransactionsSegue" id="Joq-1P-e7E"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FIh-Pf-yba" userLabel="First Responder" sceneMemberID="firstResponder"/>
