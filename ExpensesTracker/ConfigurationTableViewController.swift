@@ -9,7 +9,7 @@
 import UIKit
 
 class ConfigurationTableViewController: UITableViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

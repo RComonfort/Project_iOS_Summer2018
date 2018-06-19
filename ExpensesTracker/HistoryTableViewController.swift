@@ -10,26 +10,19 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
 
+    let INCOME_TEXT_COLOR = UIColor (red: 0, green: 104/255.0, blue: 28/255.0, alpha: 1);
+    let EXPENSE_TEXT_COLOR = UIColor (red: 148/255, green: 17/255, blue: 0, alpha: 1);
+    
     var transactions: [Transaction] = [];
     var coreDataManager: CoreDataManager?
     
+    //MARK: - VC Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
-        let objects = coreDataManager!.getNSObjects(forEntity: "Transaction")
-        if (objects != nil && (objects?.count)! > 0){
-            transactions = objects as! [Transaction];
-        }
-        
-        
-        tableView.reloadData();
-        
-        tableView.rowHeight = UITableViewAutomaticDimension;
-        tableView.estimatedRowHeight = UITableViewAutomaticDimension;
-        
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -37,6 +30,20 @@ class HistoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        
+        
+        let objects = coreDataManager!.getNSObjects(forEntity: "Transaction")
+        if (objects != nil && (objects?.count)! > 0){
+            transactions = objects as! [Transaction];
+        }
+        
+        tableView.reloadData();
+        
+        tableView.rowHeight = UITableViewAutomaticDimension;
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension;
+    }
 
     // MARK: - Table view data source
 
@@ -56,13 +63,15 @@ class HistoryTableViewController: UITableViewController {
 
         let category = transactions[indexPath.row].category;
         
-        print("Cat name: \(category?.name), img: \(category?.icon)");
+        print("Category name: \(category?.name), image Name: \(category?.icon)");
         
-        cell.amountLabel.text = String(transactions[indexPath.row].amount);
+        let customFormatter = CustomFormatter();
+        
+        cell.amountLabel.text = customFormatter.formatCurrency(amount: transactions[indexPath.row].amount);
         cell.descriptionLabel.text = transactions[indexPath.row].descriptionText;
-        cell.dateLabel.text = "\(transactions[indexPath.row].date!)";
+        cell.dateLabel.text = customFormatter.formatDate(date: transactions[indexPath.row].date!);
         cell.categoryNameLabel.text = category?.name;
-        cell.categoryImage.image = UIImage(contentsOfFile: (category?.icon)!);
+        cell.categoryImage.image = UIImage(named: (category?.icon)!);
         
         if (transactions[indexPath.row].isRecurrent) {
             cell.recurrentIconImage.image = #imageLiteral(resourceName: "recurrent");
@@ -71,7 +80,7 @@ class HistoryTableViewController: UITableViewController {
             cell.recurrentIconImage.isHidden = true;
         }
         
-        print("Adding to history TVC: \(cell.categoryNameLabel)");
+        cell.amountLabel.textColor = category?.type == "Expense" ? EXPENSE_TEXT_COLOR : INCOME_TEXT_COLOR;
         
         return cell
     }
