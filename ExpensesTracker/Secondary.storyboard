@@ -60,6 +60,7 @@
                     <navigationItem key="navigationItem" title="Report" id="AXE-L7-c6X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chartView" destination="Rsu-Tn-N30" id="ulu-jg-L20"/>
                         <outlet property="percentage" destination="49H-Ia-xyj" id="lM5-ER-qna"/>
                         <outlet property="pickerView" destination="T2W-2L-8av" id="Foj-tf-6rS"/>
                     </connections>
