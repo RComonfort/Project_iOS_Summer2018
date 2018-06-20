@@ -30,6 +30,7 @@
 		DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */; };
 		F217567AB4770581977A836C /* Pods_ExpensesTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */; };
 		FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23C5CD20D422FF006249EB /* ReportViewController.swift */; };
+		FB6C912120D9B60D0075AEED /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6C912020D9B60D0075AEED /* Charts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,8 @@
 		DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		E06BF326949B652EE92CE9CF /* Pods-ExpensesTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerTests/Pods-ExpensesTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB23C5CD20D422FF006249EB /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		FB6C911E20D9B5810075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6C912020D9B60D0075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB6C912120D9B60D0075AEED /* Charts.framework in Frameworks */,
 				DB5E058D1A2766FA4015E79C /* Pods_ExpensesTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +122,8 @@
 		3465A0F1099947561AC00749 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB6C912020D9B60D0075AEED /* Charts.framework */,
+				FB6C911E20D9B5810075AEED /* Charts.framework */,
 				1D2CF81B07607F0966AFDA79 /* Pods_ExpensesTracker.framework */,
 				FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */,
 				43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */,
@@ -603,7 +609,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BA75AATBD3;
+				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -622,7 +628,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BA75AATBD3;
+				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
