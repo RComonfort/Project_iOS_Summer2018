@@ -72,7 +72,7 @@
         <!--Income/Expense-->
         <scene sceneID="RYZ-1J-Sk8">
             <objects>
-                <viewController id="r1o-Ex-mqV" customClass="ViewTransactionViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewTransactionScene" id="r1o-Ex-mqV" customClass="ViewTransactionViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sN7-Vh-WV7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
