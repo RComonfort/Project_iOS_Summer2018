@@ -10,9 +10,13 @@ import UIKit
 
 class ConfigurationTableViewController: UITableViewController {
     
+    var coreDataManager: CoreDataManager?;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,7 +33,7 @@ class ConfigurationTableViewController: UITableViewController {
         tableView.estimatedRowHeight = 70;
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source and delegate functions
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -83,7 +87,7 @@ class ConfigurationTableViewController: UITableViewController {
                     cell.optionToManage = "Budget";
                     return cell;
                 case 4:
-                    cell.titleLabel.text = "    Recurrent Income/Expense Charged";
+                    cell.titleLabel.text = "    Recurrent Charge Done";
                     cell.optionToManage = "Recurrent";
                     return cell;
                 default: //case 5
@@ -95,6 +99,19 @@ class ConfigurationTableViewController: UITableViewController {
         else {
             fatalError("Unknow index in table view cell");
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row;
+        
+        if (index == 0) {
+            performSegue(withIdentifier: "BudgetConfigurationSegue", sender: self);
+        } else if (index == 6) {
+            performSegue(withIdentifier: "RecurrentTransactionsSegue", sender: self);
+        } else if (index == 7) {
+            performSegue(withIdentifier: "CategoryConfigurationSegue", sender: self);
+        }
+        
     }
 
     /*
@@ -132,14 +149,26 @@ class ConfigurationTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "BudgetConfigurationSegue") {
+            let destinationVC = segue.destination as! BudgetConfigurationViewController;
+        
+            let budgets = coreDataManager?.getNSObjects(forEntity: "Budget");
+            
+            if (budgets != nil && (budgets?.count)! > 0) {
+                destinationVC.budget = budgets?[0] as! Budget;
+            }
+        }
+        else if (segue.identifier == "RecurrentTransactionsSegue") {
+            let destinationVC = segue.destination;
+        }
+        else if (segue.identifier == "CategoryConfigurationSegue") {
+            let destinationVC = segue.destination;
+        }
     }
-    */
 
 }

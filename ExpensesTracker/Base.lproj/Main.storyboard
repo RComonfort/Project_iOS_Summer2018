@@ -394,8 +394,16 @@
                         <viewLayoutGuide key="safeArea" id="OKz-wb-xny"/>
                     </view>
                     <navigationItem key="navigationItem" title="Budget" id="yI3-5S-ROI">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0CQ-TI-MFJ"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wNs-Nt-9aX"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0CQ-TI-MFJ">
+                            <connections>
+                                <action selector="cancel:" destination="CQq-eu-dUB" id="bs9-g1-2kV"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wNs-Nt-9aX">
+                            <connections>
+                                <action selector="save:" destination="CQq-eu-dUB" id="CoB-oH-xmK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCk-BC-0VR" userLabel="First Responder" sceneMemberID="firstResponder"/>
