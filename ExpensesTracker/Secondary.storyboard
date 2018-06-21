@@ -60,6 +60,7 @@
                     <navigationItem key="navigationItem" title="Report" id="AXE-L7-c6X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chartView" destination="Rsu-Tn-N30" id="ulu-jg-L20"/>
                         <outlet property="percentage" destination="49H-Ia-xyj" id="lM5-ER-qna"/>
                         <outlet property="pickerView" destination="T2W-2L-8av" id="Foj-tf-6rS"/>
                     </connections>
@@ -71,7 +72,7 @@
         <!--Income/Expense-->
         <scene sceneID="RYZ-1J-Sk8">
             <objects>
-                <viewController id="r1o-Ex-mqV" sceneMemberID="viewController">
+                <viewController id="r1o-Ex-mqV" customClass="ViewTransactionViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sN7-Vh-WV7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,6 +132,13 @@
                         <viewLayoutGuide key="safeArea" id="LJ3-3u-CtG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Income/Expense" id="gdt-Np-fGk"/>
+                    <connections>
+                        <outlet property="categoryType" destination="Jdc-yJ-FkL" id="tWw-8l-eSh"/>
+                        <outlet property="imageView" destination="1zk-au-aVM" id="EBy-6r-5Ai"/>
+                        <outlet property="transactionAmount" destination="vjU-Kg-7AS" id="YSU-vd-Gu8"/>
+                        <outlet property="transactionDate" destination="RdV-ye-a0W" id="NMO-Kk-qph"/>
+                        <outlet property="transactionDescription" destination="j9b-uo-gVa" id="gwL-oS-0r5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uq-d4-Vkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,13 +147,13 @@
         <!--Category-->
         <scene sceneID="sqq-af-X1r">
             <objects>
-                <tableViewController storyboardIdentifier="CategoryScene" id="KOK-LN-qFd" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CategoryScene" id="KOK-LN-qFd" customClass="CategoryTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2Jd-be-qgO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="TTB-t5-AeF">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="TTB-t5-AeF" customClass="CategoryTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TTB-t5-AeF" id="zya-ss-1TJ">
@@ -174,6 +182,10 @@
                                         <constraint firstAttribute="trailing" secondItem="hef-WP-K7p" secondAttribute="trailing" constant="20" id="min-DU-RUv"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="categoryIcon" destination="Ls1-rU-DCs" id="avJ-I4-FhS"/>
+                                    <outlet property="categoryName" destination="hef-WP-K7p" id="dOc-ht-N5W"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -186,15 +198,18 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uEu-ZO-u0f"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="cJk-3R-nS7" kind="show" identifier="toNewCategory" id="eh4-GS-bea"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLl-lh-46J" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-103" y="1268"/>
+            <point key="canvasLocation" x="-104" y="1218"/>
         </scene>
-        <!--New Category-->
+        <!--Category-->
         <scene sceneID="w5p-Uv-IUn">
             <objects>
-                <viewController id="cJk-3R-nS7" sceneMemberID="viewController">
+                <viewController id="cJk-3R-nS7" customClass="NewCategoryViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PQo-WI-YIa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -263,9 +278,18 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="B1Y-z9-kN7"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Category" id="gfF-Nm-eCH">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="8HV-Df-8UH"/>
+                    <navigationItem key="navigationItem" title="Category" id="gfF-Nm-eCH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="8HV-Df-8UH">
+                            <connections>
+                                <action selector="save:" destination="cJk-3R-nS7" id="KqF-aI-gFW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameText" destination="MeJ-dF-gA5" id="VmA-pr-7bQ"/>
+                        <outlet property="pickerView" destination="5Vs-Xi-KNS" id="0Bw-EJ-jTM"/>
+                        <outlet property="switchIE" destination="zP6-vR-VrR" id="PWx-g0-cig"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3Y-4L-YoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

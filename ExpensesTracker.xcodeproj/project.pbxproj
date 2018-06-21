@@ -30,6 +30,11 @@
 		DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */; };
 		F217567AB4770581977A836C /* Pods_ExpensesTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */; };
 		FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23C5CD20D422FF006249EB /* ReportViewController.swift */; };
+		FB2AE40520DAD6A200373050 /* ViewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40420DAD6A200373050 /* ViewTransactionViewController.swift */; };
+		FB2AE40720DADBA300373050 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */; };
+		FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */; };
+		FB2AE40D20DAE29900373050 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2AE40C20DAE29900373050 /* Charts.framework */; };
+		FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +89,14 @@
 		DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewCell.swift; sourceTree = "<group>"; };
 		E06BF326949B652EE92CE9CF /* Pods-ExpensesTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerTests/Pods-ExpensesTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB23C5CD20D422FF006249EB /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
+		FB2AE40420DAD6A200373050 /* ViewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransactionViewController.swift; sourceTree = "<group>"; };
+		FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		FB2AE40A20DAE16300373050 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2AE40C20DAE29900373050 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryViewController.swift; sourceTree = "<group>"; };
+		FB6C911E20D9B5810075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB6C912020D9B60D0075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -92,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB2AE40D20DAE29900373050 /* Charts.framework in Frameworks */,
 				DB5E058D1A2766FA4015E79C /* Pods_ExpensesTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -118,6 +132,10 @@
 		3465A0F1099947561AC00749 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FB2AE40C20DAE29900373050 /* Charts.framework */,
+				FB2AE40A20DAE16300373050 /* Charts.framework */,
+				FB6C912020D9B60D0075AEED /* Charts.framework */,
+				FB6C911E20D9B5810075AEED /* Charts.framework */,
 				1D2CF81B07607F0966AFDA79 /* Pods_ExpensesTracker.framework */,
 				FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */,
 				43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */,
@@ -182,6 +200,10 @@
 				DEE2F72620D43CC300D7CF0D /* TransactionTableViewCell.swift */,
 				DE8DB07E20D8AC1B00323BB1 /* DetailTableViewCell.swift */,
 				DE8DB08020D8AC3300323BB1 /* SwitchTableViewCell.swift */,
+				FB2AE40420DAD6A200373050 /* ViewTransactionViewController.swift */,
+				FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */,
+				FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */,
+				FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -416,6 +438,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */,
+				FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */,
 				DE59F18520D8627F00F640C9 /* CustomFormatter.swift in Sources */,
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
@@ -426,9 +449,12 @@
 				DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */,
 				DE8DB08120D8AC3300323BB1 /* SwitchTableViewCell.swift in Sources */,
 				DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */,
+				FB2AE40720DADBA300373050 /* CategoryTableViewController.swift in Sources */,
 				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
+				FB2AE40520DAD6A200373050 /* ViewTransactionViewController.swift in Sources */,
 				DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */,
 				DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */,
+				FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,7 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BA75AATBD3;
+				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -622,7 +648,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BA75AATBD3;
+				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
