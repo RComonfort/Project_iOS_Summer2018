@@ -15,7 +15,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
     var coreDataManager: CoreDataManager?;
     
     @IBOutlet weak var budgetLimitTextField: UITextField!
-    @IBOutlet weak var budgetWarningAmountTextField: UILabel!
+    @IBOutlet weak var budgetWarningAmountTextField: UITextField!
     @IBOutlet weak var budgetTimeFramePicker: UIPickerView!
     @IBOutlet weak var budgetBeginDateWheel: UIDatePicker!
     
@@ -68,7 +68,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
             _ = coreDataManager!.updateNSObject(object: budget!, values: [limit, warningAmount, timeFrame, beginDate], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate"]);
         }
         else {
-            _ = coreDataManager!.createAndSaveNSObject(forEntity: "budget", values: [limit, warningAmount, timeFrame, beginDate, spentAmount], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate", "spentAmount"]);
+            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Budget", values: [limit, warningAmount, timeFrame, beginDate, spentAmount], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate", "spentAmount"]);
         }
         
         goToPreviousScreen();
