@@ -23,6 +23,10 @@ class CoreDataManager {
     
     func createAndSaveNSObject (forEntity entity: String, values: [Any], keys: [String]) -> Bool {
         
+        if (values.count != keys.count) {
+            fatalError("Incorrect use of method! all values must match to a key and viceversa");
+        }
+        
         let managedContext = delegate.persistentContainer.viewContext;
         let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext)!;
         let item = NSManagedObject (entity: entity, insertInto: managedContext);
@@ -42,6 +46,10 @@ class CoreDataManager {
     }
     
     func updateNSObject (object: NSManagedObject, values: [Any], keys: [String]) -> Bool {
+        
+        if (values.count != keys.count) {
+            fatalError("Incorrect use of method! all values must match to a key and viceversa");
+        }
         
         let managedContext = delegate.persistentContainer.viewContext;
         
