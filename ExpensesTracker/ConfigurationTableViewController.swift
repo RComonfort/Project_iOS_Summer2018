@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ConfigurationTableViewController: UITableViewController {
+class ConfigurationTableViewController: UITableViewController, InteractiveTableViewCellDelegate {
     
     var coreDataManager: CoreDataManager?;
     
@@ -55,15 +55,12 @@ class ConfigurationTableViewController: UITableViewController {
             
             switch (index) {
                 case 0:
-                    cell.segueToTrigger = "BudgetConfigurationSegue";
                     cell.titleLabel.text = "Budget Configuration";
                     return cell;
                 case 6:
-                    cell.segueToTrigger = "RecurrentTransactionsSegue";
                     cell.titleLabel.text = "Manage Recurrent Income & Expenses";
                     return cell;
                 default: //case 7
-                    cell.segueToTrigger = "CategoryConfigurationSegue";
                     cell.titleLabel.text = "Manage Categories";
                     return cell;
             }
@@ -73,6 +70,7 @@ class ConfigurationTableViewController: UITableViewController {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchTableViewCell", for: indexPath) as! SwitchTableViewCell;
             
+            //Each switch cell will manage its setting when activated
             switch (index) {
                 case 1:
                     cell.titleLabel.text = "Ask for authentication";
@@ -149,6 +147,26 @@ class ConfigurationTableViewController: UITableViewController {
     }
     */
 
+    
+    //MARK: - Interactive Cell Delegate functions
+    
+    func didInteract(withCell cell: UITableViewCell, cellForRowAt rowIndex: Int) {
+        
+        //If the notification configuration called this functions
+        if (rowIndex == 2) {
+            //Enable or disable all switches under it
+            
+            let switchCell = cell as? SwitchTableViewCell;
+            
+            let changeToOn = (switchCell?.switchView.isOn)!
+            
+            for i in 3...5 {
+                let currentCell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SwitchTableViewCell;
+             
+                currentCell?.changeInteractivity(to: changeToOn);
+            }
+        }
+    }
     
     // MARK: - Navigation
 

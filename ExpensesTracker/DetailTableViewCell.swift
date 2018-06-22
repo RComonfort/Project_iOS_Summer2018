@@ -9,8 +9,6 @@
 import UIKit
 
 class DetailTableViewCell: UITableViewCell {
-
-    var segueToTrigger: String?;
     
     @IBOutlet weak var titleLabel: UILabel!
     

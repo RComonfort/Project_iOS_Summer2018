@@ -14,7 +14,8 @@ class HistoryTableViewController: UITableViewController {
     let EXPENSE_TEXT_COLOR = UIColor (red: 148/255, green: 17/255, blue: 0, alpha: 1);
     
     var transactions: [Transaction] = [];
-    var coreDataManager: CoreDataManager?
+    var coreDataManager: CoreDataManager?;
+    var selectedIndex: Int!;
     
     //MARK: - VC Functions
     
@@ -45,7 +46,7 @@ class HistoryTableViewController: UITableViewController {
         tableView.estimatedRowHeight = UITableViewAutomaticDimension;
     }
 
-    // MARK: - Table view data source
+    // MARK: - Table view data source and delegate
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -55,7 +56,6 @@ class HistoryTableViewController: UITableViewController {
         return transactions.count;
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath) as? TransactionTableViewCell else {
             fatalError("The dequeued cell is not an instance of TransactionTableViewCell.")
@@ -63,7 +63,7 @@ class HistoryTableViewController: UITableViewController {
 
         let category = transactions[indexPath.row].category;
         
-        print("Category name: \(category?.name), image Name: \(category?.icon)");
+        print("Category #\(indexPath.row) name: \(category?.name), image Name: \(category?.icon)");
         
         let customFormatter = CustomFormatter();
         
@@ -83,6 +83,12 @@ class HistoryTableViewController: UITableViewController {
         cell.amountLabel.textColor = category?.type == "Expense" ? EXPENSE_TEXT_COLOR : INCOME_TEXT_COLOR;
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedIndex = indexPath.row;
+        performSegue(withIdentifier: "ViewTransactionSegue", sender: self);
     }
     
 
@@ -121,14 +127,15 @@ class HistoryTableViewController: UITableViewController {
     }
     */
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        let transactionVC = segue.destination as? ViewTransactionViewController;
+        
+        transactionVC?.transaction = transactions[selectedIndex];
     }
-    */
 
 }

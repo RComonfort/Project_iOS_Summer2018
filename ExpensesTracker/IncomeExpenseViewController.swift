@@ -102,9 +102,11 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
         
-        transaction!.category = category;
+        transaction!.setValue(category, forKey: "category");
+        //transaction!.category = category;
         
-        coreDataManager!.updateNSObject(object: transaction!, values: [], keys: [])
+        //Send empty array because we already set the values into the object
+        _ = coreDataManager!.updateNSObject(object: transaction!, values: [], keys: []);
         
         print ("Transaction added succesfully.");
         

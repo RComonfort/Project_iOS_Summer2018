@@ -45,7 +45,9 @@ class CustomFormatter {
         
         let components = Calendar.current.dateComponents([.day, .month, .year], from: date);
         
-        return "\(components.day!)/\(components.month!)/\(components.year!)";
+        let yearStr = String(describing: components.year);
+        
+        return "\(components.day!)/\(components.month!)/";
     }
     
 }

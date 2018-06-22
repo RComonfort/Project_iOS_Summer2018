@@ -124,12 +124,10 @@ class CoreDataManager {
         do {
             let data = try managedContext.fetch(fetchRequest);
             
-            if (data.count == 0)
-            {
-                return nil
-            }
-            print ("Returning \(entity) objects.");
-            return data;
+            print ("Returning \(data.count) \(entity) objects.");
+            
+            return data.count > 0 ? data : nil;
+            
         } catch {
             print ("Could not retrieve data from entity: \(entity)");
         }
