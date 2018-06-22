@@ -94,9 +94,12 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        if nameText.text.isEmpty() {
-            let alert = UIAlertView(title: "Error", message: "You must include a name for the category", delegate: self, cancelButtonTitle: "Ok")
-            present(alert)
+        
+        if (nameText.text?.isEmpty)! {
+            let alert = UIAlertController(title: "Error", message: "You must include a name for the category", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true)
             return
         }
         let core = CoreDataManager(inContext: UIApplication.shared.delegate!)
