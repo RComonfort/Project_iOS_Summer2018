@@ -58,7 +58,7 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
                     cell.titleLabel.text = "Budget Configuration";
                     return cell;
                 case 6:
-                    cell.titleLabel.text = "Manage Recurrent Income & Expenses";
+                    cell.titleLabel.text = "Manage Recurrent Charges";
                     return cell;
                 default: //case 7
                     cell.titleLabel.text = "Manage Categories";
@@ -70,27 +70,40 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "SwitchTableViewCell", for: indexPath) as! SwitchTableViewCell;
             
+            //Switch cells can't be selected
+            cell.selectionStyle = UITableViewCellSelectionStyle.none;
+            
             //Each switch cell will manage its setting when activated
             switch (index) {
                 case 1:
                     cell.titleLabel.text = "Ask for authentication";
                     cell.optionToManage = "Authentication";
+                    cell.cellDelegate = self;
+                    cell.currentIndexInTable = indexPath.row;
                     return cell;
                 case 2:
                     cell.titleLabel.text = "Notifications";
                     cell.optionToManage = "Notifications";
+                    cell.cellDelegate = self;
+                    cell.currentIndexInTable = indexPath.row;
                     return cell;
                 case 3:
                     cell.titleLabel.text = "    Budget";
                     cell.optionToManage = "Budget";
+                    cell.cellDelegate = self;
+                    cell.currentIndexInTable = indexPath.row;
                     return cell;
                 case 4:
                     cell.titleLabel.text = "    Recurrent Charge Done";
                     cell.optionToManage = "Recurrent";
+                    cell.cellDelegate = self;
+                    cell.currentIndexInTable = indexPath.row;
                     return cell;
                 default: //case 5
                     cell.titleLabel.text = "    Squander Locations";
                     cell.optionToManage = "Squander";
+                    cell.cellDelegate = self;
+                    cell.currentIndexInTable = indexPath.row;
                     return cell;
             }
         }
@@ -109,7 +122,6 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
         } else if (index == 7) {
             performSegue(withIdentifier: "CategoryConfigurationSegue", sender: self);
         }
-        
     }
 
     /*
@@ -172,13 +184,14 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        //
         if (segue.identifier == "BudgetConfigurationSegue") {
             let destinationVC = segue.destination as! BudgetConfigurationViewController;
         
             let budgets = coreDataManager?.getNSObjects(forEntity: "Budget");
             
             if (budgets != nil && (budgets?.count)! > 0) {
-                destinationVC.budget = budgets?[0] as! Budget;
+                destinationVC.budget = (budgets?[0] as! Budget);
             }
         }
         else if (segue.identifier == "RecurrentTransactionsSegue") {

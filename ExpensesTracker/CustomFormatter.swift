@@ -46,8 +46,9 @@ class CustomFormatter {
         let components = Calendar.current.dateComponents([.day, .month, .year], from: date);
         
         let yearStr = String(describing: components.year);
+        let firstDecadeDigitIndex = yearStr.index(yearStr.startIndex, offsetBy: 2);
         
-        return "\(components.day!)/\(components.month!)/";
+        return "\(components.day!)/\(components.month!)/\(yearStr[firstDecadeDigitIndex...])";
     }
     
 }
