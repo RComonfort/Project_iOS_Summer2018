@@ -15,7 +15,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     @IBOutlet weak var pickerView: UIPickerView!
     
     let amount = ["Total", "Budget"]
-    let timeInterval = DefaultData.getTimeIntervals()
+    var timeInterval = DefaultData.getTimeIntervals()
     var labels = ["Income", "Expenses"]
     var values = [0.0, 0.0]
     @IBOutlet weak var chartView: PieChartView!
@@ -40,6 +40,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.delegate = self
         pickerView.dataSource = self
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
+        startView()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startView()
+    }
+    
+    func startView(){
         pickerView.isHidden = true
         chartView.isHidden = true
         if getTotalCore() == false{
@@ -56,7 +66,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             chartView.isHidden = false
             managePicker(amountIndex: 0, lapseIndex: 0)
         }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -87,8 +96,19 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        managePicker(amountIndex: component, lapseIndex: row)
-        
+        if component == 0{
+            if row == 0{
+                timeInterval = DefaultData.getTimeIntervals()
+            }
+            else{
+                _ = timeInterval.popLast()
+            }
+            pickerView.reloadComponent(1)
+            managePicker(amountIndex: row, lapseIndex: pickerView.selectedRow(inComponent: 1))
+        }
+        else{
+            managePicker(amountIndex: pickerView.selectedRow(inComponent: 0), lapseIndex: row)
+        }
     }
     
     func getBudgetCore() -> Bool{
@@ -127,15 +147,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func getAllTransactions() -> Bool{
-        transactions = coreDataManager?.getNSObjects(forEntity: "Transaction") as! [Transaction]
-        if transactions == nil {
+        let t = coreDataManager?.getNSObjects(forEntity: "Transaction")
+        if t == nil {
             return false
         }
         else{
-            if transactions.isEmpty {
+            if (t?.isEmpty)! {
                 return false
             }
             else{
+                 transactions = t as! [Transaction]
                 return true
             }
         }
@@ -194,6 +215,9 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func getIEAmount(transactionsByDate: [Transaction], type: String) -> Double{
         var amount = 0.0
+        if transactionsByDate.isEmpty {
+            return amount
+        }
         for i in transactionsByDate {
             if i.type?.lowercased() == type {
                 amount += i.amount
@@ -203,15 +227,16 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     }
     
     func managePicker(amountIndex: Int, lapseIndex: Int){
-        let custom = CustomFormatter()
+        //let custom = CustomFormatter()
         type = amount[amountIndex]
         if amountIndex == 0 {
             
             labels = ["Income", "Expenses"]
             if lapseIndex == 8{
-                percentage.text = custom.formatCurrency(amount: balanceCore)
+                percentage.text = "$\(balanceCore!)"//custom.formatCurrency(amount: balanceCore)
+                let incomes = getIEAmount(transactionsByDate: transactions, type: "income")
                 let expenses = getIEAmount(transactionsByDate: transactions, type: "expense")
-                values[0] = balanceCore
+                values[0] = incomes
                 values[1] = expenses
                 
                 if balanceCore < 0 {
@@ -221,14 +246,14 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                     percentage.textColor = .green
                 }
                 
-                
             }
             else{
                 let transactionsByDate = getTransactionsByDate(lapseIndex: lapseIndex)
                 let expenses = getIEAmount(transactionsByDate: transactionsByDate, type: "expense")
                 let incomes = getIEAmount(transactionsByDate: transactionsByDate, type: "income")
                 let total = incomes - expenses
-                percentage.text = custom.formatCurrency(amount: total)
+                
+                percentage.text = "$\(total)"//custom.formatCurrency(amount: total)
                 
                 values[0] = incomes
                 values[1] = expenses
@@ -242,7 +267,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
             }
         }
         else{
-            
             labels = ["Left in budget", "Expenses"]
             if lapseIndex == timeIntervalIntCore {
                 var budgetPercentage = 100.00

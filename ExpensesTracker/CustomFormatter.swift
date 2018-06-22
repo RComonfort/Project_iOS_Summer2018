@@ -43,12 +43,9 @@ class CustomFormatter {
     
     func formatDate (date: Date) -> String{
         
-        let components = Calendar.current.dateComponents([.day, .month, .year], from: date);
-        
-        let yearStr = String(describing: components.year);
-        let firstDecadeDigitIndex = yearStr.index(yearStr.startIndex, offsetBy: 2);
-        
-        return "\(components.day!)/\(components.month!)/\(yearStr[firstDecadeDigitIndex...])";
+        let formater = DateFormatter()
+        formater.dateFormat = "dd-MM-yy"
+        return formater.string(from: date)
     }
     
 }

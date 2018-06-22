@@ -11,24 +11,36 @@ import UIKit
 class CategoryTableViewController: UITableViewController {
 
     var categories : [Category]!
+    var incomeCategories = [Category]()
+    var expenseCategories = [Category]()
     var coreDataManager: CoreDataManager?
     var category: Category!
     var new = false
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
+        loadData()
+    }
+    
+    func loadData() {
+        incomeCategories = [Category]()
+        expenseCategories = [Category]()
         if getCategories(){
             tableView.reloadData()
         }
         else{
             categories = []
+            incomeCategories = []
+            expenseCategories = []
             tableView.reloadData()
         }
+        tableView.reloadData()
     }
 
     func getCategories() -> Bool{
         categories = coreDataManager?.getNSObjects(forEntity: "Category") as! [Category]
         if categories == nil{
+            
             return false
         }
         else{
@@ -36,6 +48,14 @@ class CategoryTableViewController: UITableViewController {
                 return false
             }
             else{
+                for i in categories {
+                    if i.type?.lowercased() == "expense"{
+                        expenseCategories.append(i)
+                    }
+                    else{
+                        incomeCategories.append(i)
+                    }
+                }
                 return true
             }
         }
@@ -50,25 +70,57 @@ class CategoryTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Income Categories"
+        }
+        else {
+            return "Expense Cateogries"
+        }
+    }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categories.count
+        if section == 0{
+            return incomeCategories.count
+        }
+        else{
+            return expenseCategories.count
+        }
     }
+    
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath) as! CategoryTableViewCell
-        cell.categoryName.text = categories[indexPath.row].name
-        cell.categoryIcon.image = UIImage(named: categories[indexPath.row].icon!)
+        
+        if indexPath.section == 0{
+            
+            cell.categoryName.text = incomeCategories[indexPath.row].name
+            cell.categoryIcon.image = UIImage(named: incomeCategories[indexPath.row].icon!)
+        }
+        else{
+            
+            cell.categoryName.text = expenseCategories[indexPath.row].name
+            cell.categoryIcon.image = UIImage(named: expenseCategories[indexPath.row].icon!)
+        }
+        
         
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         new = false
-        category = categories[indexPath.row]
+        if indexPath.section == 0{
+            category = incomeCategories[indexPath.row]
+        }
+        else{
+            category = expenseCategories[indexPath.row]
+        }
         performSegue(withIdentifier: "toNewCategory", sender: self)
     }
     
@@ -83,16 +135,22 @@ class CategoryTableViewController: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    /*override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            //let category = categories[indexPath.row]
-            
+            let categoryToDelete = categories[indexPath.row]
+            coreDataManager?.deleteNSObject(object: categoryToDelete)
+            loadData()
         }
-    }
+    }*/
     
     @IBAction func newCategory(_ sender: Any) {
         new = true
         performSegue(withIdentifier: "toNewCategory", sender: self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadData()
     }
     
 }
