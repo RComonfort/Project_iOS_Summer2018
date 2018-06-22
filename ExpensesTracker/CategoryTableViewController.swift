@@ -13,6 +13,7 @@ class CategoryTableViewController: UITableViewController {
     var categories : [Category]!
     var coreDataManager: CoreDataManager?
     var category: Category!
+    var new = false
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
@@ -66,14 +67,19 @@ class CategoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        new = false
         category = categories[indexPath.row]
         performSegue(withIdentifier: "toNewCategory", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toNewCategory" {
-            (segue.destination as! NewCategoryViewController).category = category
-            
+            if new{
+                (segue.destination as! NewCategoryViewController).category = nil
+            }
+            else{
+                (segue.destination as! NewCategoryViewController).category = category
+            }
         }
     }
     
@@ -82,6 +88,11 @@ class CategoryTableViewController: UITableViewController {
             //let category = categories[indexPath.row]
             
         }
+    }
+    
+    @IBAction func newCategory(_ sender: Any) {
+        new = true
+        performSegue(withIdentifier: "toNewCategory", sender: self)
     }
     
 }

@@ -144,7 +144,7 @@
             </objects>
             <point key="canvasLocation" x="-103" y="487"/>
         </scene>
-        <!--Category-->
+        <!--Category List-->
         <scene sceneID="sqq-af-X1r">
             <objects>
                 <tableViewController storyboardIdentifier="CategoryScene" id="KOK-LN-qFd" customClass="CategoryTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -194,8 +194,12 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Category" id="h1K-LG-mhi">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uEu-ZO-u0f"/>
+                    <navigationItem key="navigationItem" title="Category List" id="h1K-LG-mhi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="uEu-ZO-u0f">
+                            <connections>
+                                <action selector="newCategory:" destination="KOK-LN-qFd" id="ami-ry-RHB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -294,6 +298,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3Y-4L-YoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758.7890625" y="1044.9487554904831"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="Thr-W5-XJu">
+            <objects>
+                <tableViewController id="dWi-fW-59c" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kMA-iY-u8g">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="qnH-Jl-ODa">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qnH-Jl-ODa" id="z5w-j4-ov5">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dWi-fW-59c" id="zQ8-Z0-yoJ"/>
+                            <outlet property="delegate" destination="dWi-fW-59c" id="uZK-zo-RPn"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BbO-bS-tdx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1121.7391304347827" y="306.52173913043481"/>
         </scene>
     </scenes>
 </document>
