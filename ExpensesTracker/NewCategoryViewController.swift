@@ -29,6 +29,7 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
         pickerView.delegate = self
         pickerView.dataSource = self
         if category == nil{
+            category = Category()
             nameText.accessibilityHint = "Category name"
             switchIE.setOn(false, animated: false)
             ei = false
@@ -93,6 +94,11 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
+        if nameText.text.isEmpty() {
+            let alert = UIAlertView(title: "Error", message: "You must include a name for the category", delegate: self, cancelButtonTitle: "Ok")
+            present(alert)
+            return
+        }
         let core = CoreDataManager(inContext: UIApplication.shared.delegate!)
         category.name = nameText.text
         category.type = switchIE.isOn ? "Expense" : "Income"
