@@ -43,11 +43,10 @@ class CustomFormatter {
     
     func formatDate (date: Date) -> String{
         
-        let components = Calendar.current.dateComponents([.day, .month, .year], from: date);
+        let formater = DateFormatter()
+        formater.dateFormat = "dd-MM-yy"
         
-        let yearStr = String(describing: components.year);
-        
-        return "\(components.day!)/\(components.month!)/";
+        return formater.string(from: date)
     }
     
 }

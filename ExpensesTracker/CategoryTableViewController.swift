@@ -11,17 +11,25 @@ import UIKit
 class CategoryTableViewController: UITableViewController {
 
     var categories : [Category]!
+    var incomeCategories = [Category]()
+    var expenseCategories = [Category]()
     var coreDataManager: CoreDataManager?
     var category: Category!
     var new = false
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
+        loadData()
+    }
+    
+    func loadData() {
         if getCategories(){
             tableView.reloadData()
         }
         else{
             categories = []
+            incomeCategories = []
+            expenseCategories = []
             tableView.reloadData()
         }
     }
@@ -29,6 +37,7 @@ class CategoryTableViewController: UITableViewController {
     func getCategories() -> Bool{
         categories = coreDataManager?.getNSObjects(forEntity: "Category") as! [Category]
         if categories == nil{
+            
             return false
         }
         else{
@@ -36,6 +45,14 @@ class CategoryTableViewController: UITableViewController {
                 return false
             }
             else{
+                for i in categories {
+                    if i.type?.lowercased() == "expense"{
+                        expenseCategories.append(i)
+                    }
+                    else{
+                        incomeCategories.append(i)
+                    }
+                }
                 return true
             }
         }
@@ -50,12 +67,21 @@ class CategoryTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return ["Income Categories", "Expense Cateogries"]
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return categories.count
+        if section == 0{
+            return incomeCategories.count
+        }
+        else{
+            return expenseCategories.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -85,8 +111,9 @@ class CategoryTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            //let category = categories[indexPath.row]
-            
+            let categoryToDelete = categories[indexPath.row]
+            coreDataManager?.deleteNSObject(object: categoryToDelete)
+            loadData()
         }
     }
     

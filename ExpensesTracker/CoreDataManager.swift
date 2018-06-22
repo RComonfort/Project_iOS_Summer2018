@@ -140,4 +140,9 @@ class CoreDataManager {
         let entity = NSEntityDescription.entity(forEntityName: entity, in: managedContext)!;
         return NSManagedObject (entity: entity, insertInto: managedContext);
     }
+    
+    func deleteNSObject (object: NSManagedObject) {
+        let managedContext = delegate.persistentContainer.viewContext
+        managedContext.delete(object)
+    }
 }
