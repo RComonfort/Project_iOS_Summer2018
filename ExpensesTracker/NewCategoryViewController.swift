@@ -29,7 +29,6 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
         pickerView.delegate = self
         pickerView.dataSource = self
         if category == nil{
-            category = Category()
             nameText.accessibilityHint = "Category name"
             switchIE.setOn(false, animated: false)
             ei = false
@@ -42,6 +41,7 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
             var index = 0
             nameText.text = category.name
             if category.type?.lowercased() == "expense"{
+                
                 switchIE.setOn(true, animated: false)
                 ei = true
                 for i in 0..<iconsE.count {
@@ -51,6 +51,7 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
                 }
             }
             else{
+                
                 switchIE.setOn(false, animated: false)
                 ei = false
                 for i in 0..<iconsI.count {
@@ -73,6 +74,10 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return CGFloat(50)
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -103,24 +108,28 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
             return
         }
         let core = CoreDataManager(inContext: UIApplication.shared.delegate!)
-        category.name = nameText.text
-        category.type = switchIE.isOn ? "Expense" : "Income"
-        category.icon = switchIE.isOn ? iconsE[pickerView.selectedRow(inComponent: 0)] : iconsI[pickerView.selectedRow(inComponent: 0)]
+        
+        let isDefault = new ? false : category.isDefault
+        
+        let values = [nameText.text!, isDefault, switchIE.isOn ? "Expense" : "Income", switchIE.isOn ? iconsE[pickerView.selectedRow(inComponent: 0)] : iconsI[pickerView.selectedRow(inComponent: 0)]] as [Any]
+        let keys = ["name", "isDefault", "type", "icon"]
+        
         if new {
-            category.isDefault = false
-            let values = [category.name as Any, category.isDefault as Any, category.type as Any, category.icon as Any]
-            let keys = ["name", "isDefault", "type", "icon"]
             _ = core.createAndSaveNSObject(forEntity: "Category", values: values, keys: keys)
         }
         else{
-            let uneditedCategory = core.findCategory(ofType: originalType!, withName: originalName!)
-            let values = [category.name as Any, category.isDefault as Any, category.type as Any, category.icon as Any]
-            let keys = ["name", "isDefault", "type", "icon"]
-            _ = core.updateNSObject(object: uneditedCategory!, values: values, keys: keys)
+            
+            _ = core.updateNSObject(object: category, values: values, keys: keys)
             
         }
         
         _ = navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func change(_ sender: UISwitch) {
+        ei = sender.isOn
+        pickerView.reloadAllComponents()
     }
     
 }

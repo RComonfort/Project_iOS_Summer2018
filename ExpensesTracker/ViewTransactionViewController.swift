@@ -31,10 +31,11 @@ class ViewTransactionViewController: UIViewController {
             transactionDate.isHidden = true
         }
         else{
+            let custom = CustomFormatter()
             imageView.image = UIImage(named: (transaction.category?.icon)!)
             categoryType.text = transaction.category?.name
-            transactionAmount.text = "\(transaction.amount)"
-            if transaction.amount < 0.0 {
+            transactionAmount.text = custom.formatCurrency(amount: transaction.amount)
+            if transaction.type?.lowercased() == "expense" {
                 transactionAmount.textColor = .red
             }
             else{
