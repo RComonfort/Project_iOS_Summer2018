@@ -11,6 +11,7 @@ import UIKit
 class ConfigurationTableViewController: UITableViewController, InteractiveTableViewCellDelegate {
     
     var coreDataManager: CoreDataManager?;
+    var configurationObject: Configuration?;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,10 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        loadConfiguration();
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
@@ -62,6 +65,11 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
                     return cell;
                 default: //case 7
                     cell.titleLabel.text = "Manage Categories";
+                
+                    //The last cell in loading makes the notification settings' switches to disable or enable based on the general notification setting
+                    let value = configurationObject!.value(forKey: ESettingStrings.Notifications.rawValue);
+                    changeInteractivityInSwitchCells(toValue: value as! Bool, fromCellIndex: 3, untilCellIndex: 5)
+                
                     return cell;
             }
             
@@ -73,37 +81,25 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
             //Switch cells can't be selected
             cell.selectionStyle = UITableViewCellSelectionStyle.none;
             
+            cell.cellDelegate = self;
+            cell.currentIndexInTable = indexPath.row;
+
             //Each switch cell will manage its setting when activated
             switch (index) {
                 case 1:
-                    cell.titleLabel.text = "Ask for authentication";
-                    cell.optionToManage = "Authentication";
-                    cell.cellDelegate = self;
-                    cell.currentIndexInTable = indexPath.row;
+                    setupSwitchCell(cell, titleLabel: "Ask for authentication", settingToManage: ESettingStrings.Authentication);
                     return cell;
                 case 2:
-                    cell.titleLabel.text = "Notifications";
-                    cell.optionToManage = "Notifications";
-                    cell.cellDelegate = self;
-                    cell.currentIndexInTable = indexPath.row;
+                    setupSwitchCell(cell, titleLabel: "Notifications", settingToManage: ESettingStrings.Notifications);
                     return cell;
                 case 3:
-                    cell.titleLabel.text = "    Budget";
-                    cell.optionToManage = "Budget";
-                    cell.cellDelegate = self;
-                    cell.currentIndexInTable = indexPath.row;
+                    setupSwitchCell(cell, titleLabel: "    Budget", settingToManage: ESettingStrings.BudgetNotification);
                     return cell;
                 case 4:
-                    cell.titleLabel.text = "    Recurrent Charge Done";
-                    cell.optionToManage = "Recurrent";
-                    cell.cellDelegate = self;
-                    cell.currentIndexInTable = indexPath.row;
+                    setupSwitchCell(cell, titleLabel: "    Recurrent Charge Done", settingToManage: ESettingStrings.RecurrentNotification);
                     return cell;
                 default: //case 5
-                    cell.titleLabel.text = "    Squander Locations";
-                    cell.optionToManage = "Squander";
-                    cell.cellDelegate = self;
-                    cell.currentIndexInTable = indexPath.row;
+                    setupSwitchCell(cell, titleLabel: "    Squander Locations", settingToManage: ESettingStrings.SquanderNotification)
                     return cell;
             }
         }
@@ -164,18 +160,18 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
     
     func didInteract(withCell cell: UITableViewCell, cellForRowAt rowIndex: Int) {
         
-        //If the notification configuration called this functions
-        if (rowIndex == 2) {
-            //Enable or disable all switches under it
+        if let switchCell = cell as? SwitchTableViewCell {
+            //save the new value to the configuration object. It has to be centralized to prevent overrides between cells' config objects
+            let newValue = switchCell.switchView.isOn;
+            configurationObject!.setValue(newValue, forKey: switchCell.settingToManage!.rawValue)
+            _ = coreDataManager!.updateNSObject(object: configurationObject!, values: [], keys: []);
             
-            let switchCell = cell as? SwitchTableViewCell;
-            
-            let changeToOn = (switchCell?.switchView.isOn)!
-            
-            for i in 3...5 {
-                let currentCell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SwitchTableViewCell;
-             
-                currentCell?.changeInteractivity(to: changeToOn);
+            //If the notification configuration cell called this functions
+            if (rowIndex == 2) {
+                //Enable or disable all switches under it
+                let changeToOn = switchCell.switchView.isOn;
+                
+                changeInteractivityInSwitchCells(toValue: changeToOn, fromCellIndex: rowIndex + 1, untilCellIndex: 5);
             }
         }
     }
@@ -184,7 +180,6 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //
         if (segue.identifier == "BudgetConfigurationSegue") {
             let destinationVC = segue.destination as! BudgetConfigurationViewController;
         
@@ -197,9 +192,45 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
         else if (segue.identifier == "RecurrentTransactionsSegue") {
             let destinationVC = segue.destination;
         }
-        else if (segue.identifier == "CategoryConfigurationSegue") {
-            let destinationVC = segue.destination;
+    }
+    
+    //MARK: - Functions
+    
+    func changeInteractivityInSwitchCells (toValue value: Bool, fromCellIndex beginIndex: Int, untilCellIndex endIndex: Int) {
+        
+        for i in beginIndex...endIndex {
+            let currentCell = tableView.cellForRow(at: IndexPath(row: i, section: 0)) as? SwitchTableViewCell;
+            
+            currentCell?.changeInteractivity(to: value);
         }
+    }
+    
+    func loadConfiguration() {
+        
+        let configurations = coreDataManager!.getNSObjects(forEntity: "Configuration");
+        
+        //Find current configuration object, create one if it doesn't exist
+        if (configurations != nil && (configurations?.count)! > 0) {
+            configurationObject = (configurations![0] as! Configuration);
+        }
+        else {
+            configurationObject = (coreDataManager!.createEmptyNSObject(ofEntityType: "Configuration") as! Configuration);
+            
+            _ = coreDataManager!.updateNSObject(object: configurationObject!, values: [true, true, true, true, true], keys: [
+                ESettingStrings.Authentication.rawValue,
+                ESettingStrings.BudgetNotification.rawValue,
+                ESettingStrings.Notifications.rawValue,
+                ESettingStrings.SquanderNotification.rawValue,
+                ESettingStrings.RecurrentNotification.rawValue
+                ])
+        }
+    }
+
+    func setupSwitchCell (_ cell: SwitchTableViewCell, titleLabel: String, settingToManage: ESettingStrings){
+        cell.titleLabel.text = titleLabel;
+        cell.settingToManage = settingToManage;
+        let switchState = configurationObject!.value(forKey: cell.settingToManage!.rawValue);
+        cell.switchView.setOn(switchState as! Bool , animated: false);
     }
 
 }

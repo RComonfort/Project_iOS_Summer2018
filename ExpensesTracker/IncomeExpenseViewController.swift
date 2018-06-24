@@ -99,9 +99,8 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         let categoryName = categories[categoryPicker.selectedRow(inComponent: 0)];
         let categoryType = transaction!.type!;
-        
         let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
-        
+                
         transaction!.setValue(category, forKey: "category");
         //transaction!.category = category;
         

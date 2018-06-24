@@ -8,6 +8,14 @@
 
 import UIKit
 
+enum ESettingStrings: String {
+    case Authentication = "authentication"
+    case BudgetNotification = "budget"
+    case Notifications = "notifications"
+    case RecurrentNotification = "recurrent"
+    case SquanderNotification = "squander"
+}
+
 class SwitchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,21 +23,15 @@ class SwitchTableViewCell: UITableViewCell {
     
     var cellDelegate: InteractiveTableViewCellDelegate?
     
-    var optionToManage: String?;
+    var settingToManage: ESettingStrings?;
     var currentIndexInTable: Int?;
     var lastSwitchValue: Bool = false;
     
-    @IBAction func onSwitchValueChanged(_ sender: Any) {
-        
-        //call delegate to inform the switch was pressed
-        cellDelegate!.didInteract(withCell: self, cellForRowAt: currentIndexInTable!)
-    }
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
+    
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -37,19 +39,30 @@ class SwitchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    @IBAction func onSwitchValueChanged(_ sender: Any) {
+        //call delegate to inform the switch was pressed
+        cellDelegate!.didInteract(withCell: self, cellForRowAt: currentIndexInTable!)
+    }
+    
+    
     //Enables or disables interactivity on the content view
     func changeInteractivity(to value: Bool) {
         
-        //If we have to deactivate the view, save the value it had the switch and turn it off
+        //If we have to deactivate the view, turn it off
         if (!value) {
+            
+            //save last switch value
             lastSwitchValue = switchView.isOn;
+            
             switchView.setOn(false, animated: false);
             
             titleLabel.textColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5);
+            
         }
         else { //if we activate it restore its value
-            switchView.setOn(lastSwitchValue, animated: false);
             titleLabel.textColor = .black;
+            
+            switchView.setOn(lastSwitchValue, animated: false);
         }
         
         switchView.isEnabled = value;
