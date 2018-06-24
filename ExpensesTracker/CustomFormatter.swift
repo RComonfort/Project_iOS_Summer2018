@@ -13,10 +13,11 @@ class CustomFormatter {
     func formatCurrency(amount: Double) -> String{
         
         //Extracts 2 decimals out of the number
-        let decimalValue = amount.truncatingRemainder(dividingBy: 1) * 100;
+        let decimalValue = Int(amount.truncatingRemainder(dividingBy: 1) * 100);
         
         var numbersAsThousands: [String] = [];
         
+        //Get thousands as different strings
         var x = Int(amount);
         while (x > 0)
         {
@@ -26,7 +27,7 @@ class CustomFormatter {
         numbersAsThousands.reverse();
         
         var number = "";
-        
+
         if (numbersAsThousands.count > 0)
         {
             for n in numbersAsThousands {
