@@ -63,7 +63,7 @@ class HistoryTableViewController: UITableViewController {
 
         let category = transactions[indexPath.row].category;
         
-        print("Category #\(indexPath.row) name: \(category?.name), image Name: \(category?.icon)");
+        print("Category #\(indexPath.row) name: \(String(describing: category?.name)), image Name: \(String(describing: category?.icon))");
         
         let customFormatter = CustomFormatter();
         
