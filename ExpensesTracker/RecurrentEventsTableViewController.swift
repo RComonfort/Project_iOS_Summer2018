@@ -14,6 +14,7 @@ class RecurrentEventsTableViewController: UITableViewController {
     var coreDataManager: CoreDataManager?
     var incomeRecurrents: [RecTransaction]?
     var expenseRecurrents: [RecTransaction]?
+    var toUpdate: RecTransaction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,15 +84,28 @@ class RecurrentEventsTableViewController: UITableViewController {
         }
     }
     
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecurrentEventTableViewCell", for: indexPath) as! RecurrentEventTableViewCell
+        var event: RecTransaction!
+        
+        if indexPath.section == 0{
+            event = incomeRecurrents![indexPath.row]
+        }
+        else{
+            event = expenseRecurrents![indexPath.row]
+        }
+        
+        cell.amountLabel.text = "\(event.amount)"
+        cell.categoryImage.image = UIImage(named: (event.category?.icon)!)
+        cell.categoryNameLabel.text = (event.category?.name)!
+        cell.descriptionLabel.text = event.descriptionText
+        
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,32 +115,40 @@ class RecurrentEventsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            var event: RecTransaction!
+            if indexPath.section == 0{
+                event = incomeRecurrents![indexPath.row]
+            }
+            else{
+                event = expenseRecurrents![indexPath.row]
+            }
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            coreDataManager?.deleteNSObject(object: event)
+            rechargeData()
+        }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0{
+            toUpdate = incomeRecurrents?[indexPath.row]
+        }
+        else{
+            toUpdate = expenseRecurrents?[indexPath.row]
+        }
+        performSegue(withIdentifier: "toUpdateRecurrent", sender: self)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+   
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toNewCategory" {
+            
+            (segue.destination as! RecurrentViewController).recurrent = toUpdate!
+            
+        }
     }
-    */
-
 
 }

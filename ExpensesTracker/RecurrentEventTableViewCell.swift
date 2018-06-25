@@ -10,6 +10,13 @@ import UIKit
 
 class RecurrentEventTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var categoryNameLabel: UILabel!
+    
+    @IBOutlet weak var categoryImage: UIImageView!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
