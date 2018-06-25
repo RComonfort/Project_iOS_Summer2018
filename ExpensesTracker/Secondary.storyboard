@@ -9,7 +9,6 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fXd-m9-Bmg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="report" id="iOf-is-HHT"/>
+                    <tabBarItem key="tabBarItem" title="report" selectedImage="report" id="iOf-is-HHT"/>
                     <navigationItem key="navigationItem" title="Report" id="AXE-L7-c6X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -303,7 +302,7 @@
             </objects>
             <point key="canvasLocation" x="758.7890625" y="1044.9487554904831"/>
         </scene>
-        <!--History-->
+        <!--Recurren Events-->
         <scene sceneID="oIT-r2-wmJ">
             <objects>
                 <tableViewController storyboardIdentifier="HistoryScene" id="WuF-Ac-hM3" customClass="HistoryTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -312,7 +311,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="80" id="Dpl-aa-3m5" customClass="TransactionTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecurrentEventTableViewCell" rowHeight="80" id="Dpl-aa-3m5" customClass="RecurrentEventTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dpl-aa-3m5" id="ZW4-Df-H4Y">
@@ -343,23 +342,15 @@
                                                 <constraint firstAttribute="width" secondItem="t67-bQ-iT9" secondAttribute="height" multiplier="1:1" id="ell-om-VLl"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recurrent" translatesAutoresizingMaskIntoConstraints="NO" id="h4M-mc-5if">
-                                            <rect key="frame" x="306" y="30" width="20.666666666666686" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="h4M-mc-5if" secondAttribute="height" multiplier="1:1" id="ZeE-34-vSv"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="height" secondItem="Dm8-OI-GJy" secondAttribute="height" id="0vH-Lw-ffL"/>
                                         <constraint firstItem="Dm8-OI-GJy" firstAttribute="centerY" secondItem="t67-bQ-iT9" secondAttribute="centerY" multiplier="0.85" id="Ea6-Lj-qEc"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="centerY" secondItem="ZW4-Df-H4Y" secondAttribute="centerY" multiplier="0.75" id="HUB-hq-QDS"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="width" secondItem="Dm8-OI-GJy" secondAttribute="width" multiplier="1.35" id="JDz-JO-hAT"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="leading" secondItem="eiV-2K-yPe" secondAttribute="trailing" id="K7n-kP-G3A"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="centerX" secondItem="ZW4-Df-H4Y" secondAttribute="centerX" multiplier="0.18" id="N10-IP-3ug"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="leading" secondItem="Dm8-OI-GJy" secondAttribute="leading" id="Qvp-Lm-yXn"/>
                                         <constraint firstItem="Dm8-OI-GJy" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.4" id="S2M-59-P3e"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="centerY" secondItem="ZW4-Df-H4Y" secondAttribute="centerY" id="VJa-H7-Cix"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="top" secondItem="Dm8-OI-GJy" secondAttribute="bottom" multiplier="1.05" id="W9l-bJ-px0"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.13" id="XnI-SF-7hh"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="top" secondItem="t67-bQ-iT9" secondAttribute="bottom" id="eEw-Dz-SJr"/>
@@ -368,7 +359,6 @@
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="height" secondItem="t67-bQ-iT9" secondAttribute="height" multiplier="0.35" id="pNL-TX-Z9p"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="centerX" secondItem="t67-bQ-iT9" secondAttribute="centerX" id="qwb-uG-Nl8"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="width" secondItem="t67-bQ-iT9" secondAttribute="width" multiplier="1.5" id="r8E-7F-gjG"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.05" id="sOM-WE-RUL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -376,7 +366,6 @@
                                     <outlet property="categoryImage" destination="t67-bQ-iT9" id="9F5-OH-ESm"/>
                                     <outlet property="categoryNameLabel" destination="bfU-dH-GVr" id="Bkg-FS-3q6"/>
                                     <outlet property="descriptionLabel" destination="eiV-2K-yPe" id="1kU-Hq-DIx"/>
-                                    <outlet property="recurrentIconImage" destination="h4M-mc-5if" id="dQH-io-0gx"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,12 +375,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="W3J-Tw-kyr"/>
-                    <navigationItem key="navigationItem" title="History" id="uxb-Wy-AdQ">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Filter" id="XaH-M7-HxI"/>
-                            <barButtonItem title="Asc." id="cHJ-K3-uRs"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Recurren Events" id="uxb-Wy-AdQ"/>
                     <connections>
                         <segue destination="NPo-ju-TPE" kind="show" identifier="toUpdateRecurrent" id="Oq1-5N-4f3"/>
                     </connections>
@@ -567,6 +551,6 @@
     </scenes>
     <resources>
         <image name="foodImg" width="64" height="64"/>
-        <image name="recurrent" width="48" height="48"/>
+        <image name="report" width="30" height="30"/>
     </resources>
 </document>

@@ -165,9 +165,6 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     func getDateByLapse(lapseIndex: Int) -> Date{
         
-        let formater = DateFormatter()
-        formater.dateFormat = "yyyy-MM-dd"
-        
         switch lapseIndex {
         case 0:
             return Date.init(timeIntervalSinceNow: 0)
