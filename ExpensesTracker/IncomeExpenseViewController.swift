@@ -94,7 +94,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
                 values: [
                     type, id, descriptionText, amount, category, recurrentInterval, recurrentBeginDate
                 ], keys: [
-                    "type", "id", "descriptionText", "amount", "cateogry", "recurrentInterval", "recurrentBeginDate"
+                    "type", "id", "descriptionText", "amount", "category", "recurrentInterval", "recurrentBeginDate"
                 ]);
             
         } else { //A transaction must be added
@@ -107,7 +107,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
                 values: [
                     type, id, descriptionText, amount, date, category, isAddedByRecurrent
                 ], keys: [
-                    "type", "id", "descriptionText", "amount", "date", "cateogry", "isAddedByRecurrent"
+                    "type", "id", "descriptionText", "amount", "date", "category", "isAddedByRecurrent"
                 ]);
         }
         print ("Transaction added succesfully.");

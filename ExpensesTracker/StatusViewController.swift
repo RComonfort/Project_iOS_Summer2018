@@ -44,7 +44,6 @@ class StatusViewController: UIViewController {
         let destinationVC = segue.destination as! IncomeExpenseViewController;
         
         destinationVC.transactionTypeToManage = transactionTypeToAdd;
-        destinationVC.transaction = nil;
     }
 
     //MARK: - Functions
