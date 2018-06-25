@@ -39,4 +39,14 @@ class DefaultData {
     static func getTimeIntervals() -> [String] {
         return TIME_INTERVALS;
     }
+    
+    static func getExtraImages() -> [String] {
+        var imgNames = [String]();
+        
+        for i in 1...16 {
+            imgNames.append("img\(i)");
+        }
+        
+        return imgNames;
+    }
 }
