@@ -56,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fXd-m9-Bmg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="report" selectedImage="report" id="iOf-is-HHT"/>
+                    <tabBarItem key="tabBarItem" title="report" image="report" id="iOf-is-HHT"/>
                     <navigationItem key="navigationItem" title="Report" id="AXE-L7-c6X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

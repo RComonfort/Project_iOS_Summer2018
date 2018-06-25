@@ -274,7 +274,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 else if budgetUsedCore >= budgetLimitWarningCore{
                     values[0] = budgetLimitCore - budgetUsedCore
                     values[1] = budgetUsedCore
-                    percentage.textColor = .yellow
+                    percentage.textColor = UIColor(red: 254, green: 243, blue: 40, alpha: 1.0)
                     budgetPercentage = (values[1] / budgetLimitCore) * 100
                 }
                 else {
@@ -300,7 +300,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
                 else if budgetUsed >= budgetLimitWarning {
                     values[0] = budgetLimit - budgetUsed
                     values[1] = budgetUsed
-                    percentage.textColor = .yellow
+                    percentage.textColor = UIColor(red: 254, green: 243, blue: 40, alpha: 1.0)
                     budgetPercentage = (values[1] / budgetLimit) * 100
                 }
                 else{
