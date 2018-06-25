@@ -69,7 +69,7 @@
             </objects>
             <point key="canvasLocation" x="-103" y="-302"/>
         </scene>
-        <!--Income/Expense-->
+        <!--Transaction-->
         <scene sceneID="RYZ-1J-Sk8">
             <objects>
                 <viewController storyboardIdentifier="ViewTransactionScene" id="r1o-Ex-mqV" customClass="ViewTransactionViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -131,7 +131,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LJ3-3u-CtG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Income/Expense" id="gdt-Np-fGk"/>
+                    <navigationItem key="navigationItem" title="Transaction" id="gdt-Np-fGk"/>
                     <connections>
                         <outlet property="categoryType" destination="Jdc-yJ-FkL" id="tWw-8l-eSh"/>
                         <outlet property="imageView" destination="1zk-au-aVM" id="EBy-6r-5Ai"/>
