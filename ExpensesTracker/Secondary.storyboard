@@ -302,10 +302,10 @@
             </objects>
             <point key="canvasLocation" x="758.7890625" y="1044.9487554904831"/>
         </scene>
-        <!--Recurren Events-->
+        <!--RecurrentTransactionsScene-->
         <scene sceneID="oIT-r2-wmJ">
             <objects>
-                <tableViewController storyboardIdentifier="HistoryScene" id="WuF-Ac-hM3" customClass="RecurrentEventsTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RecurrentTransactionsScene" title="RecurrentTransactionsScene" id="WuF-Ac-hM3" customClass="RecurrentEventsTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="q4m-CX-hP6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -384,10 +384,10 @@
             </objects>
             <point key="canvasLocation" x="-104" y="1857"/>
         </scene>
-        <!--Income/Expense-->
+        <!--Recurrent Event-->
         <scene sceneID="p5d-iz-gWy">
             <objects>
-                <viewController storyboardIdentifier="IncomeExpenseScene" id="NPo-ju-TPE" customClass="RecurrentViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IncomeExpenseScene" title="Recurrent Event" id="NPo-ju-TPE" customClass="RecurrentViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G86-yh-mUw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -439,7 +439,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-Ea-OAZ">
+                                            <datePicker tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-Ea-OAZ">
                                                 <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="155.33333333333334"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="549990829.79736602">
                                                     <!--2018-06-06 15:13:49 +0000-->
@@ -499,7 +499,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wab-vm-LGE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Income/Expense" id="IMA-6d-Jna">
+                    <navigationItem key="navigationItem" title="Recurrent Event" id="IMA-6d-Jna">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oKU-8J-hUa">
                             <connections>
                                 <action selector="exit:" destination="NPo-ju-TPE" id="AAb-hR-sjn"/>
@@ -513,22 +513,52 @@
                     </navigationItem>
                     <connections>
                         <outlet property="amountText" destination="gfT-hH-Yo4" id="3M5-uR-ypl"/>
-                        <outlet property="amountTextField" destination="gfT-hH-Yo4" id="S0S-wC-G15"/>
-                        <outlet property="beginDateLabel" destination="UK2-Qm-460" id="WpG-cj-cO4"/>
-                        <outlet property="beginDateWheel" destination="X2F-Ea-OAZ" id="DuI-vA-clL"/>
-                        <outlet property="beginPickerView" destination="X2F-Ea-OAZ" id="4WM-CF-PSm"/>
+                        <outlet property="beginPickerView" destination="X2F-Ea-OAZ" id="pqZ-Vd-sYJ"/>
                         <outlet property="categoryPicker" destination="0lu-Az-sz8" id="aed-Ct-28b"/>
                         <outlet property="descriptionText" destination="Cp8-hP-8sQ" id="FA1-05-4y0"/>
-                        <outlet property="descriptionTextField" destination="Cp8-hP-8sQ" id="weJ-GW-PDY"/>
-                        <outlet property="intervalDatePicker" destination="bjM-iz-4eA" id="8ED-DF-3Xx"/>
-                        <outlet property="intervalLabel" destination="kMi-1x-sKR" id="hpl-fg-6qG"/>
-                        <outlet property="intervalPicker" destination="bjM-iz-4eA" id="N0p-NB-x9U"/>
-                        <outlet property="saveButton" destination="TLg-k2-BoH" id="6Gf-kZ-naD"/>
+                        <outlet property="intervalPicker" destination="bjM-iz-4eA" id="vbU-vy-fJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUo-es-YVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758" y="1856"/>
+        </scene>
+        <!--NavigationControllerScene-->
+        <scene sceneID="p3P-7L-fh2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="NavigationControllerScene" id="XbS-Ul-p8G" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5kE-eT-370" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1860" y="1242"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SNA-ci-SnJ">
+            <objects>
+                <viewController id="6Xn-yk-ROA" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MGd-8q-lgo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-gH-Vgk">
+                                <rect key="frame" x="155" y="338" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Log In"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9wa-gH-Vgk" firstAttribute="centerY" secondItem="MGd-8q-lgo" secondAttribute="centerY" id="MGl-Ix-kaY"/>
+                            <constraint firstItem="9wa-gH-Vgk" firstAttribute="centerX" secondItem="MGd-8q-lgo" secondAttribute="centerX" id="cBT-N9-qVk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MMD-3A-g4Q"/>
+                    </view>
+                    <connections>
+                        <segue destination="XbS-Ul-p8G" kind="show" id="sRr-r1-W57"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mCw-Gm-hV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1945" y="1860"/>
         </scene>
     </scenes>
     <resources>

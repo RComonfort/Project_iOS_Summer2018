@@ -38,6 +38,7 @@
 		FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */; };
 		FBCA333220E1628C00B58980 /* RecurrentEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */; };
 		FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333320E1704400B58980 /* RecurrentViewController.swift */; };
+		FBCA333620E1931500B58980 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333520E1931500B58980 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,7 @@
 		FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventsTableViewController.swift; sourceTree = "<group>"; };
 		FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventTableViewCell.swift; sourceTree = "<group>"; };
 		FBCA333320E1704400B58980 /* RecurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentViewController.swift; sourceTree = "<group>"; };
+		FBCA333520E1931500B58980 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -213,6 +215,7 @@
 				FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */,
 				FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */,
 				FBCA333320E1704400B58980 /* RecurrentViewController.swift */,
+				FBCA333520E1931500B58980 /* LogInViewController.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			files = (
 				DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */,
 				FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */,
+				FBCA333620E1931500B58980 /* LogInViewController.swift in Sources */,
 				DE59F18520D8627F00F640C9 /* CustomFormatter.swift in Sources */,
 				FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */,
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,

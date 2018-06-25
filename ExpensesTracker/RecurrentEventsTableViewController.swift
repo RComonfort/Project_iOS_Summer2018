@@ -22,6 +22,11 @@ class RecurrentEventsTableViewController: UITableViewController {
         rechargeData()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        rechargeData()
+    }
+    
     func getAllRecurrents(){
         let rec = coreDataManager?.getNSObjects(forEntity: "RecTransaction")
         if rec == nil {
@@ -42,7 +47,7 @@ class RecurrentEventsTableViewController: UITableViewController {
         incomeRecurrents = []
         expenseRecurrents = []
         for i in allRecurrents!{
-            if i.type?.lowercased() == "expense" {
+            if i.type?.lowercased() == "income" {
                 incomeRecurrents?.append(i)
             }
             else{
@@ -92,9 +97,11 @@ class RecurrentEventsTableViewController: UITableViewController {
         
         if indexPath.section == 0{
             event = incomeRecurrents![indexPath.row]
+            cell.amountLabel.textColor = .green
         }
         else{
             event = expenseRecurrents![indexPath.row]
+            cell.amountLabel.textColor = .red
         }
         
         cell.amountLabel.text = "\(event.amount)"
@@ -144,7 +151,7 @@ class RecurrentEventsTableViewController: UITableViewController {
     }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toNewCategory" {
+        if segue.identifier == "toUpdateRecurrent" {
             
             (segue.destination as! RecurrentViewController).recurrent = toUpdate!
             
