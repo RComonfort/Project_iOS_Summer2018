@@ -11,7 +11,6 @@ import UIKit
 class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     var transactionTypeToManage: ETransactionType?;
-    var transaction: Transaction?;
     
     var coreDataManager: CoreDataManager?;
     
@@ -36,16 +35,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
 
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
-        if (transaction != nil)
-        {
-            navigationItem.title = transactionTypeToManage == ETransactionType.Income ? "Income Details" : "Expense Details";
-            
-            //TODO: Necessary set up for displaying current info
-            
-        }
-        else {
-            navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
-        }
+        navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
         
         loadCategories();
         loadIntervals();
@@ -82,37 +72,48 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         
-        transaction = (coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction);
-        transaction!.type = transactionTypeToManage == ETransactionType.Expense ? "Expense" : "Income";
-        transaction!.id = UUID();
-        transaction!.descriptionText = descriptionTextField.text ?? "";
-        transaction!.amount = Double(amountTextField.text!)!;
-        transaction!.date = Date();
-        
-        transaction!.isRecurrent = switchView.isOn;
-        
-        if (switchView.isOn) {
-            transaction!.recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
-            transaction!.recurrentBeginDate = beginDateWheel.date;
-        } else {
-            transaction!.recurrentInterval = intervalDates[intervalDates.count - 1];
-            transaction!.recurrentBeginDate = Date();
-        }
+        let type = transactionTypeToManage == ETransactionType.Expense ? "Expense" : "Income";
+        let id = UUID();
+        let descriptionText = descriptionTextField.text ?? "";
+        let amount = Double(amountTextField.text!)!;
+        let date = Date();
         
         let categoryName = categories[categoryPicker.selectedRow(inComponent: 0)];
-        let categoryType = transaction!.type!;
+        let categoryType = type;
         let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
-                
-        transaction!.setValue(category, forKey: "category");
-        //transaction!.category = category;
         
-        //Send empty array because we already set the values into the object
-        _ = coreDataManager!.updateNSObject(object: transaction!, values: [], keys: []);
-        
+        //A recurrent transaction must be added
+        if (switchView.isOn) {
+            
+            let recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
+            let recurrentBeginDate = beginDateWheel.date;
+            
+            let recTransaction = coreDataManager!.createEmptyNSObject(ofEntityType: "RecTransaction") as! RecTransaction;
+            
+            _ = coreDataManager!.updateNSObject(object: recTransaction,
+                values: [
+                    type, id, descriptionText, amount, category, recurrentInterval, recurrentBeginDate
+                ], keys: [
+                    "type", "id", "descriptionText", "amount", "cateogry", "recurrentInterval", "recurrentBeginDate"
+                ]);
+            
+        } else { //A transaction must be added
+            
+            let isAddedByRecurrent = false;
+
+            let transaction = coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction;
+            
+            _ = coreDataManager!.updateNSObject(object: transaction,
+                values: [
+                    type, id, descriptionText, amount, date, category, isAddedByRecurrent
+                ], keys: [
+                    "type", "id", "descriptionText", "amount", "date", "cateogry", "isAddedByRecurrent"
+                ]);
+        }
         print ("Transaction added succesfully.");
         
-        updateBudgetSpenditure(transaction!.amount);
-        updateBalance(transaction!.amount);
+        updateBudgetSpenditure(amount);
+        updateBalance(amount);
 
         goToPreviousScreen();
     }
