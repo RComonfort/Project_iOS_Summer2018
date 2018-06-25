@@ -16,8 +16,8 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var amountText: UITextField!
     @IBOutlet weak var descriptionText: UITextField!
     @IBOutlet weak var categoryPicker: UIPickerView!
-    @IBOutlet weak var beginPickerView: UIDatePicker!
     @IBOutlet weak var intervalPicker: UIPickerView!
+    @IBOutlet weak var beginPickerView: UIDatePicker!
     
     var categories: [String]!
     var intervals: [String]!
@@ -26,7 +26,8 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
-
+        
+        
         if recurrent.type?.lowercased() == "expense" {
             categories = DefaultData.getExpenseCategories()
         }
@@ -40,6 +41,7 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         intervalPicker.delegate = self
         categoryPicker.dataSource = self
         intervalPicker.dataSource = self
+        beginPickerView.minimumDate = Date()
         
         categoryPicker.reloadAllComponents()
         intervalPicker.reloadAllComponents()
@@ -120,12 +122,12 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             alertUser(title: "Empty amount", message: "Please insert an amount")
             return
         }
-        if checkAmount(amount: amountText.text!){
+        if !checkAmount(amount: amountText.text!){
             alertUser(title: "Invalid amount", message: "Please enter a real number bigger than 0")
             return
         }
         let values = [Double(amountText.text!) as Any, descriptionText.text! as Any, beginPickerView.date as Any, intervals[intervalPicker.selectedRow(inComponent: 0)], coreDataManager?.findCategory(ofType: recurrent.type!, withName: categories[categoryPicker.selectedRow(inComponent: 0)]) as Any]
-        let keys = ["amount", "descriptionText", "recurrentBeginDate", "recurrentInterval", "categry"]
+        let keys = ["amount", "descriptionText", "recurrentBeginDate", "recurrentInterval", "category"]
         
         
         _ = coreDataManager?.updateNSObject(object: recurrent, values: values, keys: keys)
@@ -135,7 +137,9 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func checkAmount(amount: String) -> Bool{
         if let amountDouble = Double(amount){
+            print("double")
             if amountDouble > 0{
+                print("bigger")
                 return true
             }
             else{
