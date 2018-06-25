@@ -167,7 +167,16 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     @objc func textFieldDidChange(textField: UITextField){
+        if let num = Double (textField.text!) {
+            if num > 0.0 {
+                saveButton.isEnabled = true;
+                textField.textColor = .black;
+                return;
+            }
+        }
         
+        textField.textColor = .red;
+        saveButton.isEnabled = false;
     }
     
     //MARK: - PickerDelegate Functions
