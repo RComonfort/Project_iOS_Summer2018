@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FuT-ZR-NeS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -664,6 +664,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9rJ-by-VY7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1902" y="288"/>
+        </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="C7q-rv-ASt">
+            <objects>
+                <viewController id="FuT-ZR-NeS" customClass="LogInViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gFp-9K-j0r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o8y-Pk-l15">
+                                <rect key="frame" x="135" y="303.5" width="105" height="60"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="logIn:" destination="FuT-ZR-NeS" eventType="touchUpInside" id="W9x-Ni-LIb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="o8y-Pk-l15" firstAttribute="centerY" secondItem="gFp-9K-j0r" secondAttribute="centerY" id="dGA-br-A4r"/>
+                            <constraint firstItem="o8y-Pk-l15" firstAttribute="centerX" secondItem="gFp-9K-j0r" secondAttribute="centerX" id="jlp-Pg-2Hb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Nix-Dk-0cg"/>
+                    </view>
+                    <connections>
+                        <segue destination="Lpe-8j-fu4" kind="show" identifier="toNavController" id="Vuz-z5-iiQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MhL-XD-iHD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3183" y="297"/>
         </scene>
     </scenes>
     <resources>

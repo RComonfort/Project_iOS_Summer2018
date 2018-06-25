@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Xn-yk-ROA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -522,46 +522,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUo-es-YVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="758" y="1856"/>
-        </scene>
-        <!--NavigationControllerScene-->
-        <scene sceneID="p3P-7L-fh2">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="NavigationControllerScene" id="XbS-Ul-p8G" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5kE-eT-370" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-712" y="1567"/>
-        </scene>
-        <!--Log In View Controller-->
-        <scene sceneID="SNA-ci-SnJ">
-            <objects>
-                <viewController id="6Xn-yk-ROA" customClass="LogInViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MGd-8q-lgo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-gH-Vgk">
-                                <rect key="frame" x="155" y="338" width="105" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <state key="normal" title="Log In"/>
-                                <connections>
-                                    <action selector="logIn:" destination="6Xn-yk-ROA" eventType="touchUpInside" id="EJ0-K4-LNQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="9wa-gH-Vgk" firstAttribute="centerY" secondItem="MGd-8q-lgo" secondAttribute="centerY" id="MGl-Ix-kaY"/>
-                            <constraint firstItem="9wa-gH-Vgk" firstAttribute="centerX" secondItem="MGd-8q-lgo" secondAttribute="centerX" id="cBT-N9-qVk"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="MMD-3A-g4Q"/>
-                    </view>
-                    <connections>
-                        <segue destination="XbS-Ul-p8G" kind="show" identifier="toNavController" id="sRr-r1-W57"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mCw-Gm-hV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1341" y="1783"/>
         </scene>
     </scenes>
     <resources>
