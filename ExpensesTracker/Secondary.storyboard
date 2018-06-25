@@ -9,7 +9,6 @@
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -57,7 +56,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fXd-m9-Bmg"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="report" id="iOf-is-HHT"/>
+                    <tabBarItem key="tabBarItem" title="report" selectedImage="report" id="iOf-is-HHT"/>
                     <navigationItem key="navigationItem" title="Report" id="AXE-L7-c6X"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -303,16 +302,16 @@
             </objects>
             <point key="canvasLocation" x="758.7890625" y="1044.9487554904831"/>
         </scene>
-        <!--History-->
+        <!--Recurren Events-->
         <scene sceneID="oIT-r2-wmJ">
             <objects>
-                <tableViewController storyboardIdentifier="HistoryScene" id="WuF-Ac-hM3" customClass="HistoryTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HistoryScene" id="WuF-Ac-hM3" customClass="RecurrentEventsTableViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="q4m-CX-hP6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="80" id="Dpl-aa-3m5" customClass="TransactionTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecurrentEventTableViewCell" rowHeight="80" id="Dpl-aa-3m5" customClass="RecurrentEventTableViewCell" customModule="ExpensesTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dpl-aa-3m5" id="ZW4-Df-H4Y">
@@ -343,23 +342,15 @@
                                                 <constraint firstAttribute="width" secondItem="t67-bQ-iT9" secondAttribute="height" multiplier="1:1" id="ell-om-VLl"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recurrent" translatesAutoresizingMaskIntoConstraints="NO" id="h4M-mc-5if">
-                                            <rect key="frame" x="306" y="30" width="20.666666666666686" height="21"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="h4M-mc-5if" secondAttribute="height" multiplier="1:1" id="ZeE-34-vSv"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="height" secondItem="Dm8-OI-GJy" secondAttribute="height" id="0vH-Lw-ffL"/>
                                         <constraint firstItem="Dm8-OI-GJy" firstAttribute="centerY" secondItem="t67-bQ-iT9" secondAttribute="centerY" multiplier="0.85" id="Ea6-Lj-qEc"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="centerY" secondItem="ZW4-Df-H4Y" secondAttribute="centerY" multiplier="0.75" id="HUB-hq-QDS"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="width" secondItem="Dm8-OI-GJy" secondAttribute="width" multiplier="1.35" id="JDz-JO-hAT"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="leading" secondItem="eiV-2K-yPe" secondAttribute="trailing" id="K7n-kP-G3A"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="centerX" secondItem="ZW4-Df-H4Y" secondAttribute="centerX" multiplier="0.18" id="N10-IP-3ug"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="leading" secondItem="Dm8-OI-GJy" secondAttribute="leading" id="Qvp-Lm-yXn"/>
                                         <constraint firstItem="Dm8-OI-GJy" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.4" id="S2M-59-P3e"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="centerY" secondItem="ZW4-Df-H4Y" secondAttribute="centerY" id="VJa-H7-Cix"/>
                                         <constraint firstItem="eiV-2K-yPe" firstAttribute="top" secondItem="Dm8-OI-GJy" secondAttribute="bottom" multiplier="1.05" id="W9l-bJ-px0"/>
                                         <constraint firstItem="t67-bQ-iT9" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.13" id="XnI-SF-7hh"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="top" secondItem="t67-bQ-iT9" secondAttribute="bottom" id="eEw-Dz-SJr"/>
@@ -368,15 +359,13 @@
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="height" secondItem="t67-bQ-iT9" secondAttribute="height" multiplier="0.35" id="pNL-TX-Z9p"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="centerX" secondItem="t67-bQ-iT9" secondAttribute="centerX" id="qwb-uG-Nl8"/>
                                         <constraint firstItem="bfU-dH-GVr" firstAttribute="width" secondItem="t67-bQ-iT9" secondAttribute="width" multiplier="1.5" id="r8E-7F-gjG"/>
-                                        <constraint firstItem="h4M-mc-5if" firstAttribute="width" secondItem="ZW4-Df-H4Y" secondAttribute="width" multiplier="0.05" id="sOM-WE-RUL"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="amountLabel" destination="Dm8-OI-GJy" id="b3Q-dY-dnF"/>
-                                    <outlet property="categoryImage" destination="t67-bQ-iT9" id="9F5-OH-ESm"/>
-                                    <outlet property="categoryNameLabel" destination="bfU-dH-GVr" id="Bkg-FS-3q6"/>
-                                    <outlet property="descriptionLabel" destination="eiV-2K-yPe" id="1kU-Hq-DIx"/>
-                                    <outlet property="recurrentIconImage" destination="h4M-mc-5if" id="dQH-io-0gx"/>
+                                    <outlet property="amountLabel" destination="Dm8-OI-GJy" id="J2j-dX-5iy"/>
+                                    <outlet property="categoryImage" destination="t67-bQ-iT9" id="U1c-2u-K79"/>
+                                    <outlet property="categoryNameLabel" destination="bfU-dH-GVr" id="gFR-Xx-p36"/>
+                                    <outlet property="descriptionLabel" destination="eiV-2K-yPe" id="vek-eg-ud7"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -386,12 +375,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="W3J-Tw-kyr"/>
-                    <navigationItem key="navigationItem" title="History" id="uxb-Wy-AdQ">
-                        <rightBarButtonItems>
-                            <barButtonItem title="Filter" id="XaH-M7-HxI"/>
-                            <barButtonItem title="Asc." id="cHJ-K3-uRs"/>
-                        </rightBarButtonItems>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Recurren Events" id="uxb-Wy-AdQ"/>
                     <connections>
                         <segue destination="NPo-ju-TPE" kind="show" identifier="toUpdateRecurrent" id="Oq1-5N-4f3"/>
                     </connections>
@@ -403,7 +387,7 @@
         <!--Income/Expense-->
         <scene sceneID="p5d-iz-gWy">
             <objects>
-                <viewController storyboardIdentifier="IncomeExpenseScene" id="NPo-ju-TPE" customClass="IncomeExpenseViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IncomeExpenseScene" id="NPo-ju-TPE" customClass="RecurrentViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G86-yh-mUw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,53 +414,33 @@
                                 <rect key="frame" x="0.0" y="187.33333333333334" width="414" height="466.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iPl-hr-X2v">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="116.66666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="155.66666666666666"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yiR-1e-5sq">
-                                                <rect key="frame" x="0.0" y="44.666666666666657" width="124.33333333333333" height="27.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="63.999999999999993" width="124.33333333333333" height="27.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0lu-Az-sz8">
-                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="116.66666666666667"/>
+                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="155.66666666666666"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="0lu-Az-sz8" firstAttribute="width" secondItem="iPl-hr-X2v" secondAttribute="width" multiplier="0.7" id="jla-hC-PiS"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="85" translatesAutoresizingMaskIntoConstraints="NO" id="s9g-A7-gMX">
-                                        <rect key="frame" x="0.0" y="116.66666666666666" width="414" height="116.66666666666666"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recurrent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LnT-ce-utV">
-                                                <rect key="frame" x="0.0" y="44.666666666666686" width="142.66666666666666" height="27.666666666666671"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bOP-ax-XCC">
-                                                <rect key="frame" x="227.66666666666663" y="43" width="188.33333333333337" height="31"/>
-                                                <connections>
-                                                    <action selector="onSwitchValueChanged:" destination="NPo-ju-TPE" eventType="valueChanged" id="c5v-Q0-5MT"/>
-                                                </connections>
-                                            </switch>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstItem="bOP-ax-XCC" firstAttribute="width" secondItem="s9g-A7-gMX" secondAttribute="width" multiplier="0.45" id="DV4-vy-0Fu"/>
-                                        </constraints>
-                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8rb-Q4-qgl">
-                                        <rect key="frame" x="0.0" y="233.33333333333334" width="414" height="116.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="155.66666666666663" width="414" height="155.33333333333337"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Begin at" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK2-Qm-460">
-                                                <rect key="frame" x="0.0" y="43.333333333333314" width="124.33333333333333" height="30"/>
+                                                <rect key="frame" x="0.0" y="62.666666666666686" width="124.33333333333333" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-Ea-OAZ">
-                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="116.66666666666667"/>
+                                            <datePicker tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="countDownTimer" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="X2F-Ea-OAZ">
+                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="155.33333333333334"/>
                                                 <date key="date" timeIntervalSinceReferenceDate="549990829.79736602">
                                                     <!--2018-06-06 15:13:49 +0000-->
                                                 </date>
@@ -490,16 +454,16 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="djd-oP-lH1">
-                                        <rect key="frame" x="0.0" y="350" width="414" height="116.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="311" width="414" height="155.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMi-1x-sKR">
-                                                <rect key="frame" x="0.0" y="43.333333333333258" width="124.33333333333333" height="30"/>
+                                                <rect key="frame" x="0.0" y="63.000000000000057" width="124.33333333333333" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjM-iz-4eA">
-                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="116.66666666666667"/>
+                                            <pickerView tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bjM-iz-4eA">
+                                                <rect key="frame" x="124.33333333333334" y="0.0" width="289.66666666666663" height="155.66666666666666"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -510,7 +474,6 @@
                                 <constraints>
                                     <constraint firstItem="djd-oP-lH1" firstAttribute="width" secondItem="yPH-ax-3eH" secondAttribute="width" id="Ano-KX-efh"/>
                                     <constraint firstItem="8rb-Q4-qgl" firstAttribute="width" secondItem="yPH-ax-3eH" secondAttribute="width" id="IUM-Sc-wxo"/>
-                                    <constraint firstItem="s9g-A7-gMX" firstAttribute="width" secondItem="yPH-ax-3eH" secondAttribute="width" id="fQt-nR-YGR"/>
                                     <constraint firstItem="iPl-hr-X2v" firstAttribute="width" secondItem="yPH-ax-3eH" secondAttribute="width" id="qvW-7s-PuZ"/>
                                 </constraints>
                             </stackView>
@@ -539,25 +502,28 @@
                     <navigationItem key="navigationItem" title="Income/Expense" id="IMA-6d-Jna">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oKU-8J-hUa">
                             <connections>
-                                <action selector="cancel:" destination="NPo-ju-TPE" id="a1R-oa-jKi"/>
+                                <action selector="exit:" destination="NPo-ju-TPE" id="AAb-hR-sjn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="TLg-k2-BoH">
                             <connections>
-                                <action selector="save:" destination="NPo-ju-TPE" id="XUd-Dw-O5A"/>
+                                <action selector="save:" destination="NPo-ju-TPE" id="Tbo-64-Hca"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="amountText" destination="gfT-hH-Yo4" id="3M5-uR-ypl"/>
                         <outlet property="amountTextField" destination="gfT-hH-Yo4" id="S0S-wC-G15"/>
                         <outlet property="beginDateLabel" destination="UK2-Qm-460" id="WpG-cj-cO4"/>
                         <outlet property="beginDateWheel" destination="X2F-Ea-OAZ" id="DuI-vA-clL"/>
-                        <outlet property="categoryPicker" destination="0lu-Az-sz8" id="eBi-Le-KTt"/>
+                        <outlet property="beginPickerView" destination="X2F-Ea-OAZ" id="4WM-CF-PSm"/>
+                        <outlet property="categoryPicker" destination="0lu-Az-sz8" id="aed-Ct-28b"/>
+                        <outlet property="descriptionText" destination="Cp8-hP-8sQ" id="FA1-05-4y0"/>
                         <outlet property="descriptionTextField" destination="Cp8-hP-8sQ" id="weJ-GW-PDY"/>
                         <outlet property="intervalDatePicker" destination="bjM-iz-4eA" id="8ED-DF-3Xx"/>
                         <outlet property="intervalLabel" destination="kMi-1x-sKR" id="hpl-fg-6qG"/>
+                        <outlet property="intervalPicker" destination="bjM-iz-4eA" id="N0p-NB-x9U"/>
                         <outlet property="saveButton" destination="TLg-k2-BoH" id="6Gf-kZ-naD"/>
-                        <outlet property="switchView" destination="bOP-ax-XCC" id="0l0-z1-lsk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUo-es-YVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -567,6 +533,6 @@
     </scenes>
     <resources>
         <image name="foodImg" width="64" height="64"/>
-        <image name="recurrent" width="48" height="48"/>
+        <image name="report" width="30" height="30"/>
     </resources>
 </document>

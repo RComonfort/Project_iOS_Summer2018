@@ -35,6 +35,9 @@
 		FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */; };
 		FB2AE40D20DAE29900373050 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2AE40C20DAE29900373050 /* Charts.framework */; };
 		FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */; };
+		FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */; };
+		FBCA333220E1628C00B58980 /* RecurrentEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */; };
+		FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333320E1704400B58980 /* RecurrentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryViewController.swift; sourceTree = "<group>"; };
 		FB6C911E20D9B5810075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C912020D9B60D0075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventsTableViewController.swift; sourceTree = "<group>"; };
+		FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventTableViewCell.swift; sourceTree = "<group>"; };
+		FBCA333320E1704400B58980 /* RecurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentViewController.swift; sourceTree = "<group>"; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -204,6 +210,9 @@
 				FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */,
 				FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */,
 				FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */,
+				FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */,
+				FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */,
+				FBCA333320E1704400B58980 /* RecurrentViewController.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -440,6 +449,7 @@
 				DE6FB69220CAD261009D476B /* IncomeExpenseViewController.swift in Sources */,
 				FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */,
 				DE59F18520D8627F00F640C9 /* CustomFormatter.swift in Sources */,
+				FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */,
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
 				DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */,
@@ -453,6 +463,8 @@
 				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
 				FB2AE40520DAD6A200373050 /* ViewTransactionViewController.swift in Sources */,
 				DEE2F72720D43CC400D7CF0D /* TransactionTableViewCell.swift in Sources */,
+				FBCA333220E1628C00B58980 /* RecurrentEventTableViewCell.swift in Sources */,
+				FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */,
 				DEE2F72520D2F2A900D7CF0D /* DefaultData.swift in Sources */,
 				FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */,
 			);
