@@ -115,7 +115,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="yGw-NO-nbq"/>
+                    <tabBarItem key="tabBarItem" title="Status" image="status" id="yGw-NO-nbq"/>
                     <navigationItem key="navigationItem" title="Status" id="iKC-ag-mRU"/>
                     <connections>
                         <outlet property="balanceLabel" destination="W98-Ol-mcB" id="AtY-Zh-tmQ"/>
@@ -220,13 +220,13 @@
                                         <rect key="frame" x="0.0" y="317.5" width="375" height="105.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Interval" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Af-g9-9S7">
-                                                <rect key="frame" x="0.0" y="38" width="112.5" height="30"/>
+                                                <rect key="frame" x="0.0" y="37.5" width="112.5" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VYd-lO-3ya">
-                                                <rect key="frame" x="112.5" y="0.5" width="262.5" height="105.5"/>
+                                                <rect key="frame" x="112.5" y="0.0" width="262.5" height="105.5"/>
                                             </pickerView>
                                         </subviews>
                                         <constraints>
@@ -527,7 +527,7 @@
                             <outlet property="delegate" destination="uFD-gU-d4e" id="Gkc-6B-Mcx"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="MxL-Kd-y2G"/>
+                    <tabBarItem key="tabBarItem" title="History" image="history" id="MxL-Kd-y2G"/>
                     <navigationItem key="navigationItem" title="History" id="X1O-mY-9ij">
                         <rightBarButtonItems>
                             <barButtonItem title="Filter" id="Vzs-Mk-ZLG"/>
@@ -616,7 +616,7 @@
                             <outlet property="delegate" destination="clr-3a-nTx" id="9Aa-cA-8K2"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="s1d-9L-4EC"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="configuration" id="s1d-9L-4EC"/>
                     <navigationItem key="navigationItem" title="Configuration" id="Vgq-Ob-XRi"/>
                     <connections>
                         <segue destination="CQq-eu-dUB" kind="show" identifier="BudgetConfigurationSegue" id="RE6-73-vlJ"/>
@@ -667,7 +667,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="configuration" width="30" height="30"/>
         <image name="foodImg" width="64" height="64"/>
+        <image name="history" width="30" height="30"/>
         <image name="recurrent" width="48" height="48"/>
+        <image name="status" width="30" height="30"/>
     </resources>
 </document>

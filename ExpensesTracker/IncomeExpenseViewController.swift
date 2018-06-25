@@ -57,6 +57,8 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         intervalDatePicker.dataSource = self;
         intervalDatePicker.delegate = self;
+        
+        amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
     }
     
     //MARK: - IBActions
@@ -161,6 +163,10 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     func loadIntervals() {
         intervalDates = DefaultData.getTimeIntervals();
+    }
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        
     }
     
     //MARK: - PickerDelegate Functions
