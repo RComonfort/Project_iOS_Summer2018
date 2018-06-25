@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Xn-yk-ROA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -529,12 +529,12 @@
                 <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="NavigationControllerScene" id="XbS-Ul-p8G" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5kE-eT-370" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1860" y="1242"/>
+            <point key="canvasLocation" x="-712" y="1567"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="SNA-ci-SnJ">
             <objects>
-                <viewController id="6Xn-yk-ROA" sceneMemberID="viewController">
+                <viewController id="6Xn-yk-ROA" customClass="LogInViewController" customModule="ExpensesTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MGd-8q-lgo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -543,6 +543,9 @@
                                 <rect key="frame" x="155" y="338" width="105" height="60"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Log In"/>
+                                <connections>
+                                    <action selector="logIn:" destination="6Xn-yk-ROA" eventType="touchUpInside" id="EJ0-K4-LNQ"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -553,12 +556,12 @@
                         <viewLayoutGuide key="safeArea" id="MMD-3A-g4Q"/>
                     </view>
                     <connections>
-                        <segue destination="XbS-Ul-p8G" kind="show" id="sRr-r1-W57"/>
+                        <segue destination="XbS-Ul-p8G" kind="show" identifier="toNavController" id="sRr-r1-W57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mCw-Gm-hV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1945" y="1860"/>
+            <point key="canvasLocation" x="-1341" y="1783"/>
         </scene>
     </scenes>
     <resources>
