@@ -307,10 +307,10 @@
             </objects>
             <point key="canvasLocation" x="658" y="1253"/>
         </scene>
-        <!--CategoryScene-->
+        <!--RecurrentTransactionsScene-->
         <scene sceneID="Ol1-f4-fba">
             <objects>
-                <viewControllerPlaceholder storyboardName="Secondary" referencedIdentifier="CategoryScene" id="i3R-f5-54C" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Secondary" referencedIdentifier="RecurrentTransactionsScene" id="i3R-f5-54C" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V3S-mF-Rgd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821" y="1483"/>
