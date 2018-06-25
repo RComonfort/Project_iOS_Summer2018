@@ -73,7 +73,7 @@ class HistoryTableViewController: UITableViewController {
         cell.categoryNameLabel.text = category?.name;
         cell.categoryImage.image = UIImage(named: (category?.icon)!);
         
-        if (transactions[indexPath.row].isRecurrent) {
+        if (transactions[indexPath.row].isAddedByRecurrent) {
             cell.recurrentIconImage.image = #imageLiteral(resourceName: "recurrent");
         }
         else {
