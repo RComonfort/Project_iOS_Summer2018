@@ -25,6 +25,7 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
         
         
@@ -166,6 +167,11 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             fatalError("Recurrent VC has no navigation controller!");
         }
         
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
     }
     
 }

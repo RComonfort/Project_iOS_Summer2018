@@ -63,11 +63,13 @@
                         <outlet property="chartView" destination="Rsu-Tn-N30" id="ulu-jg-L20"/>
                         <outlet property="percentage" destination="49H-Ia-xyj" id="lM5-ER-qna"/>
                         <outlet property="pickerView" destination="T2W-2L-8av" id="Foj-tf-6rS"/>
+                        <segue destination="2OQ-5C-9vu" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="NHn-7y-ARX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OpB-PN-AcN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2OQ-5C-9vu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-103" y="-302"/>
+            <point key="canvasLocation" x="-491" y="-212"/>
         </scene>
         <!--Transaction-->
         <scene sceneID="RYZ-1J-Sk8">
@@ -138,9 +140,11 @@
                         <outlet property="transactionAmount" destination="vjU-Kg-7AS" id="YSU-vd-Gu8"/>
                         <outlet property="transactionDate" destination="RdV-ye-a0W" id="NMO-Kk-qph"/>
                         <outlet property="transactionDescription" destination="j9b-uo-gVa" id="gwL-oS-0r5"/>
+                        <segue destination="nbt-9X-DPR" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="nFv-DE-TSs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3uq-d4-Vkd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="nbt-9X-DPR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-103" y="487"/>
         </scene>
@@ -204,9 +208,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="cJk-3R-nS7" kind="show" identifier="toNewCategory" id="eh4-GS-bea"/>
+                        <segue destination="azx-Wd-xWr" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="4xw-AH-QFl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLl-lh-46J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="azx-Wd-xWr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-104" y="1218"/>
         </scene>
@@ -296,9 +302,11 @@
                         <outlet property="nameText" destination="MeJ-dF-gA5" id="VmA-pr-7bQ"/>
                         <outlet property="pickerView" destination="5Vs-Xi-KNS" id="0Bw-EJ-jTM"/>
                         <outlet property="switchIE" destination="zP6-vR-VrR" id="PWx-g0-cig"/>
+                        <segue destination="K4j-ZC-QTD" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="8ZG-ea-TFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g3Y-4L-YoU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="K4j-ZC-QTD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="758.7890625" y="1044.9487554904831"/>
         </scene>
@@ -378,9 +386,11 @@
                     <navigationItem key="navigationItem" title="Recurren Events" id="uxb-Wy-AdQ"/>
                     <connections>
                         <segue destination="NPo-ju-TPE" kind="show" identifier="toUpdateRecurrent" id="Oq1-5N-4f3"/>
+                        <segue destination="GW2-E2-CwZ" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="aTW-WH-gaP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbn-B9-0hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="GW2-E2-CwZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-104" y="1857"/>
         </scene>
@@ -499,7 +509,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wab-vm-LGE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Recurrent Event" id="IMA-6d-Jna">
+                    <navigationItem key="navigationItem" title="Recurrent Events" id="IMA-6d-Jna">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oKU-8J-hUa">
                             <connections>
                                 <action selector="exit:" destination="NPo-ju-TPE" id="AAb-hR-sjn"/>
@@ -517,9 +527,11 @@
                         <outlet property="categoryPicker" destination="0lu-Az-sz8" id="aed-Ct-28b"/>
                         <outlet property="descriptionText" destination="Cp8-hP-8sQ" id="FA1-05-4y0"/>
                         <outlet property="intervalPicker" destination="bjM-iz-4eA" id="vbU-vy-fJL"/>
+                        <segue destination="az5-cK-cz0" kind="unwind" identifier="toLogIn" unwindAction="unwindToLogInSegue:" id="S6C-Zk-Rsk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUo-es-YVJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="az5-cK-cz0" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="758" y="1856"/>
         </scene>

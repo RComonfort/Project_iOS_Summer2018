@@ -18,6 +18,7 @@ class CategoryTableViewController: UITableViewController {
     var new = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
         loadData()
     }
@@ -151,6 +152,11 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadData()
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
     }
     
 }
