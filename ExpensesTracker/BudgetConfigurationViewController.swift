@@ -23,7 +23,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         //Add target to text fields to validate them
         budgetLimitTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
         budgetWarningAmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
@@ -172,4 +172,13 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         saveButton.isEnabled = false;
     }
 
+    @objc func willEnterForeground(){
+        print("perform segue 1")
+        let config = coreDataManager?.getNSObjects(forEntity: "Configuration")![0] as! Configuration
+        print("connfig is \(config.authentication)")
+        if config.authentication {
+            self.performSegue(withIdentifier: "toLogIn", sender: self)
+        }
+    }
+    
 }
