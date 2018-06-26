@@ -57,15 +57,6 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
     }
     
-    func updateRecurrentSettingsIBOutlets(setHiddenValueTo value: Bool) {
-        
-        beginDateWheel.isHidden = value;
-        beginDateLabel.isHidden = value;
-        intervalDatePicker.isHidden = value;
-        intervalLabel.isHidden = value;
-    
-    }
-    
     //MARK: - IBActions
     
     @IBAction func onSwitchValueChanged(_ sender: UISwitch)
@@ -115,9 +106,8 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         print ("Transaction added succesfully.");
         
-        Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
-        
         if (transactionTypeToManage == ETransactionType.Expense) {
+            Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
             Budget.checkBudgetLimit(coreDataManager: coreDataManager!);
         }
         updateBalance(amount);
@@ -172,6 +162,15 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         
         textField.textColor = .red;
         saveButton.isEnabled = false;
+    }
+    
+    func updateRecurrentSettingsIBOutlets(setHiddenValueTo value: Bool) {
+        
+        beginDateWheel.isHidden = value;
+        beginDateLabel.isHidden = value;
+        intervalDatePicker.isHidden = value;
+        intervalLabel.isHidden = value;
+        
     }
     
     //MARK: - PickerDelegate Functions

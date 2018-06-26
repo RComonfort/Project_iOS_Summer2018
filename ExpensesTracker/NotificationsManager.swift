@@ -29,29 +29,30 @@ class NotificationsManager {
         let content = UNMutableNotificationContent()
         
         //Set content
-        content.title = NSString.localizedUserNotificationString(forKey: message, arguments: nil)
+        content.title = NSString.localizedUserNotificationString(forKey: message, arguments: nil);
+        content.sound = UNNotificationSound.default();
         
         //Create time trigger
-        let targetDateComp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
-        
         var trigger: UNNotificationTrigger;
         if (date <= Date()) {
             trigger = UNTimeIntervalNotificationTrigger(timeInterval: (2), repeats: false)
         }
         else {
+            let targetDateComp = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+            
             trigger = UNCalendarNotificationTrigger(dateMatching: targetDateComp, repeats: false)
         }
         
         // Create the request object.
         let customFormatter = CustomFormatter();
         var notificationID: String? = customFormatter.formatDate(date: date) + "-" + message.trimmingCharacters(in: .whitespaces);
-        let request = UNNotificationRequest(identifier: notificationID!, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: notificationID!, content: content, trigger: trigger);
         
         // Schedule the request.
         let center = UNUserNotificationCenter.current()
         center.add(request) { (error : Error?) in
             if let theError = error {
-                print(theError.localizedDescription);
+                print("\nNotification request error!\n" + theError.localizedDescription);
                 notificationID = nil;
             }
             else {

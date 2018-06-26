@@ -28,9 +28,6 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         budgetLimitTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
         budgetWarningAmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
         
-        saveButton.isEnabled = false;
-        textFieldDidChange(textField: budgetLimitTextField);
-        
         timeFrames = DefaultData.getTimeIntervals();
         
         budgetTimeFramePicker.delegate = self;
@@ -50,6 +47,9 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         }
         
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
+        
+        saveButton.isEnabled = false;
+        textFieldDidChange(textField: budgetLimitTextField);
     }
 
     override func didReceiveMemoryWarning() {
