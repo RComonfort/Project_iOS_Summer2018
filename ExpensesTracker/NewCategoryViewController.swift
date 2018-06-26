@@ -24,7 +24,7 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         // Do any additional setup after loading the view.
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -130,6 +130,11 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBAction func change(_ sender: UISwitch) {
         ei = sender.isOn
         pickerView.reloadAllComponents()
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
     }
     
 }

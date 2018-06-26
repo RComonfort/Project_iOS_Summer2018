@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import LocalAuthentication
 
 class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -23,7 +24,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     
     var coreDataManager: CoreDataManager?
-    
+    let laContext = LAContext()
     
     
     var budgetLimitCore: Double!
@@ -41,6 +42,7 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         pickerView.dataSource = self
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
         startView()
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         
     }
     
@@ -393,6 +395,11 @@ class ReportViewController: UIViewController, UIPickerViewDelegate, UIPickerView
         chartView.chartDescription?.text = type
         chartView.drawEntryLabelsEnabled = false
         
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
     }
     
 }

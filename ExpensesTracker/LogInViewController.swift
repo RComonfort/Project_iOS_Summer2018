@@ -52,6 +52,10 @@ class LogInViewController: UIViewController {
         
     }
     
+    @IBAction func unwindToLogIn(segue: UIStoryboardSegue){
+        
+    }
+    
 }
 
 
@@ -61,21 +65,19 @@ extension UIViewController{
         let configurationObject = loadConfiguration(coreDataManager: coreDataManager)
         let authenticator = Authenticator()
         authenticator.setFields(context: laContext, config: configurationObject)
-        if !authenticator.shallLogIn() {
-            return false
-        }
-        return true
+        print(authenticator.shallLogIn())
+        return authenticator.shallLogIn()
     }
     
-    func mustNotLogIn(){
+    @objc func mustNotLogIn(){
         self.performSegue(withIdentifier: "toNavController", sender: self)
     }
     
-    func didLogIn(){
+    @objc func didLogIn(){
         self.performSegue(withIdentifier: "toNavController", sender: self)
     }
     
-    func notEnrrolled () {
+    @objc func notEnrrolled () {
         self.performSegue(withIdentifier: "toNavController", sender: self)
         
     }
@@ -99,6 +101,8 @@ extension UIViewController{
                 ESettingStrings.RecurrentNotification.rawValue
                 ])
         }
+        print("load config")
+        print(configurationObject)
         return configurationObject
     }
     
@@ -113,6 +117,7 @@ extension UIViewController{
                 logInWithNoBio(laContext: laContext, authenticator: authenticator)
             }
             else{
+                print("not enrrolled")
                 _ = coreDataManager.updateNSObject(object: configurationObject, values: [false], keys: [ESettingStrings.Authentication.rawValue])
                 self.notEnrrolled()
             }

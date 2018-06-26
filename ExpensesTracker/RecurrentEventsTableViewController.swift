@@ -18,6 +18,7 @@ class RecurrentEventsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!)
         rechargeData()
     }
@@ -134,7 +135,7 @@ class RecurrentEventsTableViewController: UITableViewController {
                 event = expenseRecurrents![indexPath.row]
             }
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            //tableView.deleteRows(at: [indexPath], with: .fade)
             coreDataManager?.deleteNSObject(object: event)
             rechargeData()
         }
@@ -156,6 +157,11 @@ class RecurrentEventsTableViewController: UITableViewController {
             (segue.destination as! RecurrentViewController).recurrent = toUpdate!
             
         }
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
     }
 
 }

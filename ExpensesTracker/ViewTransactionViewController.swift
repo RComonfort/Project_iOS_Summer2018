@@ -21,7 +21,7 @@ class ViewTransactionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         // Do any additional setup after loading the view.
         if transaction == nil {
             imageView.isHidden = true
@@ -53,5 +53,9 @@ class ViewTransactionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @objc func willEnterForeground(){
+        print("perform segue")
+        self.performSegue(withIdentifier: "toLogIn", sender: self)
+    }
 
 }
