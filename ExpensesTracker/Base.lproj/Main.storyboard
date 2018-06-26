@@ -418,6 +418,7 @@
                         <outlet property="budgetLimitTextField" destination="V9s-5Q-Ep9" id="fF6-Ue-uqu"/>
                         <outlet property="budgetTimeFramePicker" destination="bL5-vn-CiY" id="CGJ-HF-bRo"/>
                         <outlet property="budgetWarningAmountTextField" destination="mTP-kq-D64" id="97r-34-873"/>
+                        <outlet property="saveButton" destination="wNs-Nt-9aX" id="JQF-A2-pke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qCk-BC-0VR" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -49,6 +49,9 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         intervalDatePicker.delegate = self;
         
         amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        
+        saveButton.isEnabled = false;
+
     }
     
     //MARK: - IBActions
