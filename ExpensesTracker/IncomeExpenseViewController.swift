@@ -32,7 +32,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
         navigationItem.title  = transactionTypeToManage == ETransactionType.Income ? "New Income" : "New Expense";
@@ -234,5 +234,12 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     }
     
-
+    @objc func willEnterForeground(){
+        print("perform segue 1")
+        let config = coreDataManager?.getNSObjects(forEntity: "Configuration")![0] as! Configuration
+        print("connfig is \(config.authentication)")
+        if config.authentication {
+            self.performSegue(withIdentifier: "toLogIn", sender: self)
+        }
+    }
 }

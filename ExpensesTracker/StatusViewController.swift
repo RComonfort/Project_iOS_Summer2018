@@ -27,7 +27,7 @@ class StatusViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
         performDefaultCategoryValidation();
@@ -41,9 +41,11 @@ class StatusViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! IncomeExpenseViewController;
-        
-        destinationVC.transactionTypeToManage = transactionTypeToAdd;
+        if segue.identifier != "toLogIn"{
+            let destinationVC = segue.destination as! IncomeExpenseViewController;
+            
+            destinationVC.transactionTypeToManage = transactionTypeToAdd;
+        }
     }
 
     //MARK: - Functions
@@ -121,6 +123,15 @@ class StatusViewController: UIViewController {
             _ = coreDataManager!.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
         }
         
+    }
+    
+    @objc func willEnterForeground(){
+        print("perform segue 1")
+        let config = coreDataManager?.getNSObjects(forEntity: "Configuration")![0] as! Configuration
+        print("connfig is \(config.authentication)")
+        if config.authentication {
+            self.performSegue(withIdentifier: "toLogIn", sender: self)
+        }
     }
     
 }

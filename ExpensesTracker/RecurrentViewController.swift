@@ -170,8 +170,12 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     @objc func willEnterForeground(){
-        print("perform segue")
-        self.performSegue(withIdentifier: "toLogIn", sender: self)
+        print("perform segue 1")
+        let config = coreDataManager?.getNSObjects(forEntity: "Configuration")![0] as! Configuration
+        print("connfig is \(config.authentication)")
+        if config.authentication {
+            self.performSegue(withIdentifier: "toLogIn", sender: self)
+        }
     }
     
 }
