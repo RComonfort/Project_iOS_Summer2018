@@ -35,6 +35,7 @@
 		FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */; };
 		FB2AE40D20DAE29900373050 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB2AE40C20DAE29900373050 /* Charts.framework */; };
 		FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */; };
+		FB69C05020E2B33C00D8ACE2 /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB69C04F20E2B33C00D8ACE2 /* Authenticator.swift */; };
 		FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */; };
 		FBCA333220E1628C00B58980 /* RecurrentEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */; };
 		FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333320E1704400B58980 /* RecurrentViewController.swift */; };
@@ -99,6 +100,7 @@
 		FB2AE40A20DAE16300373050 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2AE40C20DAE29900373050 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2AE40E20DAE78000373050 /* NewCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCategoryViewController.swift; sourceTree = "<group>"; };
+		FB69C04F20E2B33C00D8ACE2 /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		FB6C911E20D9B5810075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB6C912020D9B60D0075AEED /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBCA332F20E15ECE00B58980 /* RecurrentEventsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventsTableViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */,
 				FBCA333320E1704400B58980 /* RecurrentViewController.swift */,
 				FBCA333520E1931500B58980 /* LogInViewController.swift */,
+				FB69C04F20E2B33C00D8ACE2 /* Authenticator.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */,
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
+				FB69C05020E2B33C00D8ACE2 /* Authenticator.swift in Sources */,
 				DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */,
 				DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */,
 				FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */,
@@ -647,6 +651,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -666,6 +671,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S43QRZH5C6;
 				INFOPLIST_FILE = ExpensesTracker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
