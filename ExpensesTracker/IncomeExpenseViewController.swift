@@ -51,26 +51,26 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
         
         saveButton.isEnabled = false;
-
+        
+        switchView.isOn = false;
+        updateRecurrentSettingsIBOutlets(setHiddenValueTo: true);
+        
+    }
+    
+    func updateRecurrentSettingsIBOutlets(setHiddenValueTo value: Bool) {
+        
+        beginDateWheel.isHidden = value;
+        beginDateLabel.isHidden = value;
+        intervalDatePicker.isHidden = value;
+        intervalLabel.isHidden = value;
+    
     }
     
     //MARK: - IBActions
     
     @IBAction func onSwitchValueChanged(_ sender: UISwitch)
     {
-        if (sender.isOn)
-        {
-            beginDateWheel.isHidden = false;
-            beginDateLabel.isHidden = false;
-            intervalDatePicker.isHidden = false;
-            intervalLabel.isHidden = false;
-            
-        } else {
-            beginDateWheel.isHidden = true;
-            beginDateLabel.isHidden = true;
-            intervalDatePicker.isHidden = true;
-            intervalLabel.isHidden = true;
-        }
+        updateRecurrentSettingsIBOutlets(setHiddenValueTo: !sender.isOn);
     }
     
     @IBAction func save(_ sender: UIBarButtonItem) {
@@ -115,25 +115,17 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
         print ("Transaction added succesfully.");
         
-        updateBudgetSpenditure(amount);
+        Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
+        
+        if (transactionTypeToManage == ETransactionType.Expense) {
+            Budget.checkBudgetLimit(coreDataManager: coreDataManager!);
+        }
         updateBalance(amount);
 
         goToPreviousScreen();
     }
     
     //MARK: - Functions
-    
-    func updateBudgetSpenditure(_ amount: Double) {
-        
-        //Only update if on a budget and if the we are managing an expense
-        guard let budgetObj = coreDataManager!.getLatestNSObject(forEntity: "Budget", latestByKey: "budgetBeginDate"), transactionTypeToManage == ETransactionType.Expense  else {
-            return;
-        }
-        
-        let spentAmount = (budgetObj.value(forKey: "spentAmount") as! Double) + amount;
-        
-        _ = coreDataManager!.updateNSObject(object: budgetObj, values: [spentAmount], keys: ["spentAmount"]);
-    }
     
     func updateBalance(_ amount: Double) {
         guard let balanceObjects = coreDataManager!.getNSObjects(forEntity: "Balance"), balanceObjects.count > 0 else {

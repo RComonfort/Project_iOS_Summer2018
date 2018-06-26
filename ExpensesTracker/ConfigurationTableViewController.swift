@@ -61,7 +61,7 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
                     cell.titleLabel.text = "Budget Configuration";
                     return cell;
                 case 6:
-                    cell.titleLabel.text = "Manage Recurrent Charges";
+                    cell.titleLabel.text = "Manage Recurrent Events";
                     return cell;
                 default: //case 7
                     cell.titleLabel.text = "Manage Categories";
@@ -93,10 +93,10 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
                     setupSwitchCell(cell, titleLabel: "Notifications", settingToManage: ESettingStrings.Notifications);
                     return cell;
                 case 3:
-                    setupSwitchCell(cell, titleLabel: "    Budget", settingToManage: ESettingStrings.BudgetNotification);
+                    setupSwitchCell(cell, titleLabel: "    Budget Warning", settingToManage: ESettingStrings.BudgetNotification);
                     return cell;
                 case 4:
-                    setupSwitchCell(cell, titleLabel: "    Recurrent Charge Done", settingToManage: ESettingStrings.RecurrentNotification);
+                    setupSwitchCell(cell, titleLabel: "    Recurrent Event Done", settingToManage: ESettingStrings.RecurrentNotification);
                     return cell;
                 default: //case 5
                     setupSwitchCell(cell, titleLabel: "    Squander Locations", settingToManage: ESettingStrings.SquanderNotification)

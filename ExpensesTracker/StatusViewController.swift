@@ -29,8 +29,6 @@ class StatusViewController: UIViewController {
         super.viewDidLoad()
         
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
-        
-        performDefaultCategoryValidation();
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -93,35 +91,5 @@ class StatusViewController: UIViewController {
         performSegue(withIdentifier: "IncomeExpenseSegue", sender: self);
         
     }
-    
-    func performDefaultCategoryValidation(){
-        
-        if(!UserDefaults.standard.bool(forKey: "hasDefaultCategoriesSet")){
-            
-            UserDefaults.standard.set(true, forKey: "hasDefaultCategoriesSet")
-            UserDefaults.standard.synchronize();
-            
-            print("Registering default categories");
-            registerDefaultCategories();
-        }
-    }
-    
-    func registerDefaultCategories(){
-        let incomeCategories = DefaultData.getIncomeCategories();
-        let incomeImages = DefaultData.getIncomeImagesNames();
-        
-        for i in 0..<incomeCategories.count {
-            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Category", values: ["Income", incomeCategories[i], true, incomeImages[i]], keys: ["type", "name", "isDefault", "icon"]);
-        }
-        
-        let expenseCategories = DefaultData.getExpenseCategories();
-        let expenseImages = DefaultData.getExpenseImagesNames();
-        
-        for i in 0..<expenseCategories.count {
-            _ = coreDataManager!.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
-        }
-        
-    }
-    
 }
 
