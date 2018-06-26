@@ -19,15 +19,23 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
     @IBOutlet weak var budgetTimeFramePicker: UIPickerView!
     @IBOutlet weak var budgetBeginDateWheel: UIDatePicker!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Add target to text fields to validate them
+        budgetLimitTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        budgetWarningAmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        
+        saveButton.isEnabled = false;
+        
         timeFrames = DefaultData.getTimeIntervals();
         
         budgetTimeFramePicker.delegate = self;
         budgetTimeFramePicker.dataSource = self;
         budgetTimeFramePicker.reloadComponent(0);
-        
+    
         
         //There is a existing budget, fill in its data to the outlets
         if (budget != nil) {
@@ -103,6 +111,64 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    
+    
+    //MARK: - Functions
+    
+    @objc func textFieldDidChange(textField: UITextField){
+        
+        if (textField.text != nil  && textField.text! != ""){
+            if let num = Double (textField.text!) {
+                if (num > 0.0) {
+                    
+                    //If this is the budget warning text field
+                    if (textField == budgetWarningAmountTextField){
+                        //Check that it must be less than or equal to the limit budget
+                        if let text = budgetLimitTextField.text, let limitNum = Double (text) {
+                            if (num <= limitNum) {
+                                
+                                textField.textColor = .black;
+                                budgetLimitTextField.textColor = .black;
+                                
+                                saveButton.isEnabled = true;
+                                return;
+                                
+                            } else { //If not, mark both textfields as wrong
+                                budgetLimitTextField.textColor = .red;
+                            }
+                        } else {
+                            textField.textColor = .black;
+                            return;
+                        }
+                    }
+                    else if (textField == budgetLimitTextField){ //if this is the limit budget text field
+                        
+                        //Check the same. This ensures that both text fields are mutually validating each other
+                        if let text = budgetWarningAmountTextField.text, let warningNum = Double (text) {
+                            if (warningNum <= num) {
+                                
+                                textField.textColor = .black;
+                                budgetWarningAmountTextField.textColor = .black;
+                                
+                                saveButton.isEnabled = true;
+                                return;
+                                
+                            } else { //If not, mark both textfields as wrong
+                                budgetWarningAmountTextField.textColor = .red;
+                            }
+                        } else {
+                            textField.textColor = .black;
+                            return;
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+        textField.textColor = .red;
+        saveButton.isEnabled = false;
     }
 
 }
