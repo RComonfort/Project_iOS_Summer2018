@@ -29,8 +29,6 @@ class StatusViewController: UIViewController {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
-        
-        performDefaultCategoryValidation();
     }
 
     override func viewDidAppear(_ animated: Bool) {

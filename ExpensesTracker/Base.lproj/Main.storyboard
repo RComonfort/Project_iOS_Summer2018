@@ -50,6 +50,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmt-4T-ZCu">
                                         <rect key="frame" x="0.0" y="9.5" width="164" height="48"/>
+                                        <color key="backgroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="0.33000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="Add income"/>
                                         <connections>
@@ -58,8 +59,11 @@
                                     </button>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="182-KJ-Kbo">
                                         <rect key="frame" x="174" y="10" width="163.5" height="47"/>
+                                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="0.32876712328767121" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                        <state key="normal" title="Add expense"/>
+                                        <state key="normal" title="Add expense">
+                                            <color key="titleShadowColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="onAddIncomeExpense:" destination="BYZ-38-t0r" eventType="touchUpInside" id="d7b-XN-1XB"/>
                                         </connections>

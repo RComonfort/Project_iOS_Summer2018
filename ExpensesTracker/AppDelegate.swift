@@ -18,15 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let center = UNUserNotificationCenter.current()
-        
-        //Request notification permissions, only asked once
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-                        
-            if (granted) {
-                
-            }
-        }
+        performDefaultCategoryValidation();
+        NotificationsManager.askForNotificationsPermission();
         
         return true
     }
@@ -102,6 +95,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    //MARK: - Functions
+    func performDefaultCategoryValidation(){
+        
+        if(!UserDefaults.standard.bool(forKey: "hasDefaultCategoriesSet")){
+            
+            UserDefaults.standard.set(true, forKey: "hasDefaultCategoriesSet")
+            UserDefaults.standard.synchronize();
+            
+            print("Registering default categories");
+            registerDefaultCategories();
+        }
+    }
+    
+    func registerDefaultCategories(){
+        
+        let coreDataManager = CoreDataManager(inContext: self);
+        
+        let incomeCategories = DefaultData.getIncomeCategories();
+        let incomeImages = DefaultData.getIncomeImagesNames();
+        
+        for i in 0..<incomeCategories.count {
+            _ = coreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Income", incomeCategories[i], true, incomeImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
+        
+        let expenseCategories = DefaultData.getExpenseCategories();
+        let expenseImages = DefaultData.getExpenseImagesNames();
+        
+        for i in 0..<expenseCategories.count {
+            _ = coreDataManager.createAndSaveNSObject(forEntity: "Category", values: ["Expense", expenseCategories[i], true, expenseImages[i]], keys: ["type", "name", "isDefault", "icon"]);
+        }
+        
+    }
 
 }
 

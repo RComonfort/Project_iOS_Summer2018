@@ -29,6 +29,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         budgetWarningAmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
         
         saveButton.isEnabled = false;
+        textFieldDidChange(textField: budgetLimitTextField);
         
         timeFrames = DefaultData.getTimeIntervals();
         
@@ -73,7 +74,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         //Save uptes to existing budget
         if (budget != nil) {
             
-            _ = coreDataManager!.updateNSObject(object: budget!, values: [limit, warningAmount, timeFrame, beginDate], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate"]);
+            _ = coreDataManager!.updateNSObject(object: budget!, values: [limit, warningAmount, timeFrame, beginDate, spentAmount], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate", "spentAmount"]);
         }
         else {
             _ = coreDataManager!.createAndSaveNSObject(forEntity: "Budget", values: [limit, warningAmount, timeFrame, beginDate, spentAmount], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate", "spentAmount"]);

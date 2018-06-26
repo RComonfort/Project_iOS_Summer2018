@@ -10,6 +10,8 @@
 		D46A94C91ED9CA765474144C /* Pods_ExpensesTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */; };
 		DB5E058D1A2766FA4015E79C /* Pods_ExpensesTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D2CF81B07607F0966AFDA79 /* Pods_ExpensesTracker.framework */; };
 		DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1B0EA220D1782D000E670B /* CoreDataManager.swift */; };
+		DE44435320E2C0B7002D085B /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435220E2C0B7002D085B /* NotificationsManager.swift */; };
+		DE44435520E2CD9B002D085B /* ClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435420E2CD9B002D085B /* ClassExtensions.swift */; };
 		DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B520C6D37F00F86265 /* AppDelegate.swift */; };
 		DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B720C6D37F00F86265 /* StatusViewController.swift */; };
 		DE5695BB20C6D37F00F86265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695B920C6D37F00F86265 /* Main.storyboard */; };
@@ -68,6 +70,8 @@
 		BB02F9806F85586DCECE8AEA /* Pods-ExpensesTrackerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerUITests/Pods-ExpensesTrackerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CDD086F20434410172279D2E /* Pods-ExpensesTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerTests/Pods-ExpensesTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DE1B0EA220D1782D000E670B /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DE44435220E2C0B7002D085B /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		DE44435420E2CD9B002D085B /* ClassExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassExtensions.swift; sourceTree = "<group>"; };
 		DE5695B220C6D37F00F86265 /* ExpensesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpensesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5695B520C6D37F00F86265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5695B720C6D37F00F86265 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -218,7 +222,9 @@
 				FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */,
 				FBCA333320E1704400B58980 /* RecurrentViewController.swift */,
 				FBCA333520E1931500B58980 /* LogInViewController.swift */,
+				DE44435220E2C0B7002D085B /* NotificationsManager.swift */,
 				FB69C04F20E2B33C00D8ACE2 /* Authenticator.swift */,
+				DE44435420E2CD9B002D085B /* ClassExtensions.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -456,6 +462,8 @@
 				FB2AE40F20DAE78000373050 /* NewCategoryViewController.swift in Sources */,
 				FBCA333620E1931500B58980 /* LogInViewController.swift in Sources */,
 				DE59F18520D8627F00F640C9 /* CustomFormatter.swift in Sources */,
+				DE44435320E2C0B7002D085B /* NotificationsManager.swift in Sources */,
+				DE44435520E2CD9B002D085B /* ClassExtensions.swift in Sources */,
 				FBCA333020E15ECF00B58980 /* RecurrentEventsTableViewController.swift in Sources */,
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
