@@ -93,7 +93,7 @@ extension UIViewController{
         else {
             configurationObject = (coreDataManager.createEmptyNSObject(ofEntityType: "Configuration") as! Configuration)
             
-            _ = coreDataManager.updateNSObject(object: configurationObject, values: [true, true, true, true, true], keys: [
+            _ = coreDataManager.updateNSObject(object: configurationObject, values: [true, true, true, false, true], keys: [
                 ESettingStrings.Authentication.rawValue,
                 ESettingStrings.BudgetNotification.rawValue,
                 ESettingStrings.Notifications.rawValue,
