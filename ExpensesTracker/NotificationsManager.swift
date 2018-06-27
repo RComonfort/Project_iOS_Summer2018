@@ -9,7 +9,14 @@
 import UIKit
 import UserNotifications
 
+enum ENotificationCategoryIDs: String {
+    case budget = "budget_notification_category"
+    case recurrentEvent = "recurrentEvent_notification_category"
+    case squander = "squander_notification_category"
+}
+
 class NotificationsManager {
+    
     
     static func askForNotificationsPermission() {
         let center = UNUserNotificationCenter.current()
@@ -18,6 +25,22 @@ class NotificationsManager {
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
     
         }
+        
+        let budgetCategory = UNNotificationCategory(
+                                  identifier: ENotificationCategoryIDs.budget.rawValue,
+                                  actions: [],
+                                  intentIdentifiers: [],
+                                  options: [UNNotificationCategoryOptions.allowInCarPlay,
+                                            UNNotificationCategoryOptions.hiddenPreviewsShowTitle ]);
+        let recurrentEventCategory = UNNotificationCategory(
+                                    identifier: ENotificationCategoryIDs.recurrentEvent.rawValue,
+                                    actions: [],
+                                    intentIdentifiers: [],
+                                    options: [UNNotificationCategoryOptions.allowInCarPlay,
+                                              UNNotificationCategoryOptions.hiddenPreviewsShowTitle ]);
+        
+        center.setNotificationCategories([budgetCategory, recurrentEventCategory]);
+        
     }
     
     /*
