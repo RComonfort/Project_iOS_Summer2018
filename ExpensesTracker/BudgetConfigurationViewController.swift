@@ -190,9 +190,8 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         components.second = 0
         let date = Calendar.current.date(from: components)
         print(date!)
-        let timer = Timer(fireAt: date!, interval: Double(DefaultData.getTimeIntervalsSeconds()[0]), target: self, selector: #selector(runCode), userInfo: nil, repeats: false)
+        let timer = Timer(fireAt: date!, interval: Double(86400), target: self, selector: #selector(runCode), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
-        
     }
     
     @objc func runCode() {

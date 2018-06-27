@@ -12,17 +12,48 @@ import AudioToolbox.AudioServices
 
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
-    //Called when a notification is delivered with the app in foreground
+    //Called when a notification is about to be delivered
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
 
+        let configuration = CoreDataManager(inContext: self).getLatestNSObject(forEntity: "Configuration", latestByKey: "authentication") as! Configuration;
         
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
+        //No permission to notificate
+        if (!configuration.shouldNotificate (notificationOfType: ESettingStrings.Notifications)) {
+            return;
+        }
         
-        completionHandler([.alert, .badge, .sound]);
+        let catID = notification.request.content.categoryIdentifier;
         
-        //Notification was delivered by this point
+        //Check for each category, if its setting is active
+        if (catID == ENotificationCategoryIDs.budget.rawValue) {
+            
+            if (configuration.shouldNotificate (notificationOfType: ESettingStrings.BudgetNotification)) {
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
+                completionHandler([.alert, .badge, .sound]);
+            }
+            
+        }
+        else if (catID == ENotificationCategoryIDs.recurrentEvent.rawValue) {
+            
+            if (configuration.shouldNotificate (notificationOfType: ESettingStrings.BudgetNotification)) {
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
+                completionHandler([.alert, .badge, .sound]);
+            }
+        }
+        else if (catID == ENotificationCategoryIDs.squander.rawValue) {
+            
+            if (configuration.shouldNotificate (notificationOfType: ESettingStrings.BudgetNotification)) {
+                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate));
+                completionHandler([.alert, .badge, .sound]);
+            }
+        }
+        else {
+            print("Unrecognized notification category. Not presenting it");
+            return;
+        }
+        
     }
     
     //Called after the user gets the notification

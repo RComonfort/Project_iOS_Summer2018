@@ -10,15 +10,15 @@ import UIKit
 
 extension Configuration{
     
-    func shouldNotificate(_ notificationType: String) -> Bool{
-        switch notificationType {
-        case "notification":
+    func shouldNotificate(notificationOfType type: ESettingStrings) -> Bool{
+        switch type {
+        case ESettingStrings.Notifications:
             return self.notifications
-        case "budget":
+        case ESettingStrings.BudgetNotification:
             return self.notifications && self.budget
-        case "recurrent":
+        case ESettingStrings.RecurrentNotification:
             return self.notifications && self.recurrent
-        case "squander":
+        case ESettingStrings.SquanderNotification:
             return self.notifications && self.squander
         default:
             return false

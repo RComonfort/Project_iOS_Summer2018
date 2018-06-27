@@ -26,7 +26,7 @@ extension RecTransaction{
         
         let config = coreDataManager.getLatestNSObject(forEntity: "Configuration", latestByKey: "notifications") as! Configuration
         
-        if config.shouldNotificate("recurrent") {
+        if config.shouldNotificate(notificationOfType: ESettingStrings.RecurrentNotification) {
             _ = NotificationsManager.scheduleNotification(fromCategory: ENotificationCategoryIDs.recurrentEvent, atDate: Date(), withMessage: "A new \(self.type ?? "transaction") has been done");
         }
     }

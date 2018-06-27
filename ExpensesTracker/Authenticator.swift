@@ -26,10 +26,8 @@ class Authenticator: NSObject {
         
         guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
             print(error!)
-            print("cant bio")
             return false
         }
-        print("can bio")
         return true
         
     }
@@ -37,10 +35,8 @@ class Authenticator: NSObject {
     func canLogIn() -> Bool{
         var error: NSError?
         guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
-            print("cant normal")
             return false
         }
-        print("can normal")
         return true
     }
     
