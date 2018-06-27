@@ -34,6 +34,7 @@
 		F217567AB4770581977A836C /* Pods_ExpensesTrackerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43979C1195FE1D6E5F7AA68E /* Pods_ExpensesTrackerUITests.framework */; };
 		FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB23C5CD20D422FF006249EB /* ReportViewController.swift */; };
 		FB2751EA20E4077000B31657 /* BalanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2751E920E4077000B31657 /* BalanceExtension.swift */; };
+		FB2751EC20E41A2100B31657 /* ConfigurationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2751EB20E41A2100B31657 /* ConfigurationExtension.swift */; };
 		FB2AE40520DAD6A200373050 /* ViewTransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40420DAD6A200373050 /* ViewTransactionViewController.swift */; };
 		FB2AE40720DADBA300373050 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */; };
 		FB2AE40920DADCBF00373050 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */; };
@@ -103,6 +104,7 @@
 		E06BF326949B652EE92CE9CF /* Pods-ExpensesTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExpensesTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ExpensesTrackerTests/Pods-ExpensesTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		FB23C5CD20D422FF006249EB /* ReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewController.swift; sourceTree = "<group>"; };
 		FB2751E920E4077000B31657 /* BalanceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceExtension.swift; sourceTree = "<group>"; };
+		FB2751EB20E41A2100B31657 /* ConfigurationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationExtension.swift; sourceTree = "<group>"; };
 		FB2AE40420DAD6A200373050 /* ViewTransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTransactionViewController.swift; sourceTree = "<group>"; };
 		FB2AE40620DADBA300373050 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
 		FB2AE40820DADCBF00373050 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				DE44435620E2F458002D085B /* BudgetExtension.swift */,
 				DE44435820E2F4B6002D085B /* AppDelegateExtension.swift */,
 				FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */,
+				FB2751EB20E41A2100B31657 /* ConfigurationExtension.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				DE6FB6B620CAD6F2009D476B /* ExpensesTracker.xcdatamodeld in Sources */,
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
 				FB69C05020E2B33C00D8ACE2 /* Authenticator.swift in Sources */,
+				FB2751EC20E41A2100B31657 /* ConfigurationExtension.swift in Sources */,
 				DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */,
 				FBE8FBC220E3DF9600895C37 /* RecTransactionExtension.swift in Sources */,
 				DE44435920E2F4B6002D085B /* AppDelegateExtension.swift in Sources */,

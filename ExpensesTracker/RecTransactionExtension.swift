@@ -12,10 +12,11 @@ extension RecTransaction{
     
     func addTransaction(coreDataManager: CoreDataManager){
         print("add transaction")
-        let values = [self.amount, Date(), self.descriptionText ?? "", true, self.type!] as [Any]
-        let keys = ["amount", "date", "descriptionText", "isAddedByRecurrent", "type"]
+        let values = [self.amount, Date(), self.descriptionText ?? "", true, self.type!, coreDataManager.findCategory(ofType: self.type!, withName: (self.category?.name)!)!] as [Any]
+        let keys = ["amount", "date", "descriptionText", "isAddedByRecurrent", "type", "category"]
         
         _ = coreDataManager.createAndSaveNSObject(forEntity: "Transaction", values: values, keys: keys)
+        
         
         //Balance.updateBalanceAmount(amount: (self.type.lowercased() == "expense" ? -(self.amount) : self.amount), coreDataManager: coreDataManager)
         
@@ -23,8 +24,11 @@ extension RecTransaction{
             Budget.updateBudgetSpenditure(amount * -1, coreDataManager: coreDataManager)
         }
         
-        _ = NotificationsManager.scheduleNotification(date: Date(), message: "A new \(self.type ?? "transaction") has been done");
+        let config = coreDataManager.getLatestNSObject(forEntity: "Configuration", latestByKey: "notifications") as! Configuration
         
+        if config.shouldNotificate("recurrent") {
+            _ = NotificationsManager.scheduleNotification(date: Date(), message: "A new \(self.type ?? "transaction") has been done");
+        }
     }
     
     static func doRecurrentTransactions(coreDataManager: CoreDataManager){
