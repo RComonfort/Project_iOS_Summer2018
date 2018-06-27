@@ -11,7 +11,7 @@ import UIKit
 extension RecTransaction{
     
     func addTransaction(coreDataManager: CoreDataManager){
-        
+        print("add transaction")
         let values = [self.amount, Date(), self.descriptionText ?? "", true, self.type!] as [Any]
         let keys = ["amount", "date", "descriptionText", "isAddedByRecurrent", "type"]
         
@@ -28,8 +28,9 @@ extension RecTransaction{
     }
     
     static func doRecurrentTransactions(coreDataManager: CoreDataManager){
-        
+        print("do recurrents")
         guard let allRecurrentNS = coreDataManager.getNSObjects(forEntity: "RecTransaction") else{
+            print("no recurrents")
             return
         }
         

@@ -79,6 +79,8 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         //A recurrent transaction must be added
         if (switchView.isOn) {
             
+            addTimerIfFirstRecurrent()
+            
             let recurrentInterval = intervalDates[intervalDatePicker.selectedRow(inComponent: 0)];
             let recurrentBeginDate = beginDateWheel.date;
             
@@ -215,5 +217,29 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         if config.authentication {
             self.performSegue(withIdentifier: "toLogIn", sender: self)
         }
+    }
+    
+    func addTimerIfFirstRecurrent(){
+        if ((coreDataManager?.getNSObjects(forEntity: "RecTransaction")) == nil){
+            print("added timer")
+            var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+            components.hour = 2
+            components.minute = 0
+            components.second = 0
+            let date = Calendar.current.date(from: components)
+            print(date!)
+            let timer = Timer(fireAt: date!, interval: Double(DefaultData.getTimeIntervalsSeconds()[0]), target: self, selector: #selector(runCode), userInfo: nil, repeats: false)
+            RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+            return
+        } else {
+            print("not added")
+            return
+        }
+        
+    }
+    
+    @objc func runCode() {
+        print("run code")
+        RecTransaction.doRecurrentTransactions(coreDataManager: CoreDataManager(inContext: UIApplication.shared.delegate!))
     }
 }
