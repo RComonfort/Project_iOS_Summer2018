@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class ConfigurationTableViewController: UITableViewController, InteractiveTableViewCellDelegate {
     
@@ -88,6 +89,10 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
             switch (index) {
                 case 1:
                     setupSwitchCell(cell, titleLabel: "Ask for authentication", settingToManage: ESettingStrings.Authentication);
+                    let auth = Authenticator();
+                    auth.setFields(context: LAContext(), config: configurationObject!);
+                    cell.isSettingAvailable = auth.canLogIn() || auth.canLogInWithBiometrics();
+                    cell.unavailableSettingMessage = "Your device has no biometrics or passcode"
                     return cell;
                 case 2:
                     setupSwitchCell(cell, titleLabel: "Notifications", settingToManage: ESettingStrings.Notifications);
@@ -100,6 +105,8 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
                     return cell;
                 default: //case 5
                     setupSwitchCell(cell, titleLabel: "    Squander Locations", settingToManage: ESettingStrings.SquanderNotification)
+                    cell.isSettingAvailable = false;
+                    cell.unavailableSettingMessage = "Squander feature not yet supported, sorry.";
                     return cell;
             }
         }
@@ -161,6 +168,15 @@ class ConfigurationTableViewController: UITableViewController, InteractiveTableV
     func didInteract(withCell cell: UITableViewCell, cellForRowAt rowIndex: Int) {
         
         if let switchCell = cell as? SwitchTableViewCell {
+            
+            if !switchCell.isSettingAvailable {
+                let alert = UIAlertController(title: "Error", message: switchCell.unavailableSettingMessage, preferredStyle: .alert);
+                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil);
+                alert.addAction(ok);
+                
+                self.present(alert, animated: true, completion: nil);
+            }
+            
             //save the new value to the configuration object. It has to be centralized to prevent overrides between cells' config objects
             let newValue = switchCell.switchView.isOn;
             configurationObject!.setValue(newValue, forKey: switchCell.settingToManage!.rawValue)
