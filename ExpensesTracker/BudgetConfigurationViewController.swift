@@ -78,6 +78,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         }
         else {
             _ = coreDataManager!.createAndSaveNSObject(forEntity: "Budget", values: [limit, warningAmount, timeFrame, beginDate, spentAmount], keys: ["limit", "limitWarningAmount", "budgetTimeFrame", "budgetBeginDate", "spentAmount"]);
+            addTimerIfFirstBudget()
         }
         
         goToPreviousScreen();
@@ -178,6 +179,25 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         print("connfig is \(config.authentication)")
         if config.authentication {
             self.performSegue(withIdentifier: "toLogIn", sender: self)
+        }
+    }
+    
+    func addTimerIfFirstBudget(){
+        print("added timer")
+        var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: Date())
+        components.hour = 2
+        components.minute = 0
+        components.second = 0
+        let date = Calendar.current.date(from: components)
+        print(date!)
+        let timer = Timer(fireAt: date!, interval: Double(DefaultData.getTimeIntervalsSeconds()[0]), target: self, selector: #selector(runCode), userInfo: nil, repeats: false)
+        RunLoop.main.add(timer, forMode: RunLoopMode.commonModes)
+        
+    }
+    
+    @objc func runCode() {
+        if Budget.didRestart(coreDataManager: CoreDataManager(inContext: UIApplication.shared.delegate!)) {
+            _ = NotificationsManager.scheduleNotification(date: Date(), message: "The budget restarted");
         }
     }
     
