@@ -76,6 +76,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         let categoryType = type;
         let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
         
+        
         //A  transaction must be added
         if (!switchView.isOn) {
             
@@ -83,12 +84,15 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
             
             let transaction = coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction;
             
+            transaction.category = category;
+            
             _ = coreDataManager!.updateNSObject(object: transaction,
                                                 values: [
-                                                    type, id, descriptionText, amount, date, category, isAddedByRecurrent
+                                                    type, id, descriptionText, amount, date, isAddedByRecurrent
                 ], keys: [
-                    "type", "id", "descriptionText", "amount", "date", "category", "isAddedByRecurrent"
+                    "type", "id", "descriptionText", "amount", "date", "isAddedByRecurrent"
                 ]);
+        
             
             if (transactionTypeToManage == ETransactionType.Expense) {
                 Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);

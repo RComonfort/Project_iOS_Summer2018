@@ -22,7 +22,6 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,6 +33,7 @@ class HistoryTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
         
+        coreDataManager = CoreDataManager(inContext: UIApplication.shared.delegate!);
         
         let objects = coreDataManager!.getNSObjects(forEntity: "Transaction")
         if (objects != nil && (objects?.count)! > 0){

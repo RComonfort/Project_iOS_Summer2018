@@ -15,8 +15,8 @@
         <attribute name="isDefault" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recTransactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RecTransaction" inverseName="category" inverseEntity="RecTransaction" syncable="YES"/>
-        <relationship name="transactions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
+        <relationship name="recTransactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecTransaction" inverseName="category" inverseEntity="RecTransaction" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="category" inverseEntity="Transaction" syncable="YES"/>
     </entity>
     <entity name="Configuration" representedClassName="Configuration" syncable="YES" codeGenerationType="class">
         <attribute name="authentication" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>

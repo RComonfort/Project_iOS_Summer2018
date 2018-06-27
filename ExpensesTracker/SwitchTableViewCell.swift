@@ -26,6 +26,8 @@ class SwitchTableViewCell: UITableViewCell {
     var settingToManage: ESettingStrings?;
     var currentIndexInTable: Int?;
     var lastSwitchValue: Bool = false;
+    //var isSettingAvailable: Bool = true;
+    //var unavailableSettingMessage: String?;
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +41,13 @@ class SwitchTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    @IBAction func onSwitchValueChanged(_ sender: Any) {
+    @IBAction func onSwitchValueChanged(_ sender: UISwitch) {
+        
+        //Do not let
+        /*if (switch.isOn && !isSettingAvailable) {
+            
+        } */
+        
         //call delegate to inform the switch was pressed
         cellDelegate!.didInteract(withCell: self, cellForRowAt: currentIndexInTable!)
     }
