@@ -45,6 +45,7 @@
 		FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333320E1704400B58980 /* RecurrentViewController.swift */; };
 		FBCA333620E1931500B58980 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333520E1931500B58980 /* LogInViewController.swift */; };
 		FBE8FBC220E3DF9600895C37 /* RecTransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */; };
+		FBE8FBC520E3F24600895C37 /* BalanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE8FBC420E3F24600895C37 /* BalanceExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		FBCA333320E1704400B58980 /* RecurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentViewController.swift; sourceTree = "<group>"; };
 		FBCA333520E1931500B58980 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecTransactionExtension.swift; sourceTree = "<group>"; };
+		FBE8FBC420E3F24600895C37 /* BalanceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BalanceExtension.swift; sourceTree = "<group>"; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -185,6 +187,7 @@
 				DE5695B320C6D37F00F86265 /* Products */,
 				6B08E34A5ABD9D40AB3553E5 /* Pods */,
 				3465A0F1099947561AC00749 /* Frameworks */,
+				FBE8FBC320E3F21400895C37 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +204,7 @@
 		DE5695B420C6D37F00F86265 /* ExpensesTracker */ = {
 			isa = PBXGroup;
 			children = (
+				FBE8FBC420E3F24600895C37 /* BalanceExtension.swift */,
 				DE59F18420D8627F00F640C9 /* CustomFormatter.swift */,
 				DEE2F72420D2F2A800D7CF0D /* DefaultData.swift */,
 				DE5695B520C6D37F00F86265 /* AppDelegate.swift */,
@@ -253,6 +257,14 @@
 				DE5695D720C6D38100F86265 /* Info.plist */,
 			);
 			path = ExpensesTrackerUITests;
+			sourceTree = "<group>";
+		};
+		FBE8FBC320E3F21400895C37 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				DE44435A20E3E242002D085B /* BalanceExtension.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -486,6 +498,7 @@
 				DE8DB08120D8AC3300323BB1 /* SwitchTableViewCell.swift in Sources */,
 				DE44435720E2F458002D085B /* BudgetExtension.swift in Sources */,
 				DE1B0EA320D1782D000E670B /* CoreDataManager.swift in Sources */,
+				FBE8FBC520E3F24600895C37 /* BalanceExtension.swift in Sources */,
 				FB2AE40720DADBA300373050 /* CategoryTableViewController.swift in Sources */,
 				DE6FB68E20CAD17B009D476B /* HistoryTableViewController.swift in Sources */,
 				FB2AE40520DAD6A200373050 /* ViewTransactionViewController.swift in Sources */,
