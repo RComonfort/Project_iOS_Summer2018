@@ -110,31 +110,15 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
             Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
             Budget.checkBudgetLimit(coreDataManager: coreDataManager!);
         }
-        updateBalance(amount);
+        
+        let balanceDelta = transactionTypeToManage == ETransactionType.Expense ? -amount : amount;
+        
+        Balance.updateBalanceAmount(amount: balanceDelta, coreDataManager: coreDataManager!);
 
         goToPreviousScreen();
     }
     
     //MARK: - Functions
-    
-    func updateBalance(_ amount: Double) {
-        guard let balanceObjects = coreDataManager!.getNSObjects(forEntity: "Balance"), balanceObjects.count > 0 else {
-            fatalError("Balance object not yet created!!!");
-        }
-        
-        let balanceObj = balanceObjects[0];
-        var balance = balanceObj.value(forKeyPath: "balance") as! Double;
-
-    
-        if (transactionTypeToManage == ETransactionType.Expense) {
-            balance -= amount;
-            
-        } else {
-            balance += amount;
-        }
-        _ = coreDataManager!.updateNSObject(object: balanceObj, values: [balance], keys: ["balance"]);
-        
-    }
     
     func loadCategories() {
         if (transactionTypeToManage == ETransactionType.Expense)
@@ -170,7 +154,6 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         beginDateLabel.isHidden = value;
         intervalDatePicker.isHidden = value;
         intervalLabel.isHidden = value;
-        
     }
     
     //MARK: - PickerDelegate Functions
