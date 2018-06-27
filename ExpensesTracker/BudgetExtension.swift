@@ -32,10 +32,15 @@ extension Budget {
         
         let spentAmount = (budgetObj.value(forKey: "spentAmount") as! Double);
         let warning = (budgetObj.value(forKey: "limitWarningAmount") as! Double);
-        _ = coreDataManager.updateNSObject(object: budgetObj, values: [spentAmount], keys: ["spentAmount"]);
+        let budgetLimit = (budgetObj.value(forKey: "limit") as! Double);
+        //_ = coreDataManager.updateNSObject(object: budgetObj, values: [spentAmount], keys: ["spentAmount"]);
         
-        if (warning <= spentAmount) {
+        
+        if (spentAmount >= budgetLimit) {
             _ = NotificationsManager.scheduleNotification(date: Date(), message: "You have exceeded your current budget limit!");
+        }
+        else if (warning <= spentAmount) {
+            _ = NotificationsManager.scheduleNotification(date: Date(), message: "Warning, you are aproaching your budget limit!");
         }
     }
 }

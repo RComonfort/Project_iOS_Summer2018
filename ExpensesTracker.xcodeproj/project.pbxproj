@@ -43,6 +43,7 @@
 		FBCA333220E1628C00B58980 /* RecurrentEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */; };
 		FBCA333420E1704400B58980 /* RecurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333320E1704400B58980 /* RecurrentViewController.swift */; };
 		FBCA333620E1931500B58980 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBCA333520E1931500B58980 /* LogInViewController.swift */; };
+		FBE8FBC220E3DF9600895C37 /* RecTransactionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		FBCA333120E1628C00B58980 /* RecurrentEventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentEventTableViewCell.swift; sourceTree = "<group>"; };
 		FBCA333320E1704400B58980 /* RecurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrentViewController.swift; sourceTree = "<group>"; };
 		FBCA333520E1931500B58980 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecTransactionExtension.swift; sourceTree = "<group>"; };
 		FE0586EE12ADFB490BA8392E /* Pods_ExpensesTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExpensesTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -228,6 +230,7 @@
 				FB69C04F20E2B33C00D8ACE2 /* Authenticator.swift */,
 				DE44435620E2F458002D085B /* BudgetExtension.swift */,
 				DE44435820E2F4B6002D085B /* AppDelegateExtension.swift */,
+				FBE8FBC120E3DF9600895C37 /* RecTransactionExtension.swift */,
 			);
 			path = ExpensesTracker;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				DE8DB07F20D8AC1B00323BB1 /* DetailTableViewCell.swift in Sources */,
 				FB69C05020E2B33C00D8ACE2 /* Authenticator.swift in Sources */,
 				DE6FB6B820CADBEF009D476B /* BudgetConfigurationViewController.swift in Sources */,
+				FBE8FBC220E3DF9600895C37 /* RecTransactionExtension.swift in Sources */,
 				DE44435920E2F4B6002D085B /* AppDelegateExtension.swift in Sources */,
 				DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */,
 				FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */,
