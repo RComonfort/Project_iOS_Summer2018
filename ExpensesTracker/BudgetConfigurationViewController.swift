@@ -197,7 +197,7 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
     
     @objc func runCode() {
         if Budget.didRestart(coreDataManager: CoreDataManager(inContext: UIApplication.shared.delegate!)) {
-            _ = NotificationsManager.scheduleNotification(date: Date(), message: "The budget restarted");
+            _ = NotificationsManager.scheduleNotification(fromCategory: ENotificationCategoryIDs.budget, atDate: Date(), withMessage: "Your current budget spent amount have been restarted");
         }
     }
     

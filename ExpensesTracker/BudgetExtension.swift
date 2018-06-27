@@ -37,10 +37,10 @@ extension Budget {
         
         
         if (spentAmount >= budgetLimit) {
-            _ = NotificationsManager.scheduleNotification(date: Date(), message: "You have exceeded your current budget limit!");
+            _ = NotificationsManager.scheduleNotification(fromCategory: ENotificationCategoryIDs.budget, atDate: Date(), withMessage: "You have exceeded your current budget limit!");
         }
         else if (warning <= spentAmount) {
-            _ = NotificationsManager.scheduleNotification(date: Date(), message: "Warning, you are aproaching your budget limit!");
+            _ = NotificationsManager.scheduleNotification(fromCategory: ENotificationCategoryIDs.budget, atDate: Date(), withMessage: "Warning, you are aproaching your budget limit!");
         }
     }
     

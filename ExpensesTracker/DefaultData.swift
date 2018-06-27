@@ -20,7 +20,7 @@ class DefaultData {
     
     static private let TIME_INTERVALS = ["daily", "weekly", "biweekly", "monthly", "bimonthly", "quarterly", "biannual", "yearly", "indefinitely"];
     
-    static private let TIME_INTERVALS_SECONDS = [86400, 604800, 604800 * 2, 2592000, 2592000 * 2, 2592000 * 3, 31536000 / 2, 31536000, 0]
+    static private let TIME_INTERVALS_SECONDS = [86400, 604800, 604800 * 2, 2592000, 2592000 * 2, 2592000 * 3, 31536000 / 2, 31536000, 0];
     
     static func getIncomeCategories () -> [String] {
         return INCOME_CATEGORIES;

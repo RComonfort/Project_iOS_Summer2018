@@ -47,13 +47,14 @@ class NotificationsManager {
     Schedules a notification to ring at the specified date, with the given message.
      Returns a string indicating the id of the notifications if succesful, returns nil otherwise.
     */
-    static func scheduleNotification(date: Date, message: String) -> String?
+    static func scheduleNotification(fromCategory notificationCategory: ENotificationCategoryIDs, atDate date: Date, withMessage message: String) -> String?
     {
         let content = UNMutableNotificationContent()
         
         //Set content
         content.title = NSString.localizedUserNotificationString(forKey: message, arguments: nil);
         content.sound = UNNotificationSound.default();
+        content.categoryIdentifier = notificationCategory.rawValue;
         
         //Create time trigger
         var trigger: UNNotificationTrigger;

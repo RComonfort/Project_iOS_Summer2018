@@ -176,7 +176,7 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
             return categories.count;
         }
         else if (pickerView.tag == 1) {
-            return intervalDates.count;
+            return intervalDates.count - 1; //dont consider "indefinite" interval, doesn´t apply to recTransactions
         }
         else {
             fatalError("Unkown picker called for number of rows");
