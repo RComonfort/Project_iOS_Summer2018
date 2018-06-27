@@ -25,7 +25,6 @@ class Authenticator: NSObject {
         var error: NSError?
         
         guard authenticationContext.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) else {
-            print(error!)
             return false
         }
         return true

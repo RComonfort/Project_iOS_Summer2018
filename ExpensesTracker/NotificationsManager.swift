@@ -17,8 +17,7 @@ enum ENotificationCategoryIDs: String {
 
 class NotificationsManager {
     
-    
-    static func askForNotificationsPermission() {
+    static func askForNotificationsPermission(){
         let center = UNUserNotificationCenter.current()
     
         //Request notification permissions, only asked once
@@ -49,6 +48,14 @@ class NotificationsManager {
     */
     static func scheduleNotification(fromCategory notificationCategory: ENotificationCategoryIDs, atDate date: Date, withMessage message: String) -> String?
     {
+        //Check the user has given permission to send notifications, otherwise don't fulfill this request
+        if (!hasUserPermission())
+        {
+            print("User has denied permissions, can't schedule notification");
+            askForNotificationsPermission();
+            return nil;
+        }
+        
         let content = UNMutableNotificationContent()
         
         //Set content
@@ -87,4 +94,20 @@ class NotificationsManager {
         return notificationID;
     }
 
+    static func hasUserPermission() -> Bool {
+        
+        var hasPermission: Bool = false;
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            if settings.authorizationStatus == .authorized {
+                hasPermission = true;
+            }
+            else {
+                hasPermission = false;
+            }
+        }
+
+        return hasPermission;
+    }
+    
 }
