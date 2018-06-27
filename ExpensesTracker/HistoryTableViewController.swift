@@ -68,7 +68,7 @@ class HistoryTableViewController: UITableViewController {
         let customFormatter = CustomFormatter();
         
         cell.amountLabel.text = customFormatter.formatCurrency(amount: transactions[indexPath.row].amount);
-        cell.descriptionLabel.text = transactions[indexPath.row].descriptionText;
+        cell.descriptionLabel.text = transactions[indexPath.row].descriptionText == "" ? "No description..." : transactions[indexPath.row].descriptionText;
         cell.dateLabel.text = customFormatter.formatDate(date: transactions[indexPath.row].date!);
         cell.categoryNameLabel.text = category?.name;
         cell.categoryImage.image = UIImage(named: (category?.icon)!);

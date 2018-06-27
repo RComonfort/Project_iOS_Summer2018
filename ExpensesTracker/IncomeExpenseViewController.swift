@@ -76,8 +76,32 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         let categoryType = type;
         let category = coreDataManager!.findCategory(ofType: categoryType, withName: categoryName)!
         
-        //A recurrent transaction must be added
-        if (switchView.isOn) {
+        //A  transaction must be added
+        if (!switchView.isOn) {
+            
+            let isAddedByRecurrent = false;
+            
+            let transaction = coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction;
+            
+            _ = coreDataManager!.updateNSObject(object: transaction,
+                                                values: [
+                                                    type, id, descriptionText, amount, date, category, isAddedByRecurrent
+                ], keys: [
+                    "type", "id", "descriptionText", "amount", "date", "category", "isAddedByRecurrent"
+                ]);
+            
+            if (transactionTypeToManage == ETransactionType.Expense) {
+                Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
+                Budget.checkBudgetLimit(coreDataManager: coreDataManager!);
+            }
+            
+            let balanceDelta = transactionTypeToManage == ETransactionType.Expense ? -amount : amount;
+            
+            Balance.updateBalanceAmount(amount: balanceDelta, coreDataManager: coreDataManager!);
+            
+            print ("Transaction added succesfully.");
+            
+        } else { //A Recurrent transaction must be added
             
             addTimerIfFirstRecurrent()
             
@@ -87,35 +111,14 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
             let recTransaction = coreDataManager!.createEmptyNSObject(ofEntityType: "RecTransaction") as! RecTransaction;
             
             _ = coreDataManager!.updateNSObject(object: recTransaction,
-                values: [
-                    type, id, descriptionText, amount, category, recurrentInterval, recurrentBeginDate
+                                                values: [
+                                                    type, id, descriptionText, amount, category, recurrentInterval, recurrentBeginDate
                 ], keys: [
                     "type", "id", "descriptionText", "amount", "category", "recurrentInterval", "recurrentBeginDate"
                 ]);
             
-        } else { //A transaction must be added
-            
-            let isAddedByRecurrent = false;
-
-            let transaction = coreDataManager!.createEmptyNSObject(ofEntityType: "Transaction") as! Transaction;
-            
-            _ = coreDataManager!.updateNSObject(object: transaction,
-                values: [
-                    type, id, descriptionText, amount, date, category, isAddedByRecurrent
-                ], keys: [
-                    "type", "id", "descriptionText", "amount", "date", "category", "isAddedByRecurrent"
-                ]);
+            print ("RecTransaction added succesfully.");
         }
-        print ("Transaction added succesfully.");
-        
-        if (transactionTypeToManage == ETransactionType.Expense) {
-            Budget.updateBudgetSpenditure(amount, coreDataManager: coreDataManager!);
-            Budget.checkBudgetLimit(coreDataManager: coreDataManager!);
-        }
-        
-        let balanceDelta = transactionTypeToManage == ETransactionType.Expense ? -amount : amount;
-        
-        Balance.updateBalanceAmount(amount: balanceDelta, coreDataManager: coreDataManager!);
 
         goToPreviousScreen();
     }
