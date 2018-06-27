@@ -13,6 +13,7 @@
 		DE44435320E2C0B7002D085B /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435220E2C0B7002D085B /* NotificationsManager.swift */; };
 		DE44435720E2F458002D085B /* BudgetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435620E2F458002D085B /* BudgetExtension.swift */; };
 		DE44435920E2F4B6002D085B /* AppDelegateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435820E2F4B6002D085B /* AppDelegateExtension.swift */; };
+		DE44435B20E3E242002D085B /* BalanceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE44435A20E3E242002D085B /* BalanceExtension.swift */; };
 		DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B520C6D37F00F86265 /* AppDelegate.swift */; };
 		DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5695B720C6D37F00F86265 /* StatusViewController.swift */; };
 		DE5695BB20C6D37F00F86265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE5695B920C6D37F00F86265 /* Main.storyboard */; };
@@ -75,6 +76,7 @@
 		DE44435220E2C0B7002D085B /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		DE44435620E2F458002D085B /* BudgetExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetExtension.swift; sourceTree = "<group>"; };
 		DE44435820E2F4B6002D085B /* AppDelegateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegateExtension.swift; sourceTree = "<group>"; };
+		DE44435A20E3E242002D085B /* BalanceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceExtension.swift; sourceTree = "<group>"; };
 		DE5695B220C6D37F00F86265 /* ExpensesTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpensesTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE5695B520C6D37F00F86265 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DE5695B720C6D37F00F86265 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				FBE8FBC220E3DF9600895C37 /* RecTransactionExtension.swift in Sources */,
 				DE44435920E2F4B6002D085B /* AppDelegateExtension.swift in Sources */,
 				DE6FB69020CAD1DB009D476B /* ConfigurationTableViewController.swift in Sources */,
+				DE44435B20E3E242002D085B /* BalanceExtension.swift in Sources */,
 				FB23C5CE20D422FF006249EB /* ReportViewController.swift in Sources */,
 				DE5695B820C6D37F00F86265 /* StatusViewController.swift in Sources */,
 				DE5695B620C6D37F00F86265 /* AppDelegate.swift in Sources */,

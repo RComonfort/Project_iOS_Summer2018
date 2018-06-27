@@ -100,12 +100,11 @@ class CoreDataManager {
             print ("Could not find category of type \(type) and name \(name).");
             return nil;
         }
-        
-        print("Categories found: \(objects!.count)");
-        
+
         for i in 0..<objects!.count {
             
             if (objects![i].value(forKey: "type") as! String == type && objects![i].value(forKey: "name") as! String == name){
+                print("Returning category of type \(objects![i].value(forKey: "type") as! String), and name \(objects![i].value(forKey: "name") as! String)");
                 return objects![i] as? Category;
             }
         }

@@ -23,13 +23,13 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Balance" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="vnV-YA-dmv">
                                 <rect key="frame" x="112.5" y="102.5" width="150" height="100"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left in budget" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="seK-e2-AM7">
                                 <rect key="frame" x="56.5" y="305" width="262.5" height="80"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="120"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -130,9 +130,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-3o-VOl">
-                                <rect key="frame" x="97.5" y="111.5" width="15" height="25.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hqr-3o-VOl">
+                                <rect key="frame" x="93" y="111.5" width="15" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -241,7 +241,7 @@
                             <constraint firstItem="NAX-0y-nnh" firstAttribute="top" secondItem="tOp-Uz-fse" secondAttribute="top" constant="45" id="cRe-nj-ZKt"/>
                             <constraint firstItem="tJg-TJ-2q3" firstAttribute="top" secondItem="NAX-0y-nnh" secondAttribute="bottom" multiplier="1.25" id="h80-SB-FvW"/>
                             <constraint firstItem="NAX-0y-nnh" firstAttribute="width" secondItem="IxJ-QV-hUL" secondAttribute="width" multiplier="0.4" id="lsu-hd-AJl"/>
-                            <constraint firstItem="NAX-0y-nnh" firstAttribute="leading" secondItem="hqr-3o-VOl" secondAttribute="trailing" id="sTE-kV-2SX"/>
+                            <constraint firstItem="NAX-0y-nnh" firstAttribute="leading" secondItem="hqr-3o-VOl" secondAttribute="trailing" multiplier="1.035" id="sTE-kV-2SX"/>
                             <constraint firstItem="rXj-eE-PGm" firstAttribute="top" secondItem="tJg-TJ-2q3" secondAttribute="bottom" multiplier="1.2" id="zdR-0M-8dP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tOp-Uz-fse"/>
@@ -456,13 +456,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wdf-hR-Y5D">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wdf-hR-Y5D">
                                             <rect key="frame" x="-2.5" y="54" width="73.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImg" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-D3-iMJ">
+                                        <imageView userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImg" translatesAutoresizingMaskIntoConstraints="NO" id="SsD-D3-iMJ">
                                             <rect key="frame" x="9.5" y="5.5" width="49" height="49"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="SsD-D3-iMJ" secondAttribute="height" multiplier="1:1" id="e5x-5k-KWp"/>
