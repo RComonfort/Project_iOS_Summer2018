@@ -45,7 +45,7 @@ class CustomFormatter {
     func formatDate (date: Date) -> String{
         
         let formater = DateFormatter()
-        formater.dateFormat = "dd-MM-yy"
+        formater.dateFormat = "dd/MM/yy"
         return formater.string(from: date)
     }
     

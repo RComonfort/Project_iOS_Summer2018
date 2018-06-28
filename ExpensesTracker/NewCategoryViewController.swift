@@ -15,8 +15,8 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var switchIE: UISwitch!
-    let iconsE = DefaultData.getExpenseImagesNames()
-    let iconsI = DefaultData.getIncomeImagesNames()
+    var iconsE: [String] = DefaultData.getExpenseImagesNames()
+    var iconsI: [String] = DefaultData.getIncomeImagesNames()
     var ei = false
     var new = true
     var originalName: String?
@@ -25,6 +25,10 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        iconsE.append(contentsOf: DefaultData.getExtraImages())
+        iconsI.append(contentsOf: DefaultData.getExtraImages())
+        
         // Do any additional setup after loading the view.
         pickerView.delegate = self
         pickerView.dataSource = self

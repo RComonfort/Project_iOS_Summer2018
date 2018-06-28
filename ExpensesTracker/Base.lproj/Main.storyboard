@@ -445,13 +445,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/06/18" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nm3-ZD-X0I">
-                                            <rect key="frame" x="296.5" y="30.5" width="76" height="19"/>
+                                            <rect key="frame" x="290" y="29.5" width="79.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Won a small lottery from a ticket given to me by my granpa on sunday night " lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jEt-4t-VFq">
-                                            <rect key="frame" x="75" y="39.5" width="202.5" height="24"/>
+                                            <rect key="frame" x="75" y="39.5" width="195" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -469,7 +469,7 @@
                                             </constraints>
                                         </imageView>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recurrent" translatesAutoresizingMaskIntoConstraints="NO" id="KAZ-ZM-uYs">
-                                            <rect key="frame" x="277.5" y="31" width="19" height="19"/>
+                                            <rect key="frame" x="270" y="30" width="20" height="19.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="KAZ-ZM-uYs" secondAttribute="height" multiplier="1:1" id="DoG-nW-UtN"/>
                                             </constraints>
@@ -484,7 +484,7 @@
                                         <constraint firstItem="jEt-4t-VFq" firstAttribute="leading" secondItem="2H5-jN-V5B" secondAttribute="leading" id="EI1-z8-MGH"/>
                                         <constraint firstItem="SsD-D3-iMJ" firstAttribute="width" secondItem="MTF-AS-Y2u" secondAttribute="width" multiplier="0.13" id="Ezx-CG-g1N"/>
                                         <constraint firstItem="jEt-4t-VFq" firstAttribute="top" secondItem="2H5-jN-V5B" secondAttribute="bottom" multiplier="1.05" id="FVp-a8-bha"/>
-                                        <constraint firstItem="jEt-4t-VFq" firstAttribute="width" secondItem="2H5-jN-V5B" secondAttribute="width" multiplier="1.35" id="FyI-dL-duX"/>
+                                        <constraint firstItem="jEt-4t-VFq" firstAttribute="width" secondItem="2H5-jN-V5B" secondAttribute="width" multiplier="1.3" id="FyI-dL-duX"/>
                                         <constraint firstItem="2H5-jN-V5B" firstAttribute="leading" secondItem="SsD-D3-iMJ" secondAttribute="trailing" multiplier="1.3" id="Ju5-YS-IVg"/>
                                         <constraint firstItem="Wdf-hR-Y5D" firstAttribute="width" secondItem="SsD-D3-iMJ" secondAttribute="width" multiplier="1.5" id="Lpc-BR-J4R"/>
                                         <constraint firstItem="2H5-jN-V5B" firstAttribute="centerY" secondItem="SsD-D3-iMJ" secondAttribute="centerY" multiplier="0.85" id="NC4-sj-BXZ"/>
@@ -494,7 +494,7 @@
                                         <constraint firstItem="Nm3-ZD-X0I" firstAttribute="height" secondItem="KAZ-ZM-uYs" secondAttribute="height" id="aEb-Ca-qmP"/>
                                         <constraint firstItem="SsD-D3-iMJ" firstAttribute="centerY" secondItem="MTF-AS-Y2u" secondAttribute="centerY" multiplier="0.75" id="bVw-OG-jVu"/>
                                         <constraint firstItem="KAZ-ZM-uYs" firstAttribute="leading" secondItem="jEt-4t-VFq" secondAttribute="trailing" id="cnK-T4-Rrw"/>
-                                        <constraint firstItem="KAZ-ZM-uYs" firstAttribute="width" secondItem="MTF-AS-Y2u" secondAttribute="width" multiplier="0.05" id="lf5-h3-GsQ"/>
+                                        <constraint firstItem="KAZ-ZM-uYs" firstAttribute="width" secondItem="MTF-AS-Y2u" secondAttribute="width" multiplier="0.054" id="lf5-h3-GsQ"/>
                                         <constraint firstItem="Nm3-ZD-X0I" firstAttribute="leading" secondItem="KAZ-ZM-uYs" secondAttribute="trailing" id="nih-GP-MRe"/>
                                         <constraint firstItem="2H5-jN-V5B" firstAttribute="height" secondItem="MTF-AS-Y2u" secondAttribute="height" multiplier="0.3" id="uhR-Up-F79"/>
                                         <constraint firstItem="Wdf-hR-Y5D" firstAttribute="centerX" secondItem="SsD-D3-iMJ" secondAttribute="centerX" id="xJy-1x-yoW"/>
