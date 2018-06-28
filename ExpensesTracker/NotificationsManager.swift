@@ -17,12 +17,18 @@ enum ENotificationCategoryIDs: String {
 
 class NotificationsManager {
     
+    static var granted = false
+    
     static func askForNotificationsPermission(){
         let center = UNUserNotificationCenter.current()
     
         //Request notification permissions, only asked once
-        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-    
+        if !hasUserPermission(){
+            center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+                if granted{
+                    self.granted = true
+                }
+            }
         }
         
         let budgetCategory = UNNotificationCategory(
@@ -49,7 +55,7 @@ class NotificationsManager {
     static func scheduleNotification(fromCategory notificationCategory: ENotificationCategoryIDs, atDate date: Date, withMessage message: String) -> String?
     {
         //Check the user has given permission to send notifications, otherwise don't fulfill this request
-        if (!hasUserPermission())
+        if !self.granted
         {
             print("User has denied permissions, can't schedule notification");
             askForNotificationsPermission();
