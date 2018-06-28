@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
 
     var recurrent: RecTransaction!
@@ -37,6 +37,8 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         intervals = DefaultData.getTimeIntervals()
         
+        amountText.delegate = self;
+        descriptionText.delegate = self;
         
         categoryPicker.delegate = self
         intervalPicker.delegate = self
@@ -47,6 +49,14 @@ class RecurrentViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         categoryPicker.reloadAllComponents()
         intervalPicker.reloadAllComponents()
         putData()
+    }
+    
+    //MARK: - Text Field Delegeate Functions
+    
+    //To allow the user to stop focusing on the text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     func putData() {

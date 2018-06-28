@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     var budget: Budget?;
     var timeFrames: [String] = [];
@@ -26,7 +26,10 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         //Add target to text fields to validate them
         budgetLimitTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        budgetLimitTextField.delegate = self;
+        
         budgetWarningAmountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        budgetWarningAmountTextField.delegate = self;
         
         timeFrames = DefaultData.getTimeIntervals();
         
@@ -115,6 +118,13 @@ class BudgetConfigurationViewController: UIViewController, UIPickerViewDelegate,
         // Pass the selected object to the new view controller.
     }
     
+    //MARK: - Text Field Delegeate Functions
+    
+    //To allow the user to stop focusing on the text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     //MARK: - Functions
     

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate{
 
     var category: Category!
     
@@ -25,6 +25,8 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(willEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        
+        nameText.delegate = self;
         
         iconsE.append(contentsOf: DefaultData.getExtraImages())
         iconsI.append(contentsOf: DefaultData.getExtraImages())
@@ -144,6 +146,14 @@ class NewCategoryViewController: UIViewController, UIPickerViewDelegate, UIPicke
         if config.authentication {
             self.performSegue(withIdentifier: "toLogIn", sender: self)
         }
+    }
+    
+    //MARK: - Text Field Delegeate Functions
+    
+    //To allow the user to stop focusing on the text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 }

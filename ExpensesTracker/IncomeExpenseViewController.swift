@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     var transactionTypeToManage: ETransactionType?;
     
@@ -49,6 +49,9 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         intervalDatePicker.delegate = self;
         
         amountTextField.addTarget(self, action: #selector(textFieldDidChange), for: UIControlEvents.editingChanged);
+        amountTextField.delegate = self;
+        
+        descriptionTextField.delegate = self;
         
         saveButton.isEnabled = false;
         
@@ -195,6 +198,13 @@ class IncomeExpenseViewController: UIViewController, UIPickerViewDelegate, UIPic
         }
     }
     
+    //MARK: - Text Field Delegeate Functions
+    
+    //To allow the user to stop focusing on the text field
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     // MARK: - Navigation
 
